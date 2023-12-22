@@ -1,0 +1,12 @@
+{
+  "name": "@charged-ui/accordion",
+  "private": true,
+  "version": "0.0.0",
+  "main": "accordion.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2"
+  }
+}

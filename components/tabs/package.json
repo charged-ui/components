@@ -1,0 +1,12 @@
+{
+  "name": "@charged-ui/tabs",
+  "private": true,
+  "version": "0.0.0",
+  "main": "tabs.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2"
+  }
+}
