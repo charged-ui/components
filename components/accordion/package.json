@@ -8,6 +8,11 @@
     "tailwindcss": "^3.3.6",
     "typescript": "^5.2.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charged-ui/charged-ui.git",
+    "directory": "components/accordion"
+  },
   "scripts": {
     "build": "tsc"
   }
