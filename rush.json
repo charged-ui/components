@@ -23,31 +23,8 @@
       "packageName": "@charged-ui/accordion",
       "projectFolder": "components/accordion",
       "reviewCategory": "production",
-      "tags": [ "web-component" ]
-    },
-    {
-      "packageName": "@charged-ui/disclosure",
-      "projectFolder": "components/disclosure",
-      "reviewCategory": "production",
-      "tags": [ "web-component" ]
-    },
-    {
-      "packageName": "@charged-ui/navbar",
-      "projectFolder": "components/navbar",
-      "reviewCategory": "production",
-      "tags": [ "web-component" ]
-    },
-    {
-      "packageName": "@charged-ui/tabs",
-      "projectFolder": "components/tabs",
-      "reviewCategory": "production",
-      "tags": [ "web-component" ]
-    },
-    {
-      "packageName": "@charged-ui/docs",
-      "projectFolder": "docs",
-      "reviewCategory": "production",
-      "tags": [ "documentation" ]
+      "tags": [ "web-component" ],
+      "shouldPublish": true
     }
   ]
 }
