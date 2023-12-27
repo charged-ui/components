@@ -2,11 +2,16 @@
   "name": "@charged-ui/accordion",
   "version": "0.0.0",
   "main": "accordion.ts",
-  "type": "module",
+  "homepage": "https://mozartjs.org/",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.4",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "eslint": "~8.56.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
