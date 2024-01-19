@@ -6,25 +6,51 @@
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 2,
   "gitPolicy": {
-    "allowedEmailRegExps": [
-      "noreply@charged\\.dev"
-    ],
+    "allowedEmailRegExps": ["noreply@charged\\.dev"],
     "sampleEmail": "noreply@charged.dev",
     "versionBumpCommitMessage": "Bump versions [skip ci]",
     "changeLogUpdateCommitMessage": "Update changelogs [skip ci]",
-     "changefilesCommitMessage": "Rush change"
+    "changefilesCommitMessage": "Rush change"
   },
   "repository": {
     "url": "https://github.com/microsoft/rush-example"
   },
-  "allowedProjectTags": [ "documentation", "web-component" ],
+  "allowedProjectTags": ["documentation", "web-component"],
   "projects": [
     {
       "packageName": "@charged-ui/accordion",
       "projectFolder": "components/accordion",
       "reviewCategory": "production",
-      "tags": [ "web-component" ],
+      "tags": ["web-component"],
       "shouldPublish": true
+    },
+    {
+      "packageName": "@charged-ui/disclosure",
+      "projectFolder": "components/disclosure",
+      "reviewCategory": "production",
+      "tags": ["web-component"],
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@charged-ui/tabs",
+      "projectFolder": "components/tabs",
+      "reviewCategory": "production",
+      "tags": ["web-component"],
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@charged-ui/navbar",
+      "projectFolder": "components/navbar",
+      "reviewCategory": "production",
+      "tags": ["web-component"],
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@charged-ui/docs",
+      "projectFolder": "docs",
+      "reviewCategory": "production",
+      "tags": ["documentation"],
+      "shouldPublish": false
     }
   ]
 }
