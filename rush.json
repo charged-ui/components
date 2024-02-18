@@ -47,7 +47,7 @@
     },
     {
       "packageName": "@charged-ui/docs",
-      "projectFolder": "apps/docs",
+      "projectFolder": "docs",
       "reviewCategory": "production",
       "tags": ["documentation"],
       "shouldPublish": false

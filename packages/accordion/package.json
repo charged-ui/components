@@ -2,7 +2,7 @@
   "name": "@charged-ui/accordion",
   "version": "0.0.0",
   "main": "accordion.ts",
-  "homepage": "https://mozartjs.org/",
+  "homepage": "https://charged.dev/",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.10.4",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/charged-ui/charged-ui.git",
+    "url": "git+https://github.com/charged-ui/components.git",
     "directory": "components/accordion"
   },
   "scripts": {
