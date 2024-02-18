@@ -22,6 +22,12 @@ devDependencies:
   '@storybook/blocks':
     specifier: ^7.6.16
     version: 7.6.16(react-dom@18.2.0)(react@18.2.0)
+  '@storybook/manager-api':
+    specifier: ^7.6.16
+    version: 7.6.16(react-dom@18.2.0)(react@18.2.0)
+  '@storybook/theming':
+    specifier: ^7.6.16
+    version: 7.6.16(react-dom@18.2.0)(react@18.2.0)
   '@storybook/web-components':
     specifier: ^7.6.16
     version: 7.6.16(lit@3.1.2)(react-dom@18.2.0)(react@18.2.0)
@@ -2720,7 +2726,7 @@ packages:
       webpack: ^5.0.0
     dependencies:
       '@storybook/node-logger': 7.6.16
-      webpack: 5.90.2(esbuild@0.18.20)
+      webpack: 5.90.2
     dev: true
 
   /@storybook/addon-toolbars@7.6.16:
@@ -7166,7 +7172,7 @@ packages:
       unique-string: 2.0.0
     dev: true
 
-  /terser-webpack-plugin@5.3.10(esbuild@0.18.20)(webpack@5.90.2):
+  /terser-webpack-plugin@5.3.10(webpack@5.90.2):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -7183,12 +7189,11 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.22
-      esbuild: 0.18.20
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.27.1
-      webpack: 5.90.2(esbuild@0.18.20)
+      webpack: 5.90.2
     dev: true
 
   /terser@5.27.1:
@@ -7569,7 +7574,7 @@ packages:
     resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
     dev: true
 
-  /webpack@5.90.2(esbuild@0.18.20):
+  /webpack@5.90.2:
     resolution: {integrity: sha512-ziXu8ABGr0InCMEYFnHrYweinHK2PWrMqnwdHk2oK3rRhv/1B+2FnfwYv5oD+RrknK/Pp/Hmyvu+eAsaMYhzCw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -7600,7 +7605,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(esbuild@0.18.20)(webpack@5.90.2)
+      terser-webpack-plugin: 5.3.10(webpack@5.90.2)
       watchpack: 2.4.0
       webpack-sources: 3.2.3
     transitivePeerDependencies:
