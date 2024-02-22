@@ -1,31 +1,11 @@
 {
-  "name": "@charged-ui/docs",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 3000",
-    "build": "storybook build"
-  },
-  "dependencies": {
-    "lit": "^3.1.2"
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.16",
-    "@storybook/addon-links": "^7.6.16",
-    "@storybook/addon-styling-webpack": "^0.0.6",
-    "@storybook/blocks": "^7.6.16",
-    "@storybook/manager-api": "^7.6.16",
-    "@storybook/theming": "^7.6.16",
-    "@storybook/web-components": "^7.6.16",
-    "@storybook/web-components-vite": "^7.6.16",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.6.16",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.0"
+    "vitepress": "^1.0.0-rc.44",
+    "vue": "^3.4.19"
   }
 }
