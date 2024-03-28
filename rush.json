@@ -44,13 +44,6 @@
       "reviewCategory": "production",
       "tags": ["web-component"],
       "shouldPublish": false
-    },
-    {
-      "packageName": "@charged-ui/docs",
-      "projectFolder": "docs",
-      "reviewCategory": "production",
-      "tags": ["documentation"],
-      "shouldPublish": false
     }
   ]
 }
