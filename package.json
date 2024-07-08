@@ -1,0 +1,37 @@
+{
+  "name": "@charged-ui/components",
+  "version": "1.0.1",
+  "description": "A library of Lit components",
+  "main": "dist/lib.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build:lit": "rollup -c rollup.config.lit.js",
+    "build:components": "rollup -c rollup.config.js",
+    "build": "npm run build:lit && npm run build:components"
+  },
+  "keywords": [
+    "lit",
+    "web-components",
+    "library"
+  ],
+  "author": "Theme Boutique",
+  "license": "MIT",
+  "files": [
+    "dist/**/*"
+  ],
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "lit": "^3.1.4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "glob": "^10.4.3",
+    "rollup": "^2.79.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3"
+  }
+}

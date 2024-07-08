@@ -1,18 +1,14 @@
-import './tabs.css';
+import {
+  LitElement,
+  html
+} from 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
 
-class ChargedTabs extends HTMLElement {
-	label: string;
-
-	constructor() {
-		super();
-	}
-
-	// Called when the element is added to the DOM.
-	connectedCallback() {}
-
-	// Called when the element is removed from the DOM.
-	disconnectedCallback() {}
-
+// Define a simple Lit component
+class ChargedTabs extends LitElement {
+  render() {
+    return html` <p>Hello, Lit!</p> `;
+  }
 }
 
+// Register the component with a custom element name
 customElements.define('ui-tabs', ChargedTabs);
