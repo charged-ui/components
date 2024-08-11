@@ -1,0 +1,14 @@
+{
+  "schema": [
+    {
+      "name": "text",
+      "type": "string",
+      "defaultValue": "Heading text"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "defaultValue": "Subheading text"
+    }
+  ]
+}
