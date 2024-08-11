@@ -1,0 +1,9 @@
+{
+  "schema": [
+    {
+      "name": "value",
+      "type": "string",
+      "defaultValue": ""
+    }
+  ]
+}

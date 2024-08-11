@@ -7,7 +7,8 @@
   "scripts": {
     "build:lit": "rollup -c rollup.config.lit.js",
     "build:components": "rollup -c rollup.config.js",
-    "build": "npm run build:lit && npm run build:components"
+    "build:format": "prettier --write 'dist/types/**/*.d.ts'",
+    "build": "npm run build:lit && npm run build:components && npm run build:format"
   },
   "keywords": [
     "lit",
@@ -23,7 +24,8 @@
     "doc": "docs"
   },
   "dependencies": {
-    "lit": "^3.1.4"
+    "lit": "^3.1.4",
+    "prettier": "^3.3.3"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",

@@ -1,16 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
-    "declarationDir": "./dist/types"
+    "outDir": "./dist", // Output directory
+    "rootDir": "./src", // Root directory of source files
+    "declaration": true, // Generate .d.ts files
+    "declarationDir": "./dist/types", // Directory for .d.ts files
+    "emitDeclarationOnly": true, // Only emit .d.ts files
+    "module": "esnext", // Module system
+    "target": "esnext", // Target JavaScript version
+    "moduleResolution": "node", // Module resolution strategy
+    "lib": ["esnext", "dom"], // Include DOM types
+    "esModuleInterop": true, // Allow default imports from CommonJS modules
+    "strict": true, // Enable strict type checking
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/ui/**/*.ts"], // Include all TypeScript files in src/ui
+  "exclude": ["node_modules", "dist"] // Exclude these directories
 }
