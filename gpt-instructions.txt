@@ -81,6 +81,14 @@ npm run build
 npm publish
 ```
 
+### Prerelease versioning
+
+To version a prerelease, run the following command:
+
+```bash
+npm publish --access public
+```
+
 ### Summary
 
 By following these steps, you can publish your Lit component library to npm, making it available for others to use. Ensure your `package.json` is correctly configured, build your library, and use the `npm publish` command to publish your package.
