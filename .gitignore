@@ -73,3 +73,7 @@ common/autoinstallers/*/.npmrc
 # Heft temporary files
 .cache
 .heft
+
+# Vitepress
+.vitepress/dist/
+.vitepress/cache/

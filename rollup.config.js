@@ -4,8 +4,8 @@ import typescript from '@rollup/plugin-typescript';
 import glob from 'glob';
 import path from 'path';
 
-// Get all component files in the src/ui directory
-const componentFiles = glob.sync('src/ui/**/*.ts');
+// Get all component files in the src/components directory
+const componentFiles = glob.sync('src/components/**/*.ts');
 
 const configs = componentFiles.map((file) => {
   const fileName = path.basename(file, path.extname(file));
