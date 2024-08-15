@@ -26,7 +26,7 @@ import{s as lt,D as pt,c as ct,j as $,I as dt,w as ut,a as st,a3 as gt,o as Et}f
  * SPDX-License-Identifier: BSD-3-Clause
  */const Dt={attribute:!0,type:String,converter:H,reflect:!1,hasChanged:L},jt=(n=Dt,t,e)=>{const{kind:s,metadata:i}=e;let r=globalThis.litPropertyMetadata.get(i);if(r===void 0&&globalThis.litPropertyMetadata.set(i,r=new Map),r.set(e.name,n),s==="accessor"){const{name:a}=e;return{set(h){const o=t.get.call(this);t.set.call(this,h),this.requestUpdate(a,o,n)},init(h){return h!==void 0&&this.P(a,void 0,n),h}}}if(s==="setter"){const{name:a}=e;return function(h){const o=this[a];t.call(this,h),this.requestUpdate(a,o,n)}}throw Error("Unsupported decorator location: "+s)};function Bt(n){return(t,e)=>typeof e=="object"?jt(n,t,e):((s,i,r)=>{const a=i.hasOwnProperty(r);return i.constructor.createProperty(r,a?{...s,wrapped:!0}:s),a?Object.getOwnPropertyDescriptor(i,r):void 0})(n,t,e)}var Ft=Object.defineProperty,zt=Object.getOwnPropertyDescriptor,ht=(n,t,e,s)=>{for(var i=s>1?void 0:s?zt(t,e):t,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(t,e,i):a(i))||i);return s&&i&&Ft(t,e,i),i};let F=class extends x{render(){return Ct`
       <link rel="stylesheet" href="./card.css" />
-      <div class="text-xl">
+      <div class="text-xl font-bold bg-yellow-100 bg-white">
         <slot name="one"></slot>
         <slot name="two"></slot>
       </div>

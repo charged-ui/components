@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 const chokidar = require('chokidar');
+const glob = require('glob');
 
 // Function to generate TailwindCSS for a specific Lit component
 const buildCSSForComponent = (componentPath) => {
