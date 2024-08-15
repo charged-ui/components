@@ -1,7 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
 import glob from 'glob';
 import path from 'path';
 
@@ -21,12 +20,7 @@ const configs = componentFiles.map((file) => {
         lit: 'lit'
       }
     },
-    plugins: [
-      resolve(),
-      postcss({ extract: true, modules: false }),
-      typescript({ tsconfig: './tsconfig.json' }),
-      terser()
-    ]
+    plugins: [resolve(), typescript({ tsconfig: './tsconfig.json' }), terser()]
   };
 });
 

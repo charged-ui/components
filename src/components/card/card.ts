@@ -8,7 +8,7 @@ export class UICard extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="./card.css" />
-      <div class="text-xl font-bold bg-yellow-100 bg-white">
+      <div class="bg-white border-solid border-zinc-100 rounded-xl p-8">
         <slot name="one"></slot>
         <slot name="two"></slot>
       </div>

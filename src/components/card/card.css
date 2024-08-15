@@ -106,21 +106,24 @@
   --tw-contain-style:  
 }
 
+.rounded-xl {
+  border-radius: 0.75rem
+}
+
+.border-solid {
+  border-style: solid
+}
+
+.border-zinc-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(244 244 245 / var(--tw-border-opacity))
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity))
 }
 
-.bg-yellow-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 249 195 / var(--tw-bg-opacity))
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem
-}
-
-.font-bold {
-  font-weight: 700
+.p-8 {
+  padding: 2rem
 }
