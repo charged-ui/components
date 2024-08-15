@@ -1,0 +1,1 @@
+import{_ as s,c as i,o as a,a3 as n}from"./chunks/framework.5pcsJ4wJ.js";const g=JSON.parse('{"title":"Text","description":"","frontmatter":{},"headers":[],"relativePath":"text.md","filePath":"text.md"}'),t={name:"text.md"},e=n("",19),l=[e];function p(h,k,r,d,o,E){return a(),i("div",null,l)}const u=s(t,[["render",p]]);export{g as __pageData,u as default};

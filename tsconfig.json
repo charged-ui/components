@@ -14,8 +14,9 @@
     "skipLibCheck": true, // Skip type checking of declaration files
     "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false
   },
-  "include": ["src/ui/**/*.ts"], // Include all TypeScript files in src/ui
+  "include": ["src/components/**/*.ts"], // Include all TypeScript files in src/ui
   "exclude": ["node_modules", "dist"] // Exclude these directories
 }
