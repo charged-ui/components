@@ -2,17 +2,16 @@
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-<!-- This content will not appear in the rendered Markdown -->
 <script setup>
-import { ref } from 'vue'
 import './card';
-
-const count = ref(0)
 </script>
+
+## Example
+
 <div class="p-8 bg-gradient-to-b from-indigo-50 to-transparent rounded-2xl">
   <ui-card>
-    <p slot="one">Include me in slot "one".</p>
-    <p slot="two">Include me in slot "two".</p>
+  <p slot="one">Include me in slot "one".</p>
+  <p slot="two">Include me in slot "two".</p>
   </ui-card>
 </div>
 
