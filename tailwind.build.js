@@ -31,7 +31,7 @@ const buildCSSForComponent = (componentPath) => {
 
 // Watch and build CSS when .ts files change
 const watchCSS = () => {
-  chokidar.watch('./src/components/**/*.ts').on('change', (filePath) => {
+  chokidar.watch('./src/components/*/*.ts').on('change', (filePath) => {
     if (filePath.endsWith('.ts')) {
       buildCSSForComponent(filePath);
     }
@@ -41,8 +41,9 @@ const watchCSS = () => {
 };
 
 const args = process.argv.slice(2);
+
 if (args.includes('--watch')) {
   watchCSS();
 } else {
-  glob.sync('./src/components/**/*.ts').forEach(buildCSSForComponent);
+  glob.sync('./src/components/*/*.ts').forEach(buildCSSForComponent);
 }

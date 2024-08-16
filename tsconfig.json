@@ -1,22 +1,20 @@
 {
   "compilerOptions": {
-    "outDir": "./dist", // Output directory
-    "rootDir": "./src/components", // Root directory of source files
-    "declaration": true, // Generate .d.ts files
-    "declarationDir": "./dist/types", // Directory for .d.ts files
-    "emitDeclarationOnly": true, // Only emit .d.ts files
-    "module": "esnext", // Module system
-    "target": "esnext", // Target JavaScript version
-    "moduleResolution": "node", // Module resolution strategy
-    "lib": ["esnext", "dom"], // Include DOM types
-    "esModuleInterop": true, // Allow default imports from CommonJS modules
-    "strict": true, // Enable strict type checking
+    "target": "ESNext", // Set the ECMAScript target version
+    "module": "ESNext", // Use ESNext module system (suitable for modern projects)
+    "moduleResolution": "node", // Resolve modules using Node.js resolution strategy
+    "lib": ["DOM", "ESNext"], // Include DOM and ESNext libraries
+    "declaration": true, // Generate declaration files
+    "sourceMap": true, // Generate source maps for JavaScript files
+    "outDir": "dist", // Output directory for JavaScript and declaration files
+    "rootDir": "src", // Root directory of your source files
+    "strict": true, // Enable all strict type checking options
+    "esModuleInterop": true, // Enable compatibility with CommonJS modules
     "skipLibCheck": true, // Skip type checking of declaration files
-    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "useDefineForClassFields": false
+    "resolveJsonModule": true, // Allow importing JSON files
+    "experimentalDecorators": true, // Enable support for experimental decorators
+    "emitDecoratorMetadata": true // Emit metadata for decorators
   },
-  "include": ["src/vite-env.d.ts", "src/components/**/*.ts"], // Include all TypeScript files in src/ui
-  "exclude": ["node_modules", "dist"] // Exclude these directories
+  "include": ["src/vite-env.d.ts", "src/**/*.ts"], // Include all TypeScript files in src
+  "exclude": ["node_modules", "dist"] // Exclude node_modules and dist from compilation
 }

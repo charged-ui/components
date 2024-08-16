@@ -1,4 +1,4 @@
-import{i as c,r as d,n as p,h as l,k as b,t as g}from"./vendor.js";const f=`*, ::before, ::after {
+"use strict";var p=Object.defineProperty;var l=(t,n,r)=>n in t?p(t,n,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[n]=r;var s=(t,n,r)=>l(t,typeof n!="symbol"?n+"":n,r);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const a=require("./vendor.js"),b=`*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -130,11 +130,11 @@ import{i as c,r as d,n as p,h as l,k as b,t as g}from"./vendor.js";const f=`*, :
 
 .p-8 {
   padding: 2rem
-}`;var y=Object.defineProperty,u=Object.getOwnPropertyDescriptor,s=(i,t,a,r)=>{for(var n=r>1?void 0:r?u(t,a):t,w=i.length-1,e;w>=0;w--)(e=i[w])&&(n=(r?e(t,a,n):e(n))||n);return r&&n&&y(t,a,n),n};let o=class extends l{render(){return b`
+}`;var c=Object.defineProperty,g=Object.getOwnPropertyDescriptor,u=(t,n,r)=>n in t?c(t,n,{enumerable:!0,configurable:!0,writable:!0,value:r}):t[n]=r,d=(t,n,r,e)=>{for(var o=e>1?void 0:e?g(n,r):n,w=t.length-1,i;w>=0;w--)(i=t[w])&&(o=(e?i(n,r,o):i(o))||o);return e&&o&&c(n,r,o),o},f=(t,n,r)=>u(t,n+"",r);exports.UICard=class extends a.h{constructor(){super(...arguments);s(this,"variant")}render(){return a.ke`
       <div class="bg-white border-solid border-zinc-100 rounded-xl p-8">
         <slot name="one"></slot>
         <slot name="two"></slot>
       </div>
-    `}};o.styles=c`
-    ${d(f)}
-  `;s([p({type:String})],o.prototype,"variant",2);o=s([g("ui-card")],o);
+    `}};f(exports.UICard,"styles",a.i`
+    ${a.r(b)}
+  `);d([a.n({type:String})],exports.UICard.prototype,"variant",2);exports.UICard=d([a.t("ui-card")],exports.UICard);

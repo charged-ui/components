@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import string from 'vite-plugin-string';
+import dts from 'vite-plugin-dts';
 import fs, { readdirSync } from 'fs';
 import path, { resolve } from 'path';
 
@@ -26,15 +27,24 @@ const getComponentEntries = () => {
 
 export default defineConfig({
   plugins: [
+    dts({
+      rollupTypes: true,
+      include: ['src/components/**/*.ts', 'src/vite-env.d.ts']
+    }),
     string({
       include: '**/*.css' // Handle CSS files as strings
     })
   ],
   build: {
+    lib: {
+      entry: 'src/components/index.ts', // Ensure this is your main entry point exporting types
+      formats: ['es', 'cjs']
+    },
     outDir: 'dist',
     rollupOptions: {
       input: getComponentEntries(),
       output: {
+        inlineDynamicImports: false,
         entryFileNames: '[name].js', // Customize this as needed
         chunkFileNames: '[name].js',
         assetFileNames: '[name][extname]',
