@@ -12,7 +12,9 @@ export class UICard extends LitElement {
 
   render() {
     return html`
-      <div class="bg-white border-solid border-zinc-100 rounded-xl p-8">
+      <div
+        class="bg-white border-solid border-zinc-100 rounded-xl p-8 inline-flex flex-col"
+      >
         <slot name="one"></slot>
         <slot name="two"></slot>
       </div>

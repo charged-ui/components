@@ -1,4 +1,4 @@
-"use strict";var d=Object.defineProperty;var l=(r,t,a)=>t in r?d(r,t,{enumerable:!0,configurable:!0,writable:!0,value:a}):r[t]=a;var s=(r,t,a)=>l(r,typeof t!="symbol"?t+"":t,a);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const w=require("./vendor.js");var c=Object.defineProperty,b=Object.getOwnPropertyDescriptor,g=(r,t,a)=>t in r?c(r,t,{enumerable:!0,configurable:!0,writable:!0,value:a}):r[t]=a,p=(r,t,a,o)=>{for(var e=o>1?void 0:o?b(t,a):t,i=r.length-1,n;i>=0;i--)(n=r[i])&&(e=(o?n(t,a,e):n(e))||e);return o&&e&&c(t,a,e),e},u=(r,t,a)=>g(r,t+"",a);exports.UIText=class extends w.h{constructor(){super(...arguments);s(this,"value","")}render(){return w.ke`<div>Card</div>`}};u(exports.UIText,"styles",w.i`*, ::before, ::after {
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./vendor.js");var c=Object.defineProperty,p=Object.getOwnPropertyDescriptor,n=(o,a,w,e)=>{for(var t=e>1?void 0:e?p(a,w):a,s=o.length-1,i;s>=0;s--)(i=o[s])&&(t=(e?i(a,w,t):i(t))||t);return e&&t&&c(a,w,t),t};exports.UIText=class extends r.h{constructor(){super(...arguments),this.value=""}render(){return r.ke`<div>Card</div>`}};exports.UIText.styles=r.i`*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -108,4 +108,4 @@
 
 .static {
   position: static
-}`);p([w.n({type:String})],exports.UIText.prototype,"value",2);exports.UIText=p([w.t("ui-text")],exports.UIText);
+}`;n([r.n({type:String})],exports.UIText.prototype,"value",2);exports.UIText=n([r.t("ui-text")],exports.UIText);

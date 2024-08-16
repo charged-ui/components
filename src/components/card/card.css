@@ -110,6 +110,14 @@
   position: static
 }
 
+.inline-flex {
+  display: inline-flex
+}
+
+.flex-col {
+  flex-direction: column
+}
+
 .rounded-xl {
   border-radius: 0.75rem
 }

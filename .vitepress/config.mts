@@ -7,7 +7,9 @@ export default defineConfig({
   description: 'Accessible experience design for modern web applications.',
   srcDir: './src',
   outDir: './www',
-  vite: { plugins: [cssReloadPlugin()] },
+  vite: {
+    plugins: [cssReloadPlugin()]
+  },
   themeConfig: {
     logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
 

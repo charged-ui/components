@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import string from 'vite-plugin-string';
 import dts from 'vite-plugin-dts';
 import fs, { readdirSync } from 'fs';
 import path, { resolve } from 'path';
@@ -30,9 +29,6 @@ export default defineConfig({
     dts({
       rollupTypes: true,
       include: ['src/components/**/*.ts', 'src/vite-env.d.ts']
-    }),
-    string({
-      include: '**/*.css' // Handle CSS files as strings
     })
   ],
   build: {
