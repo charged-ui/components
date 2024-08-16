@@ -106,6 +106,10 @@
   --tw-contain-style:  
 }
 
+.static {
+  position: static
+}
+
 .rounded-xl {
   border-radius: 0.75rem
 }
