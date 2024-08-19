@@ -14,24 +14,33 @@ const buildCSSForComponent = (componentPath) => {
   fs.writeFileSync(
     tempConfigPath,
     `
-    module.exports = { content: ['${componentPath}'], theme: {}, corePlugins: { preflight: false } };
+    module.exports = { 
+      content: ['${componentPath}'],
+      theme: {},
+      corePlugins: {
+        preflight: false,
+      },
+    };
   `
   );
 
-  exec(`npx tailwindcss -c ${tempConfigPath} -o ${outputPath}`, (err) => {
-    if (err) {
-      console.error(`Error generating CSS for ${componentPath}: ${err}`);
-      return;
-    }
+  exec(
+    `npx tailwindcss -c ${tempConfigPath} -o ${outputPath} --minify`,
+    (err) => {
+      if (err) {
+        console.error(`Error generating CSS for ${componentPath}: ${err}`);
+        return;
+      }
 
-    fs.unlinkSync(tempConfigPath);
-    console.log(`Generated CSS for ${componentPath} at ${outputPath}`);
-  });
+      fs.unlinkSync(tempConfigPath);
+      console.log(`Generated CSS for ${componentPath} at ${outputPath}`);
+    }
+  );
 };
 
 // Watch and build CSS when .ts files change
 const watchCSS = () => {
-  chokidar.watch('./src/components/**/*.ts').on('change', (filePath) => {
+  chokidar.watch('./src/components/*/*.ts').on('change', (filePath) => {
     if (filePath.endsWith('.ts')) {
       buildCSSForComponent(filePath);
     }
@@ -41,8 +50,11 @@ const watchCSS = () => {
 };
 
 const args = process.argv.slice(2);
+
 if (args.includes('--watch')) {
   watchCSS();
 } else {
-  glob.sync('./src/components/**/*.ts').forEach(buildCSSForComponent);
+  glob
+    .sync('./src/components/*/*.ts', './src/components/*/*.md')
+    .forEach(buildCSSForComponent);
 }

@@ -1,5 +1,0 @@
-ui-navbar {
-	@apply flex;
-	@apply gap-2;
-	@apply mx-auto;
-}
