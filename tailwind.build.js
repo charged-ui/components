@@ -54,5 +54,7 @@ const args = process.argv.slice(2);
 if (args.includes('--watch')) {
   watchCSS();
 } else {
-  glob.sync('./src/components/*/*.ts').forEach(buildCSSForComponent);
+  glob
+    .sync('./src/components/*/*.ts', './src/components/*/*.md')
+    .forEach(buildCSSForComponent);
 }
