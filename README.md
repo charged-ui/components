@@ -34,16 +34,10 @@ Ensure your `package.json` is correctly configured. Here’s an example:
   "scripts": {
     "build": "rollup -c"
   },
-  "keywords": [
-    "lit",
-    "web-components",
-    "library"
-  ],
+  "keywords": ["lit", "web-components", "library"],
   "author": "Your Name",
   "license": "MIT",
-  "files": [
-    "dist/**/*"
-  ],
+  "files": ["dist/**/*"],
   "devDependencies": {
     "rollup": "^2.52.3",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -90,7 +84,7 @@ npm publish
 To version a prerelease, run the following command:
 
 ```bash
-npm publish --access public
+npm version prerelease --preid alpha
 ```
 
 ### Summary
