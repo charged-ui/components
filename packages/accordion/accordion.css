@@ -1,6 +1,0 @@
-ui-accordion {
-	@apply flex;
-	@apply flex-col;
-	@apply rounded-2xl;
-	@apply shadow-[0_15px_30px_-15px_rgba(0,0,0,0.1)];
-}

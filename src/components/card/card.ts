@@ -1,16 +1,26 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import styles from './card.css?raw';
 
 @customElement('ui-card')
 export class UICard extends LitElement {
   @property({ type: String }) variant?: string;
 
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `;
+
   render() {
     return html`
-      <link rel="stylesheet" href="./card.css" />
-      <div class="bg-white border-solid border-zinc-100 rounded-xl p-8">
-        <slot name="one"></slot>
-        <slot name="two"></slot>
+      <div
+        class="bg-white border border-solid border-gray-200 rounded-xl inline-flex flex-col relative overflow-hidden shadow-sm"
+      >
+        <slot name="media"></slot>
+        <div class="p-8">
+          <slot name="header"></slot>
+          <slot name="body"></slot>
+        </div>
+        <slot name="footer"></slot>
       </div>
     `;
   }

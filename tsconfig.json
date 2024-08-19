@@ -3,7 +3,6 @@
     "outDir": "./dist", // Output directory
     "rootDir": "./src", // Root directory of source files
     "declaration": true, // Generate .d.ts files
-    "declarationDir": "./dist/types", // Directory for .d.ts files
     "emitDeclarationOnly": true, // Only emit .d.ts files
     "module": "esnext", // Module system
     "target": "esnext", // Target JavaScript version
@@ -17,6 +16,6 @@
     "emitDecoratorMetadata": true,
     "useDefineForClassFields": false
   },
-  "include": ["src/components/**/*.ts"], // Include all TypeScript files in src/ui
+  "include": ["src/vite-env.d.ts", "src/components/**/*.ts"], // Include all TypeScript files in src/ui
   "exclude": ["node_modules", "dist"] // Exclude these directories
 }
