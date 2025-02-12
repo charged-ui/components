@@ -200,8 +200,9 @@ html.dark {
 
 .bg-preview {
   background-size: 2rem 2rem;
-  background-image: radial-gradient(circle, #999999 1px, rgba(0, 0, 0, 0) 1px);
+  background-image: radial-gradient(circle, #aaaaaa 1px, rgba(0, 0, 0, 0) 1px);
   background-position: center;
+  /* @apply bg-neutral-50 bg-opacity-50 border border-solid border-neutral-200; */
 }
 
 /* .curtain {

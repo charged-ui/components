@@ -16,8 +16,15 @@ export class UIAlert extends LitElement {
   @property({ type: String }) variant: AlertVariant = AlertVariant.Info;
 
   static styles = css`
-    :host {
+    :host,
+    ::slotted(*) {
       width: -webkit-fill-available;
+    }
+    ::slotted([slot='heading']) {
+      font-weight: 600;
+    }
+    ::slotted([slot='message']) {
+      font-size: 14px;
     }
     ${unsafeCSS(styles)}
   `;
@@ -25,6 +32,7 @@ export class UIAlert extends LitElement {
   render() {
     const classList = clsx(
       'flex',
+      'gap-2',
       'p-4',
       'border',
       'border-solid',
@@ -42,21 +50,13 @@ export class UIAlert extends LitElement {
     );
 
     return html`
-      <div role="alert" class=${classList}>${this.getMessage()}</div>
+      <div role="alert" class=${classList}>
+        <slot name="icon"></slot>
+        <div>
+          <slot name="heading"></slot>
+          <slot name="message"></slot>
+        </div>
+      </div>
     `;
-  }
-
-  private getMessage() {
-    switch (this.variant) {
-      case AlertVariant.Success:
-        return 'Success! Operation completed successfully.';
-      case AlertVariant.Error:
-        return 'Error! Something went wrong.';
-      case AlertVariant.Warning:
-        return 'Warning! Please be cautious.';
-      case AlertVariant.Info:
-      default:
-        return 'Info! Here is some information.';
-    }
   }
 }

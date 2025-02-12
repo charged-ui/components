@@ -13,7 +13,7 @@ import './card';
     <img src="https://placehold.co/600x400" slot="media" />
     <div class="text-lg font-bold" slot="header">Card Header</div>
     <div slot="body">Card Body</div>
-    <footer slot="footer" class="border-t border-gray-200 px-8 py-4">
+    <footer slot="footer" class="border-t border-neutral-200 px-8 py-4">
       Card Footer
     </footer>
   </ui-card>

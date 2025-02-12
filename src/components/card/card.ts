@@ -13,7 +13,7 @@ export class UICard extends LitElement {
   render() {
     return html`
       <div
-        class="bg-white border border-solid border-gray-200 rounded-xl relative overflow-hidden shadow-sm"
+        class="bg-white border border-solid border-neutral-200 rounded-xl relative overflow-hidden shadow-sm"
       >
         <slot name="media"></slot>
         <div class="p-8">
