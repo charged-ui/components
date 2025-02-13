@@ -9,9 +9,8 @@ import './icon';
 ## Example
 
 <div class="p-8 bg-gradient-to-b from-indigo-50 to-transparent rounded-2xl flex justify-center">
-  <ui-icon>
-    Hello
-  </ui-icon>
+  <ui-icon name="academic-cap" />
+  <ui-icon name="arrow-right" />
 </div>
 
 ## Syntax Highlighting

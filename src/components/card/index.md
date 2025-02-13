@@ -8,7 +8,7 @@ import './card';
 
 ## Example
 
-<div class="p-8 bg-preview rounded-2xl flex justify-center">
+<div class="p-12 bg-preview rounded-xl flex justify-center">
   <ui-card class="w-80">
     <img src="https://placehold.co/600x400" slot="media" />
     <div class="text-lg font-bold" slot="header">Card Header</div>

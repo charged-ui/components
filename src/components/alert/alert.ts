@@ -13,11 +13,11 @@ export enum AlertVariant {
 
 @customElement('ui-alert')
 export class UIAlert extends LitElement {
-  @property({ type: String }) variant: AlertVariant = AlertVariant.Info;
+  @property({ type: AlertVariant }) variant: AlertVariant = AlertVariant.Info;
 
   static styles = css`
-    :host,
-    ::slotted(*) {
+    ${unsafeCSS(styles)}
+    :host {
       width: -webkit-fill-available;
     }
     ::slotted([slot='heading']) {
@@ -26,31 +26,21 @@ export class UIAlert extends LitElement {
     ::slotted([slot='message']) {
       font-size: 14px;
     }
-    ${unsafeCSS(styles)}
   `;
 
   render() {
-    const classList = clsx(
+    const classes = clsx(
       'flex',
       'gap-2',
       'p-4',
       'border',
       'border-solid',
       'rounded-lg',
-      {
-        'bg-sky-50 border-sky-200 text-sky-700':
-          this.variant === AlertVariant.Info,
-        'bg-emerald-50 border-emerald-200 text-emerald-700':
-          this.variant === AlertVariant.Success,
-        'bg-orange-50 border-orange-200 text-yellow-700':
-          this.variant === AlertVariant.Warning,
-        'bg-red-50 border-red-200 text-red-700':
-          this.variant === AlertVariant.Error
-      }
+      variantClasses[this.variant]
     );
 
     return html`
-      <div role="alert" class=${classList}>
+      <div role="alert" class=${classes}>
         <slot name="icon"></slot>
         <div>
           <slot name="heading"></slot>
@@ -60,3 +50,10 @@ export class UIAlert extends LitElement {
     `;
   }
 }
+
+const variantClasses: Record<AlertVariant, string> = {
+  [AlertVariant.Success]: 'bg-emerald-50 border-emerald-200 text-emerald-700',
+  [AlertVariant.Error]: 'bg-red-50 border-red-200 text-red-700',
+  [AlertVariant.Warning]: 'bg-orange-50 border-orange-200 text-orange-700',
+  [AlertVariant.Info]: 'bg-sky-50 border-sky-200 text-sky-700'
+};
