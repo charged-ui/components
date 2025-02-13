@@ -49,6 +49,7 @@ export class UIButton extends LitElement {
       'border',
       'border-solid',
       'transition',
+      'leading-none',
       sizeClasses[this.size],
       shapeClasses[this.shape],
       variantClasses[this.variant]
