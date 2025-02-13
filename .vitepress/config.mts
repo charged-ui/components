@@ -11,9 +11,9 @@ export default defineConfig({
     plugins: [cssReloadPlugin()]
   },
   themeConfig: {
-    logo: { light: '/logo-light.svg', dark: '/logo-dark.svg' },
+    logo: { light: '/logo-black.svg', dark: '/logo-white.svg' },
 
-    siteTitle: false,
+    siteTitle: 'Charged',
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -24,6 +24,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Examples',
+        collapsed: true,
         items: [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'Runtime API Examples', link: '/api-examples' }
@@ -31,9 +32,17 @@ export default defineConfig({
       },
       {
         text: 'Components',
+        collapsed: false,
         items: [
+          { text: 'Alert', link: '/components/alert/' },
+          { text: 'Avatar', link: '/components/avatar/' },
+          { text: 'Button', link: '/components/button/' },
           { text: 'Card', link: '/components/card/' },
-          { text: 'Text', link: '/components/text/' }
+          { text: 'Collapse', link: '/components/collapse/' },
+          { text: 'Icon', link: '/components/icon/' },
+          { text: 'Progress', link: '/components/progress/' },
+          { text: 'Table', link: '/components/table/' },
+          { text: 'Typography', link: '/components/text/' }
         ]
       }
     ],
