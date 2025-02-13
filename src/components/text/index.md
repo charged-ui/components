@@ -1,6 +1,6 @@
 # Text
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+The <code>&lt;ui-text&gt;</code> component ensures consistent typography across the system with pre-defined type variants.
 
 <script setup>
 import './text';
