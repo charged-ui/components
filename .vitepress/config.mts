@@ -42,7 +42,7 @@ export default defineConfig({
           { text: 'Icon', link: '/components/icon/' },
           { text: 'Progress', link: '/components/progress/' },
           { text: 'Table', link: '/components/table/' },
-          { text: 'Typography', link: '/components/text/' }
+          { text: 'Text', link: '/components/text/' }
         ]
       }
     ],
