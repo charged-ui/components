@@ -4,6 +4,7 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 <script setup>
 import './button';
+import '../icon/icon'
 </script>
 
 ## Sizes

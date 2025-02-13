@@ -1,84 +1,65 @@
 # Text
+
 This page demonstrates some of the built-in markdown extensions provided by VitePress.
 
-## Syntax Highlighting
+<script setup>
+import './text';
+</script>
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+## Headings
 
-**Input**
+<div class="p-12 bg-preview flex flex-col gap-4 justify-center rounded-xl">
+  <ui-text variant="heading-1">Heading 1</ui-text>
+  <ui-text variant="heading-2">Heading 2</ui-text>
+  <ui-text variant="heading-3">Heading 3</ui-text>
+  <ui-text variant="heading-4">Heading 4</ui-text>
+  <ui-text variant="heading-5">Heading 5</ui-text>
+  <ui-text variant="heading-6">Heading 6</ui-text>
+</div>
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```html
+<ui-text variant="heading-1">Heading 1</ui-text>
+<ui-text variant="heading-2">Heading 2</ui-text>
+<ui-text variant="heading-3">Heading 3</ui-text>
+<ui-text variant="heading-4">Heading 4</ui-text>
+<ui-text variant="heading-5">Heading 5</ui-text>
+<ui-text variant="heading-6">Heading 6</ui-text>
 ```
 
-## Custom Containers
+## Display headings
 
-**Input**
+<div class="p-12 bg-preview flex flex-col gap-4 justify-center rounded-xl">
+  <ui-text variant="display-1">Display 1</ui-text>
+  <ui-text variant="display-2">Display 2</ui-text>
+  <ui-text variant="display-3">Display 3</ui-text>
+  <ui-text variant="display-4">Display 4</ui-text>
+  <ui-text variant="display-5">Display 5</ui-text>
+  <ui-text variant="display-6">Display 6</ui-text>
+</div>
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
+```html
+<ui-text variant="display-1">Display 1</ui-text>
+<ui-text variant="display-2">Display 2</ui-text>
+<ui-text variant="display-3">Display 3</ui-text>
+<ui-text variant="display-4">Display 4</ui-text>
+<ui-text variant="display-5">Display 5</ui-text>
+<ui-text variant="display-6">Display 6</ui-text>
 ```
 
-**Output**
+## Copy
 
-::: info
-This is an info box.
-:::
+<div class="p-12 bg-preview flex flex-col gap-4 justify-center rounded-xl">
+  <ui-text variant="copy-xl">Copy XL</ui-text>
+  <ui-text variant="copy-lg">Copy Large</ui-text>
+  <ui-text>Copy Medium</ui-text>
+  <ui-text variant="copy-sm">Copy Small</ui-text>
+  <ui-text variant="copy-xs">Copy XS</ui-text>
+</div>
 
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+```html
+<ui-text variant="copy-xl">Copy XL</ui-text>
+<ui-text variant="copy-lg">Copy Large</ui-text>
+<ui-text>Copy Medium</ui-text>
+<ui-text variant="copy-sm">Copy Small</ui-text>
+<ui-text variant="copy-xs">Copy XS</ui-text>
+```
