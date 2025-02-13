@@ -6,92 +6,98 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 import './button';
 </script>
 
-## Example
+## Sizes
 
-<div class="p-8 bg-gradient-to-b from-indigo-50 to-transparent rounded-2xl flex justify-center">
+<div class="p-12 bg-preview flex gap-4 justify-center items-center rounded-xl">
+  <ui-button size="small">
+    <div slot="value">Small</div>
+  </ui-button>
   <ui-button>
-    Hello
+    <div slot="value">Medium</div>
+  </ui-button>
+  <ui-button size="large">
+    <div slot="value">Large</div>
   </ui-button>
 </div>
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```html
+<ui-button size="small">
+  <div slot="value">Small</div>
+</ui-button>
+<ui-button>
+  <div slot="value">Medium</div>
+</ui-button>
+<ui-button size="large">
+  <div slot="value">Large</div>
+</ui-button>
 ```
 
-## Custom Containers
+## Variants
 
-**Input**
+<div class="p-12 bg-preview flex flex-wrap gap-4 justify-center rounded-xl">
+  <ui-button variant="primary">
+    <div slot="value">Primary</div>
+  </ui-button>
+  <ui-button variant="secondary">
+    <div slot="value">Secondary</div>
+  </ui-button>
+  <ui-button variant="tertiary">
+    <div slot="value">Tertiary</div>
+  </ui-button>
+  <ui-button variant="warning">
+    <div slot="value">Warning</div>
+  </ui-button>
+  <ui-button variant="error">
+    <div slot="value">Error</div>
+  </ui-button>
+  <ui-button variant="success">
+    <div slot="value">Success</div>
+  </ui-button>
+  <ui-button variant="info">
+    <div slot="value">Info</div>
+  </ui-button>
+</div>
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
+```html
+<ui-button variant="primary">
+  <div slot="value">Primary</div>
+</ui-button>
+<ui-button variant="secondary">
+  <div slot="value">Secondary</div>
+</ui-button>
+<ui-button variant="tertiary">
+  <div slot="value">Tertiary</div>
+</ui-button>
+<ui-button variant="warning">
+  <div slot="value">Warning</div>
+</ui-button>
+<ui-button variant="error">
+  <div slot="value">Error</div>
+</ui-button>
+<ui-button variant="success">
+  <div slot="value">Success</div>
+</ui-button>
+<ui-button variant="info">
+  <div slot="value">Info</div>
+</ui-button>
 ```
 
-**Output**
+## Shape
 
-::: info
-This is an info box.
-:::
+<div class="p-12 bg-preview flex gap-4 justify-center items-center rounded-xl">
+  <ui-button shape="rounded" variant="secondary">
+    <div slot="value">Rounded</div>
+  </ui-button>
+  <ui-button>
+    <div slot="value">Square</div>
+  </ui-button>
+</div>
 
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+```html
+<ui-button shape="rounded">
+  <div slot="value">Rounded</div>
+</ui-button>
+<ui-button>
+  <div slot="value">Square</div>
+</ui-button>
+```

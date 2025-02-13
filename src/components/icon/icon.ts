@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
+import { LitElement, css, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import styles from './icon.css?raw';
@@ -22,7 +22,7 @@ export class UIIcon extends LitElement {
    * Checks for changes in 'name' or 'variant' and fetches the new icon.
    */
   async updated(changedProperties: Map<string, any>) {
-    if (changedProperties.has('name') || changedProperties.has('style')) {
+    if (changedProperties.has('name') || changedProperties.has('variant')) {
       await this.fetchIcon();
     }
   }
