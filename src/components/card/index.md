@@ -8,12 +8,12 @@ import './card';
 
 ## Example
 
-<div class="p-8 bg-gradient-to-b from-indigo-50 to-transparent rounded-2xl flex justify-center">
+<div class="p-12 bg-preview rounded-xl flex justify-center">
   <ui-card class="w-80">
-    <img src="http://via.placeholder.com/600x400" slot="media" />
+    <img src="https://placehold.co/600x400" slot="media" />
     <div class="text-lg font-bold" slot="header">Card Header</div>
     <div slot="body">Card Body</div>
-    <footer slot="footer" class="border-t border-gray-200 px-8 py-4">
+    <footer slot="footer" class="border-t border-neutral-200 px-8 py-4">
       Card Footer
     </footer>
   </ui-card>

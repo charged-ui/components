@@ -173,7 +173,7 @@ html.dark {
 }
 
 body {
-  font-family: 'Readex Pro';
+  font-family: 'Inter';
 }
 
 html.dark {
@@ -186,9 +186,28 @@ html.dark {
  * Component: Header
  * -------------------------------------------------------------------------- */
 
-:root {
-  --vp-nav-logo-height: 1.5rem;
+/* :root {
+  --vp-nav-logo-height: 2rem;
+} */
+
+.VPNav {
 }
+.VPNavBar .title {
+  /* border: 0; */
+  font-size: 18px;
+  letter-spacing: -0.05rem;
+}
+
+.bg-preview {
+  background-size: 2rem 2rem;
+  background-image: radial-gradient(circle, #aaa 1px, rgba(0, 0, 0, 0) 1px);
+  background-position: center;
+  @apply bg-slate-50 bg-opacity-50 border border-solid border-slate-200;
+}
+
+/* .curtain {
+  background-color: var(--vp-c-white);
+} */
 
 /* @media (min-width: 960px) {
   .VPSidebar .curtain {
