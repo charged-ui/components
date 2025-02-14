@@ -4,13 +4,14 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 <script setup>
 import './card';
+import '../icon/icon';
 </script>
 
 ## Example
 
 <div class="p-12 bg-preview rounded-xl flex justify-center">
   <ui-card class="w-80">
-    <img src="https://placehold.co/600x400" slot="media" />
+    <ui-icon slot="media" name="photo" class="flex justify-center bg-zinc-200 w-full" />
     <div class="text-lg font-bold" slot="header">Card Header</div>
     <div slot="body">Card Body</div>
     <footer slot="footer" class="border-t border-neutral-200 px-8 py-4">
