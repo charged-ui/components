@@ -1,42 +1,49 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { html, css, unsafeCSS } from 'lit';
+import { customElement, property, query } from 'lit/decorators.js';
 import { animate, inView } from 'motion';
 import clsx from 'clsx';
-import styles from './stat.css?raw';
+import styles from '../text/text.css?raw';
+import { UIText, variantClasses } from '../text/text';
 
 @customElement('ui-stat')
-export class UIStat extends LitElement {
+export class UIStat extends UIText {
+  @property({ type: Number }) start = 0;
+  @property({ type: Number }) end = 100;
+  @property({ type: Number }) duration = 2;
+  @property({ type: Number }) delay = 0;
+  @query('.counter') private counter?: HTMLElement;
+
   static styles = css`
     ${unsafeCSS(styles)}
-    :host {
-      width: -webkit-fill-available;
-    }
   `;
 
   firstUpdated(): void {
-    inView(this, (element) => {
-      if (element instanceof HTMLElement) {
-        console.log('fade in');
+    inView(this, () => {
+      // Animate in (Number Count Up)
+      animate(Number(this.start), Number(this.end), {
+        delay: Number(this.delay),
+        duration: Number(this.duration),
+        ease: 'circOut',
+        onUpdate: (latest) => {
+          if (this.counter) {
+            this.counter.innerHTML = `${Math.round(latest)}`;
+          }
+        }
+      });
 
-        return () => console.log('fade out');
-      }
+      return () => {
+        // Cleanup function required by inView()
+      };
     });
   }
 
   render() {
-    const classes = clsx(
-      'flex',
-      'gap-2',
-      'p-4',
-      'border',
-      'border-solid',
-      'rounded-lg'
-    );
-
+    const classes = clsx('counter', variantClasses[this.variant]);
     return html`
-      <div class=${classes}>
-        <slot name="icon"></slot>
-        <slot></slot>
+      <div>
+        <slot name="prefix"></slot>
+        <span class="${classes}">${this.end}</span>
+        <slot name="suffix"></slot>
       </div>
     `;
   }

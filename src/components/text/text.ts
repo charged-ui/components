@@ -61,7 +61,7 @@ export class UIText extends LitElement {
 //   [TextDecoration.Solid]: 'underline decoration-purple-500 decoration-solid'
 // };
 
-const variantClasses: Record<TextVariant, string> = {
+export const variantClasses: Record<TextVariant, string> = {
   [TextVariant.H1]: 'text-7xl font-semibold tracking-tight',
   [TextVariant.H2]: 'text-6xl font-semibold tracking-tight',
   [TextVariant.H3]: 'text-5xl font-semibold tracking-tight',
