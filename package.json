@@ -27,7 +27,8 @@
     "doc": "www"
   },
   "dependencies": {
-    "lit": "^3.1.4"
+    "lit": "^3.1.4",
+    "motion": "^12.4.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

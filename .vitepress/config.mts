@@ -41,7 +41,7 @@ export default defineConfig({
           { text: 'Collapse', link: '/components/collapse/' },
           { text: 'Icon', link: '/components/icon/' },
           { text: 'Progress', link: '/components/progress/' },
-          { text: 'Table', link: '/components/table/' },
+          { text: 'Stat', link: '/components/stat/' },
           { text: 'Text', link: '/components/text/' }
         ]
       }
