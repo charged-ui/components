@@ -1,5 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import clsx from 'clsx';
 import styles from './text.css?raw';
 
 export enum TextVariant {
@@ -22,20 +23,45 @@ export enum TextVariant {
   XS = 'copy-xs'
 }
 
+// export enum TextDecoration {
+//   Dashed = 'dashed',
+//   Double = 'double',
+//   Dotted = 'dotted',
+//   Solid = 'solid',
+//   Wavy = 'wavy'
+// }
+
 @customElement('ui-text')
 export class UIText extends LitElement {
   @property({ type: TextVariant }) variant: TextVariant = TextVariant.MD;
+  // @property({ type: TextDecoration }) decoration: TextDecoration =
+  //   TextDecoration.Solid;
 
   static styles = css`
     ${unsafeCSS(styles)}
   `;
 
   render() {
-    return html`<slot class=${variantClasses[this.variant]} />`;
+    return html`<slot
+      class=${clsx(
+        'inline',
+        'underline-offset-4',
+        'decoration-2',
+        variantClasses[this.variant]
+      )}
+    />`;
   }
 }
 
-const variantClasses: Record<TextVariant, string> = {
+// const decorationClasses: Record<TextDecoration, string> = {
+//   [TextDecoration.Double]: 'underline decoration-orange-500 decoration-double',
+//   [TextDecoration.Wavy]: 'underline decoration-blue-500 decoration-wavy',
+//   [TextDecoration.Dashed]: 'underline decoration-emerald-500 decoration-dashed',
+//   [TextDecoration.Dotted]: 'underline decoration-red-500 decoration-dotted',
+//   [TextDecoration.Solid]: 'underline decoration-purple-500 decoration-solid'
+// };
+
+export const variantClasses: Record<TextVariant, string> = {
   [TextVariant.H1]: 'text-7xl font-semibold tracking-tight',
   [TextVariant.H2]: 'text-6xl font-semibold tracking-tight',
   [TextVariant.H3]: 'text-5xl font-semibold tracking-tight',
