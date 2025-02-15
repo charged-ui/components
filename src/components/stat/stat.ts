@@ -8,7 +8,7 @@ import { UIText, variantClasses } from '../text/text';
 @customElement('ui-stat')
 export class UIStat extends UIText {
   @property({ type: Number }) start = 0;
-  @property({ type: Number }) end = 100;
+  @property({ type: Number }) end = 0;
   @property({ type: Number }) duration = 2;
   @property({ type: Number }) delay = 0;
   @query('.counter') private counter?: HTMLElement;
@@ -32,6 +32,7 @@ export class UIStat extends UIText {
       });
 
       return () => {
+        // Animate out
         // Cleanup function required by inView()
       };
     });
@@ -40,7 +41,7 @@ export class UIStat extends UIText {
   render() {
     const classes = clsx('counter', variantClasses[this.variant]);
     return html`
-      <div>
+      <div class="flex items-center">
         <slot name="prefix"></slot>
         <span class="${classes}">${this.end}</span>
         <slot name="suffix"></slot>

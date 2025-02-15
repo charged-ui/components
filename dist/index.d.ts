@@ -34,4 +34,6 @@ export declare class UIText extends LitElement {
     render(): TemplateResult<1>;
 }
 
+export declare const variantClasses: Record<TextVariant, string>;
+
 export { }
