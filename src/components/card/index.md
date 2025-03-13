@@ -11,7 +11,9 @@ import '../icon/icon';
 
 <div class="p-12 bg-preview rounded-xl flex justify-center">
   <ui-card class="w-80">
-    <ui-icon slot="media" name="photo" class="flex justify-center bg-zinc-200 w-full" />
+    <div class="h-[210px] bg-slate-200 flex justify-center items-center" slot="media">
+      <ui-icon slot="media" name="photo" class="w-12 h-12 text-slate-500" />
+    </div>
     <div class="text-lg font-bold" slot="header">Card Header</div>
     <div slot="body">Card Body</div>
     <footer slot="footer" class="border-t border-neutral-200 px-8 py-4">
