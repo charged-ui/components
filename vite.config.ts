@@ -41,13 +41,19 @@ export default defineConfig({
       input: getComponentEntries(),
       output: {
         inlineDynamicImports: false,
-        entryFileNames: '[name].js', // Customize this as needed
-        chunkFileNames: '[name].js',
+        entryFileNames: '[name].js', // Ensure entry points use their name
+        chunkFileNames: (chunkInfo) => {
+          // If it's the 'vendor' chunk, name it 'vendor.js'
+          if (chunkInfo.name === 'vendor') {
+            return 'vendor.js';
+          }
+          // Otherwise, apply the default behavior with a hash for other chunks
+          return '[name]-[hash].js';
+        },
         assetFileNames: '[name][extname]',
-        // Add a manual entry point rename if necessary
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            return 'vendor'; // Group all node_modules into a vendor chunk
+            return 'vendor'; // All node_modules will be bundled into the 'vendor' chunk
           }
         }
       }
