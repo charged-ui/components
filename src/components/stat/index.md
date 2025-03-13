@@ -1,6 +1,6 @@
 # Stat
 
-<code>&lt;ui-stat&gt;</code> is a dynamic web component that smoothly animates numbers over a specified duration.
+<code>&lt;ui-stat&gt;</code> is a derivitive of <code>&lt;ui-text&gt;</code> that smoothly animates numbers over a specified duration.
 
 <script setup>
 import './stat';
