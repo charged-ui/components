@@ -31,17 +31,28 @@ export default defineConfig({
       include: ['src/components/**/*.ts', 'src/vite-env.d.ts']
     })
   ],
+  // Replace any process.env variables with their values
+  define: {
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+      // Add any other environment variables your code might use
+    }
+  },
   build: {
     lib: {
-      entry: 'src/components/index.ts', // Ensure this is your main entry point exporting types
-      formats: ['es']
+      entry: 'src/components/index.ts',
+      formats: ['es'] // Only using ES modules
     },
     outDir: 'dist',
+    // Ensure Vite doesn't try to polyfill node built-ins
+    commonjsOptions: {
+      transformMixedEsModules: true
+    },
     rollupOptions: {
       input: getComponentEntries(),
       output: {
         inlineDynamicImports: false,
-        entryFileNames: '[name].js', // Ensure entry points use their name
+        entryFileNames: '[name].js',
         chunkFileNames: (chunkInfo) => {
           // If it's the 'vendor' chunk, name it 'vendor.js'
           if (chunkInfo.name === 'vendor') {
@@ -57,6 +68,8 @@ export default defineConfig({
           }
         }
       }
+      // Explicitly tell Rollup to resolve certain Node.js APIs to empty objects
+      // external: ['fs', 'path'] // Add any Node.js modules your code might import
     }
   }
 });
