@@ -34,7 +34,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/components/index.ts', // Ensure this is your main entry point exporting types
-      formats: ['es', 'cjs']
+      formats: ['es']
     },
     outDir: 'dist',
     rollupOptions: {
