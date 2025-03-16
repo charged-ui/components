@@ -16,6 +16,10 @@
     "emitDecoratorMetadata": true,
     "useDefineForClassFields": false
   },
-  "include": ["src/vite-env.d.ts", "src/components/**/*.ts"], // Include all TypeScript files in src/ui
+  "include": [
+    "src/vite-env.d.ts",
+    "src/components/**/*.ts",
+    "src/backgrounds/**/*.ts"
+  ], // Include all TypeScript files in src/ui
   "exclude": ["node_modules", "dist"] // Exclude these directories
 }
