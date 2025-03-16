@@ -1,2 +1,2 @@
-// export * from './card/card';
-// export * from './text/text';
+export * from './card/card';
+export * from './text/text';

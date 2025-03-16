@@ -1,1 +1,7 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});require("./vendor.js");const e=require("./text-DRwhMQIg.js");exports.TextVariant=e.TextVariant;Object.defineProperty(exports,"UIText",{enumerable:!0,get:()=>e.UIText});exports.variantClasses=e.variantClasses;
+import "./vendor.js";
+import { T as r, U as e, v as i } from "./text-MzYcllip.js";
+export {
+  r as TextVariant,
+  e as UIText,
+  i as variantClasses
+};
