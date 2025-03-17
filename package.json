@@ -1,6 +1,6 @@
 {
   "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.3",
+  "version": "1.0.3-alpha.4",
   "description": "A library of Lit components",
   "main": "dist/lib.js",
   "types": "dist/index.d.ts",
