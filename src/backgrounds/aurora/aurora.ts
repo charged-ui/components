@@ -15,7 +15,6 @@ export class AuroraBackground extends LitElement {
       position: relative;
       display: flex;
       flex-direction: column;
-      height: 100vh;
       align-items: center;
       justify-content: center;
       background-color: rgb(250, 250, 250);
@@ -63,7 +62,7 @@ export class AuroraBackground extends LitElement {
       );
 
       position: absolute;
-      inset: -10px;
+      inset: 0px;
       overflow: hidden;
       opacity: 0.5;
       pointer-events: none;
