@@ -44,6 +44,11 @@ export default defineConfig({
           { text: 'Stat', link: '/components/stat/' },
           { text: 'Text', link: '/components/text/' }
         ]
+      },
+      {
+        text: 'Backgrounds',
+        collapsed: false,
+        items: [{ text: 'Aurora', link: '/backgrounds/aurora' }]
       }
     ],
 

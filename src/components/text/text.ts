@@ -23,6 +23,13 @@ export enum TextVariant {
   XS = 'copy-xs'
 }
 
+export enum TextAlignment {
+  LEFT = 'left',
+  CENTER = 'center',
+  RIGHT = 'right',
+  JUSTIFY = 'justify'
+}
+
 // export enum TextDecoration {
 //   Dashed = 'dashed',
 //   Double = 'double',
@@ -34,10 +41,14 @@ export enum TextVariant {
 @customElement('ui-text')
 export class UIText extends LitElement {
   @property({ type: TextVariant }) variant: TextVariant = TextVariant.MD;
+  @property({ type: TextAlignment }) align: TextAlignment = TextAlignment.LEFT;
   // @property({ type: TextDecoration }) decoration: TextDecoration =
   //   TextDecoration.Solid;
 
   static styles = css`
+    :host {
+      width: -webkit-fill-available;
+    }
     ${unsafeCSS(styles)}
   `;
 
@@ -45,9 +56,10 @@ export class UIText extends LitElement {
     return html`<slot
       class=${clsx(
         'inline',
-        'underline-offset-4',
-        'decoration-2',
-        variantClasses[this.variant]
+        // 'underline-offset-4',
+        // 'decoration-2',
+        variantClasses[this.variant],
+        alignmentClasses[this.align]
       )}
     />`;
   }
@@ -79,4 +91,11 @@ export const variantClasses: Record<TextVariant, string> = {
   [TextVariant.MD]: 'text-md',
   [TextVariant.SM]: 'text-sm',
   [TextVariant.XS]: 'text-xs'
+};
+
+export const alignmentClasses: Record<TextAlignment, string> = {
+  [TextAlignment.LEFT]: 'text-left',
+  [TextAlignment.CENTER]: 'text-center',
+  [TextAlignment.RIGHT]: 'text-right',
+  [TextAlignment.JUSTIFY]: 'text-justify'
 };
