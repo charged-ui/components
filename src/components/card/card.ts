@@ -13,13 +13,11 @@ export class UICard extends LitElement {
   render() {
     return html`
       <div
-        class="bg-white border border-solid border-neutral-200 rounded-xl relative overflow-hidden shadow-sm"
+        class="flex flex-col bg-white border border-solid border-neutral-200 rounded-xl relative overflow-hidden shadow-sm"
       >
         <slot name="media"></slot>
-        <div class="p-8">
-          <slot name="header"></slot>
-          <slot name="body"></slot>
-        </div>
+        <slot name="header"></slot>
+        <slot name="body"></slot>
         <slot name="footer"></slot>
       </div>
     `;

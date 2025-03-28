@@ -1,7 +1,11 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
+import { LitElement, html, css, unsafeCSS, PropertyValueMap } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { animate, stagger } from 'motion';
 import styles from './filterable-grid.css?raw';
+
+import '../button/button';
+import '../card/card';
+import '../icon/icon';
 
 interface FilterItem {
   id: string;
@@ -12,7 +16,7 @@ interface GridItem {
   id: number;
   title: string;
   description: string;
-  category: string;
+  categories: string[]; // Changed from single category to an array of categories
   image: string;
 }
 
@@ -29,15 +33,6 @@ export class FilterableGrid extends LitElement {
         height 0.3s,
         margin 0.3s,
         padding 0.3s;
-    }
-
-    .grid-item.hidden {
-      height: 0;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      visibility: hidden;
-      position: absolute;
     }
   `;
 
@@ -56,56 +51,56 @@ export class FilterableGrid extends LitElement {
       id: 1,
       title: 'Brand Refresh',
       description: 'Modern rebrand for tech startup',
-      category: 'design',
+      categories: ['design', 'marketing'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 2,
       title: 'Mobile App',
       description: 'iOS and Android fitness app',
-      category: 'apps',
+      categories: ['apps', 'design'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 3,
       title: 'Campaign Strategy',
       description: 'Q4 product launch campaign',
-      category: 'marketing',
+      categories: ['marketing'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 4,
       title: 'Sustainable Packaging',
       description: 'Eco-friendly product packaging',
-      category: 'packaging',
+      categories: ['packaging', 'design'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 5,
       title: 'Web Design',
       description: 'E-commerce website redesign',
-      category: 'design',
+      categories: ['design'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 6,
       title: 'Social Media Kit',
       description: 'Content templates for Instagram',
-      category: 'marketing',
+      categories: ['marketing', 'design'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 7,
       title: 'Dashboard UI',
       description: 'Analytics dashboard interface',
-      category: 'design',
+      categories: ['design', 'apps'],
       image: 'https://placehold.co/300x200'
     },
     {
       id: 8,
       title: 'Plugin Development',
       description: 'Shopify integration tool',
-      category: 'apps',
+      categories: ['apps'],
       image: 'https://placehold.co/300x200'
     }
   ];
@@ -126,14 +121,17 @@ export class FilterableGrid extends LitElement {
   get visibleItems(): GridItem[] {
     return this.items.filter(
       (item) =>
-        this.activeFilter === 'all' || item.category === this.activeFilter
+        this.activeFilter === 'all' ||
+        item.categories.includes(this.activeFilter)
     );
   }
 
   // Instead of filtering items in the template, we'll keep all items
   // in the DOM and just hide/show them with CSS
-  shouldItemBeVisible(category: string): boolean {
-    return this.activeFilter === 'all' || category === this.activeFilter;
+  shouldItemBeVisible(categories: string[]): boolean {
+    return (
+      this.activeFilter === 'all' || categories.includes(this.activeFilter)
+    );
   }
 
   // Get the appropriate grid classes based on column count
@@ -155,6 +153,7 @@ export class FilterableGrid extends LitElement {
     const gridItems = this.shadowRoot?.querySelectorAll(
       '.grid-item:not(.hidden)'
     );
+
     if (!gridItems || gridItems.length === 0) return;
 
     // Use stagger for animation delays
@@ -221,6 +220,16 @@ export class FilterableGrid extends LitElement {
     }
   }
 
+  updated(
+    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+  ) {
+    super.updated(changedProperties);
+    if (changedProperties.has('activeFilter')) {
+      // Force a re-render when the activeFilter changes to ensure visibility is updated
+      this.requestUpdate();
+    }
+  }
+
   render() {
     const hasVisibleItems = this.visibleItems.length > 0;
 
@@ -229,51 +238,52 @@ export class FilterableGrid extends LitElement {
       <div class="flex flex-wrap gap-2 mb-8">
         ${this.filters.map(
           (filter) => html`
-            <button
+            <ui-button
               @click=${() => this.setFilter(filter.id)}
-              class="px-4 py-2 rounded-full text-sm font-medium transition-colors ${this
-                .activeFilter === filter.id
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}"
+              size="small"
+              variant=${this.activeFilter === filter.id
+                ? 'primary'
+                : 'secondary'}
+              shape="rounded"
             >
-              ${filter.label}
-            </button>
+              <div slot="value">${filter.label}</div>
+            </ui-button>
           `
         )}
       </div>
 
       <!-- Grid with all items, hide/show with class -->
       <div class="${this.gridClasses}">
-        ${this.items.map(
-          (item) => html`
-            <div
-              class="grid-item bg-white rounded-lg overflow-hidden shadow-md transition-all hover:shadow-lg ${!this.shouldItemBeVisible(
-                item.category
-              )
-                ? 'hidden'
-                : ''}"
+        ${this.items.map((item) => {
+          const isVisible = this.shouldItemBeVisible(item.categories);
+          return html`
+            <ui-card
+              class="grid-item transition-all group cursor-pointer ${isVisible
+                ? ''
+                : 'hidden'}"
               data-item-id="${item.id}"
-              data-category="${item.category}"
+              data-categories="${item.categories.join(',')}"
             >
-              <div class="relative w-full h-48 bg-gray-200">
-                <img
-                  class="lazy-image w-full h-48 object-cover absolute inset-0 transition-opacity duration-500 ease-in"
-                  data-src=${item.image}
-                  alt=${item.title}
+              <!-- Image with rounded corners -->
+              <img
+                class="lazy-image group-hover:scale-105 duration-500 transition-all"
+                data-src=${item.image}
+                alt=${item.title}
+                slot="media"
+              />
+              <div
+                slot="footer"
+                class="bg-white relative z-1 flex items-center p-4 font-medium"
+              >
+                ${item.title}
+                <ui-icon
+                  name="arrow-top-right-on-square"
+                  class="ml-auto opacity-0 group-hover:opacity-100 duration-500 transition-all"
                 />
               </div>
-              <div class="p-4">
-                <h3 class="text-lg font-semibold mb-1">${item.title}</h3>
-                <p class="text-gray-600 text-sm">${item.description}</p>
-                <span
-                  class="inline-block mt-2 text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full"
-                >
-                  ${item.category}
-                </span>
-              </div>
-            </div>
-          `
-        )}
+            </ui-card>
+          `;
+        })}
       </div>
 
       ${!hasVisibleItems
