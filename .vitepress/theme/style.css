@@ -201,7 +201,7 @@ html.dark {
 .bg-preview {
   background-size: 2rem 2rem;
   background-image: radial-gradient(circle, #aaa 1px, rgba(0, 0, 0, 0) 1px);
-  background-position: center;
+  background-position: top center;
   @apply bg-slate-50 bg-opacity-50 border border-solid border-slate-200;
 }
 
