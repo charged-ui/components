@@ -1,6 +1,6 @@
 # Gallery
 
-A responsive, animated gallery component with filtering capabilities and lazy-loaded images.
+A responsive, animated gallery component with filtering capabilities.
 
 <script setup>
 import './gallery';
@@ -15,10 +15,10 @@ import '../icon/icon';
   <!-- Card 1 -->
   <ui-card data-categories="design,marketing" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" 
       alt="Brand Refresh" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Brand Refresh
@@ -29,10 +29,10 @@ import '../icon/icon';
   <!-- Card 2 -->
   <ui-card data-categories="apps,design" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" 
       alt="Mobile App" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Mobile App
@@ -43,10 +43,10 @@ import '../icon/icon';
   <!-- Card 3 -->
   <ui-card data-categories="marketing" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" 
       alt="Campaign Strategy" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Campaign Strategy
@@ -57,10 +57,10 @@ import '../icon/icon';
   <!-- Card 4 -->
   <ui-card data-categories="packaging,design" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" 
       alt="Sustainable Packaging" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Sustainable Packaging
@@ -71,10 +71,10 @@ import '../icon/icon';
   <!-- Card 5 -->
   <ui-card data-categories="design" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" 
       alt="Web Design" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Web Design
@@ -85,10 +85,10 @@ import '../icon/icon';
   <!-- Card 6 -->
   <ui-card data-categories="marketing,design" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" 
       alt="Social Media Kit" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Social Media Kit
@@ -99,10 +99,10 @@ import '../icon/icon';
   <!-- Card 7 -->
   <ui-card data-categories="design,apps" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" 
       alt="Dashboard UI" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Dashboard UI
@@ -113,10 +113,10 @@ import '../icon/icon';
   <!-- Card 8 -->
   <ui-card data-categories="apps" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" 
       alt="Plugin Development" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Plugin Development
@@ -127,10 +127,10 @@ import '../icon/icon';
   <!-- Card 9 -->
   <ui-card data-categories="marketing,packaging" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" 
       alt="Product Launch" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Product Launch
@@ -141,10 +141,10 @@ import '../icon/icon';
   <!-- Card 10 -->
   <ui-card data-categories="design,apps" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" 
       alt="UX Research" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       UX Research
@@ -155,10 +155,10 @@ import '../icon/icon';
   <!-- Card 11 -->
   <ui-card data-categories="packaging" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" 
       alt="Retail Packaging" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Retail Packaging
@@ -169,10 +169,10 @@ import '../icon/icon';
   <!-- Card 12 -->
   <ui-card data-categories="marketing,apps" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 
-      data-src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" 
+      src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" 
       alt="Marketing Automation" 
       slot="media"
-      class="lazy-image group-hover:scale-105 duration-300 ease-out transition-all"
+      class="group-hover:scale-105 duration-300 ease-out transition-all"
     />
     <div slot="footer" class="bg-white relative z-1 flex items-center p-4 font-medium">
       Marketing Automation
@@ -185,158 +185,88 @@ import '../icon/icon';
 ## Features
 
 - **Responsive Layout**: Automatically adjusts columns based on screen size
-- **Category Filtering**: Filter items by category with animated transitions
-- **Lazy Image Loading**: Images load only when they enter the viewport
+- **Auto-Detected Category Filtering**: Filters are automatically generated based on the `data-categories` attributes of the child elements
 - **Animation**: Smooth reveal animations for grid items
-- **Customizable**: Configurable number of columns and filter categories
+- **Customizable**: Configurable number of columns and internationalization options
 
 ## Usage
 
+Basic usage with auto-detected categories:
+
 ```html
-<filterable-grid></filterable-grid>
+<ui-gallery>
+  <ui-card data-categories="design,marketing">
+    <!-- Card content -->
+  </ui-card>
+  <ui-card data-categories="apps">
+    <!-- Card content -->
+  </ui-card>
+</ui-gallery>
 ```
 
-With custom properties:
+With internationalized "All" label:
 
 ```html
-<filterable-grid
-  :columns="3"
-  :filters='[
-    { "id": "all", "label": "All" },
-    { "id": "design", "label": "Design" },
-    { "id": "code", "label": "Code" }
-  ]'
-  :items='[
-    { 
-      "id": 1, 
-      "title": "Project Title", 
-      "description": "Project description", 
-      "category": "design", 
-      "image": "path/to/image.jpg" 
-    }
-  ]'
-></filterable-grid>
+<ui-gallery allLabel="Todos">
+  <!-- Cards with data-categories -->
+</ui-gallery>
 ```
 
 ## Properties
 
-| Property  | Type   | Default | Description                                              |
-| --------- | ------ | ------- | -------------------------------------------------------- |
-| `columns` | Number | `4`     | Number of columns to display on desktop                  |
-| `filters` | Array  | `[...]` | Array of filter objects with `id` and `label` properties |
-| `items`   | Array  | `[...]` | Array of item objects                                    |
+| Property   | Type   | Default | Description                                 |
+| ---------- | ------ | ------- | ------------------------------------------- |
+| `columns`  | Number | `2`     | Number of columns to display on desktop     |
+| `allLabel` | String | `'All'` | Text to display for the "All" filter button |
 
-### Filter Object
+## Using with Card Components
 
-```ts
-interface FilterItem {
-  id: string; // Unique identifier for the filter
-  label: string; // Display text for the filter button
-}
+Each child element should have a `data-categories` attribute containing a comma-separated list of categories:
+
+```html
+<ui-card data-categories="design,marketing">
+  <!-- Content -->
+</ui-card>
 ```
 
-### Item Object
-
-```ts
-interface GridItem {
-  id: number; // Unique identifier for the item
-  title: string; // Item title
-  description: string; // Item description
-  category: string; // Category ID (should match a filter ID)
-  image: string; // URL to the item's image
-}
-```
+The component will automatically extract these categories and create filter buttons for them.
 
 ## Animation
 
-The component uses the Motion API for animations. If the Motion API is not available, animations will be skipped gracefully.
+The component uses the Motion API for animations, applying staggered reveal animations to grid items:
 
-```js{4-14}
-animateItems() {
-  if (!window.motion) return;
-
-  const gridItems = this.shadowRoot?.querySelectorAll('.grid-item');
-  if (!gridItems) return;
-
-  gridItems.forEach((item, index) => {
-    window.motion?.animate(
-      item,
-      {
-        opacity: [0, 1],
-        y: [20, 0]
-      },
-      {
-        delay: index * 0.05,
-        duration: 0.5,
-        easing: [.22, .03, .26, 1]
-      }
-    );
-  });
-}
+```js
+animate(
+  visibleItems,
+  { opacity: [0, 1], scale: [0.8, 1] },
+  { delay: stagger(0.05, { ease: [0.4, 0.0, 0.2, 1] }) }
+);
 ```
 
-## Lazy Loading
+## Internationalization
 
-The component implements lazy loading for images using the IntersectionObserver API:
+You can customize the "All" filter button text for different languages:
 
-```js{7-32}
-setupLazyLoading() {
-  if (this.observer) {
-    this.observer.disconnect();
-  }
+```html
+<!-- Spanish -->
+<ui-gallery allLabel="Todos"></ui-gallery>
 
-  this.observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const imgElement = entry.target as HTMLImageElement;
-        const dataSrc = imgElement.getAttribute('data-src');
+<!-- French -->
+<ui-gallery allLabel="Tous"></ui-gallery>
 
-        if (dataSrc) {
-          imgElement.onload = () => {
-            imgElement.classList.add('loaded');
-          };
-
-          imgElement.src = dataSrc;
-          imgElement.removeAttribute('data-src');
-          this.observer?.unobserve(imgElement);
-        }
-      }
-    });
-  }, {
-    rootMargin: '200px',
-    threshold: 0
-  });
-
-  this.updateComplete.then(() => {
-    const lazyImages = this.shadowRoot?.querySelectorAll('img[data-src]');
-    if (lazyImages) {
-      lazyImages.forEach(img => this.observer?.observe(img));
-    }
-  });
-}
+<!-- German -->
+<ui-gallery allLabel="Alle"></ui-gallery>
 ```
 
-::: info
-Images are loaded when they are 200px from entering the viewport for a smoother user experience.
-:::
+For use with Drupal's translation system:
+
+```html
+<ui-gallery allLabel="${Drupal.t('All')}"></ui-gallery>
+```
 
 ## CSS Customization
 
-You can customize the appearance using CSS variables:
-
-```css
-filterable-grid {
-  --grid-gap: 1.5rem;
-  --filter-active-bg: #4f46e5;
-  --filter-active-text: white;
-  --filter-inactive-bg: #e5e7eb;
-  --filter-inactive-text: #1f2937;
-}
-```
-
-::: tip
-The component uses Tailwind CSS classes internally, but you can override styles using CSS variables or direct CSS selectors.
-:::
+The component uses Tailwind CSS classes internally. You can override styles using standard CSS selectors or by modifying the component's internal styles.
 
 ## Responsive Behavior
 
@@ -344,33 +274,23 @@ The component is built with a mobile-first approach:
 
 - Mobile: 1 column
 - Tablet (sm): 2 columns
-- Medium screens (md): Up to 4 columns
-- Large screens (lg): Up to the number specified in the `columns` property
-
-::: warning
-Due to Tailwind's limitations, the maximum number of columns is 12.
-:::
+- Medium screens (md): Variable columns based on config
+- Large screens (lg): Variable columns based on config
 
 ## Browser Support
 
 This component uses modern web features:
 
 - Custom Elements (Web Components)
-- IntersectionObserver API
 - CSS Grid
 - ES6+ features
+- Motion API for animations
 
-::: danger
 For older browsers, polyfills may be required.
-:::
 
-## Performance Considerations
+## Implementation Notes
 
-::: details
-The component implements several performance optimizations:
-
-- Lazy loading images only when needed
-- Disconnecting the IntersectionObserver when the component is removed
-- Efficient filtering without DOM rebuilding
-- Animation only when elements are in view
-  :::
+- The component auto-detects categories from child elements
+- Filter labels are automatically formatted with proper capitalization
+- No lazy loading logic is included in the component; use native `loading="lazy"` on images
+- The component avoids re-creating DOM elements when filtering, instead toggling class names for better performance

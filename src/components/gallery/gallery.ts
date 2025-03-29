@@ -1,214 +1,158 @@
-import { LitElement, html, css, unsafeCSS, PropertyValueMap } from 'lit';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { animate, stagger } from 'motion';
 import styles from './gallery.css?raw';
 
 import '../button/button';
-import '../card/card';
-import '../icon/icon';
 
-interface FilterItem {
-  id: string;
-  label: string;
-}
+type FilterItem = { id: string; label: string };
 
 @customElement('ui-gallery')
 export class UIGallery extends LitElement {
   static styles = css`
     ${unsafeCSS(styles)}
-
-    .grid-item {
-      opacity: 0; /* Start hidden */
-      transform: translateY(20px); /* Start offset */
-      transition:
-        height 0.3s,
-        margin 0.3s,
-        padding 0.3s;
-    }
-
-    ::slotted(*) {
-      display: block;
-      transition: all 0.3s ease;
-    }
-
-    ::slotted(.hidden) {
-      display: none !important;
-    }
   `;
-
-  @property({ type: Array })
-  filters: FilterItem[] = [
-    { id: 'all', label: 'All' },
-    { id: 'design', label: 'Design' },
-    { id: 'marketing', label: 'Marketing' },
-    { id: 'apps', label: 'Apps' },
-    { id: 'packaging', label: 'Packaging' }
-  ];
 
   @property({ type: Number })
   columns = 2;
 
+  @property({ type: String })
+  allLabel?: string;
+
   @state()
   activeFilter = 'all';
 
-  private observer: IntersectionObserver | null = null;
-  private slottedChildren: Element[] = [];
+  @state()
+  private filters: FilterItem[] = [];
 
-  constructor() {
-    super();
-  }
-
-  // Get the appropriate grid classes based on column count
   get gridClasses(): string {
     return `grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-2 gap-6`;
   }
 
-  setFilter(filterId: string): void {
-    this.activeFilter = filterId;
-    // After DOM updates, apply animations
-    this.updateComplete.then(() => {
-      this.updateVisibleItems();
-      this.animateItems();
-      this.setupLazyLoading();
-    });
-  }
-
-  updateVisibleItems(): void {
-    // Get all slotted children
+  detectFiltersFromChildren(): void {
     const slot = this.shadowRoot?.querySelector('slot');
     if (!slot) return;
 
-    this.slottedChildren = slot.assignedElements();
+    const allCategories = new Set<string>();
 
-    // Update visibility based on categories
-    this.slottedChildren.forEach((child) => {
+    // Collect all unique categories from children
+    slot.assignedElements().forEach((child) => {
       const categories =
         child.getAttribute('data-categories')?.split(',') || [];
-      const shouldBeVisible =
+      categories.forEach((category) => {
+        const trimmed = category.trim();
+        if (trimmed) allCategories.add(trimmed);
+      });
+    });
+
+    // Create filter items from unique categories
+    this.filters = [
+      { id: 'all', label: this.allLabel ?? 'All' },
+      ...Array.from(allCategories)
+        .sort()
+        .map((category) => ({
+          id: category,
+          label: this.formatCategoryLabel(category)
+        }))
+    ];
+  }
+
+  formatCategoryLabel(category: string): string {
+    // Convert category ID to title case with spaces preserved
+    return category
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
+  setFilter(filterId: string): void {
+    this.activeFilter = filterId;
+    this.updateComplete.then(() => {
+      this.updateVisibility();
+      this.animateItems();
+    });
+  }
+
+  updateVisibility(): void {
+    const slot = this.shadowRoot?.querySelector('slot');
+    if (!slot) return;
+
+    slot.assignedElements().forEach((child) => {
+      const categories =
+        child
+          .getAttribute('data-categories')
+          ?.split(',')
+          .map((c) => c.trim()) || [];
+      const visible =
         this.activeFilter === 'all' || categories.includes(this.activeFilter);
 
-      if (shouldBeVisible) {
-        child.classList.remove('hidden');
-        child.classList.add('grid-item');
-      } else {
-        child.classList.add('hidden');
-        child.classList.remove('grid-item');
-      }
+      child.classList.toggle('hidden', !visible);
+      child.classList.toggle('grid-item', visible);
     });
   }
 
   animateItems(): void {
-    // Get all visible grid items
-    const gridItems = this.shadowRoot
+    const visibleItems = this.shadowRoot
       ?.querySelector('slot')
       ?.assignedElements()
       .filter((el) => !el.classList.contains('hidden'));
 
-    if (!gridItems || gridItems.length === 0) return;
+    if (!visibleItems?.length) return;
 
-    // Use stagger for animation delays
     animate(
-      gridItems,
+      visibleItems,
       { opacity: [0, 1], scale: [0.8, 1] },
-      {
-        delay: stagger(0.05, {
-          ease: [0.4, 0.0, 0.2, 1] // Easing applied to the staggered delay timing
-        })
-      }
+      { delay: stagger(0.05, { ease: [0.4, 0.0, 0.2, 1] }) }
     );
   }
 
-  setupLazyLoading(): void {
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const imgElement = entry.target as HTMLImageElement;
-            const dataSrc = imgElement.getAttribute('data-src');
-
-            if (dataSrc) {
-              imgElement.onload = () => {
-                imgElement.classList.add('loaded');
-              };
-
-              imgElement.src = dataSrc;
-              imgElement.removeAttribute('data-src');
-              this.observer?.unobserve(imgElement);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '0px',
-        threshold: 0
-      }
-    );
-
-    // Find all lazy images in slotted content
-    this.slottedChildren.forEach((child) => {
-      const lazyImages = child.querySelectorAll('img[data-src]');
-      if (lazyImages) {
-        lazyImages.forEach((img) => this.observer?.observe(img));
-      }
-    });
+  handleSlotChange(): void {
+    this.detectFiltersFromChildren();
+    this.updateVisibility();
+    this.animateItems();
   }
 
   firstUpdated(): void {
-    this.updateVisibleItems();
+    this.detectFiltersFromChildren();
+    this.updateVisibility();
     this.animateItems();
-    this.setupLazyLoading();
   }
 
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    if (this.observer) {
-      this.observer.disconnect();
-      this.observer = null;
-    }
-  }
-
-  updated(
-    changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
-  ) {
+  updated(changedProperties: Map<PropertyKey, unknown>): void {
     super.updated(changedProperties);
     if (changedProperties.has('activeFilter')) {
-      this.updateVisibleItems();
+      this.updateVisibility();
+    }
+    if (changedProperties.has('allLabel')) {
+      this.detectFiltersFromChildren();
     }
   }
 
   render() {
     return html`
-      <!-- Filter Buttons -->
-      <div class="flex flex-wrap gap-2 mb-8">
-        ${this.filters.map(
-          (filter) => html`
-            <ui-button
-              @click=${() => this.setFilter(filter.id)}
-              size="small"
-              variant=${this.activeFilter === filter.id
-                ? 'primary'
-                : 'secondary'}
-              shape="rounded"
-            >
-              <div slot="value">${filter.label}</div>
-            </ui-button>
+      ${this.filters.length > 1
+        ? html`
+            <div class="flex flex-wrap gap-2 mb-8">
+              ${this.filters.map(
+                (filter) => html`
+                  <ui-button
+                    @click=${() => this.setFilter(filter.id)}
+                    size="small"
+                    variant=${this.activeFilter === filter.id
+                      ? 'primary'
+                      : 'secondary'}
+                    shape="rounded"
+                  >
+                    <div slot="value">${filter.label}</div>
+                  </ui-button>
+                `
+              )}
+            </div>
           `
-        )}
-      </div>
+        : ''}
 
-      <!-- Grid with slotted items -->
       <div class="${this.gridClasses}">
-        <slot
-          @slotchange=${() => {
-            this.updateVisibleItems();
-            this.animateItems();
-            this.setupLazyLoading();
-          }}
-        ></slot>
+        <slot @slotchange=${() => this.handleSlotChange()}></slot>
       </div>
     `;
   }
