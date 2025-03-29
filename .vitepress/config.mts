@@ -39,7 +39,7 @@ export default defineConfig({
           { text: 'Button', link: '/components/button/' },
           { text: 'Card', link: '/components/card/' },
           { text: 'Collapse', link: '/components/collapse/' },
-          { text: 'Gallery', link: '/components/filterable-grid/' },
+          { text: 'Gallery', link: '/components/gallery/' },
           { text: 'Icon', link: '/components/icon/' },
           { text: 'Progress', link: '/components/progress/' },
           { text: 'Stat', link: '/components/stat/' },
