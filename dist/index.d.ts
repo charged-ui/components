@@ -2,6 +2,15 @@ import { CSSResult } from 'lit';
 import { LitElement } from 'lit';
 import { TemplateResult } from 'lit-html';
 
+export declare const alignmentClasses: Record<TextAlignment, string>;
+
+export declare enum TextAlignment {
+    LEFT = "left",
+    CENTER = "center",
+    RIGHT = "right",
+    JUSTIFY = "justify"
+}
+
 export declare enum TextVariant {
     H1 = "heading-1",
     H2 = "heading-2",
@@ -30,6 +39,7 @@ export declare class UICard extends LitElement {
 
 export declare class UIText extends LitElement {
     variant: TextVariant;
+    align: TextAlignment;
     static styles: CSSResult;
     render(): TemplateResult<1>;
 }

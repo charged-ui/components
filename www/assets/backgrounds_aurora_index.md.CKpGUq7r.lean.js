@@ -1,4 +1,4 @@
-import{i as c,n as g,h as b,k as p,t as f}from"./chunks/property.BGekRwO5.js";import{c as v,j as r,a as d,G as k,w as m,B as h,o as x}from"./chunks/framework.B3Vu90wH.js";var w=Object.defineProperty,_=Object.getOwnPropertyDescriptor,u=(i,o,a,t)=>{for(var e=t>1?void 0:t?_(o,a):o,s=i.length-1,l;s>=0;s--)(l=i[s])&&(e=(t?l(o,a,e):l(e))||e);return t&&e&&w(o,a,e),e};let n=class extends b{constructor(){super(...arguments),this.showRadialGradient=!0}render(){return p`
+import{i as u,n as c,h as E,k as b,t as v}from"./chunks/property.BGekRwO5.js";import"./chunks/text.B6g9QXbu.js";import{c as f,j as r,a as e,G as p,w as k,ae as m,B as h,o as y}from"./chunks/framework.B3Vu90wH.js";import"./chunks/clsx.B-dksMZM.js";var x=Object.defineProperty,_=Object.getOwnPropertyDescriptor,g=(l,t,a,s)=>{for(var i=s>1?void 0:s?_(t,a):t,o=l.length-1,d;o>=0;o--)(d=l[o])&&(i=(s?d(t,a,i):d(i))||i);return s&&i&&x(t,a,i),i};let n=class extends E{constructor(){super(...arguments),this.showRadialGradient=!0}render(){return b`
       <div class="aurora-container">
         <div class="absolute inset-0 overflow-hidden">
           <div
@@ -9,7 +9,7 @@ import{i as c,n as g,h as b,k as p,t as f}from"./chunks/property.BGekRwO5.js";im
           <slot></slot>
         </div>
       </div>
-    `}};n.styles=c`
+    `}};n.styles=u`
     :host {
       display: block;
     }
@@ -18,7 +18,6 @@ import{i as c,n as g,h as b,k as p,t as f}from"./chunks/property.BGekRwO5.js";im
       position: relative;
       display: flex;
       flex-direction: column;
-      height: 100vh;
       align-items: center;
       justify-content: center;
       background-color: rgb(250, 250, 250);
@@ -66,7 +65,7 @@ import{i as c,n as g,h as b,k as p,t as f}from"./chunks/property.BGekRwO5.js";im
       );
 
       position: absolute;
-      inset: -10px;
+      inset: 0px;
       overflow: hidden;
       opacity: 0.5;
       pointer-events: none;
@@ -134,4 +133,4 @@ import{i as c,n as g,h as b,k as p,t as f}from"./chunks/property.BGekRwO5.js";im
       position: relative;
       z-index: 1;
     }
-  `;u([g({type:Boolean})],n.prototype,"showRadialGradient",2);n=u([f("ui-bg-aurora")],n);const y={class:"p-8 bg-gradient-to-b from-indigo-50 to-transparent rounded-2xl flex flex-col justify-center"},A=JSON.parse('{"title":"Aurora Background","description":"","frontmatter":{},"headers":[],"relativePath":"backgrounds/aurora/index.md","filePath":"backgrounds/aurora/index.md"}'),B={name:"backgrounds/aurora/index.md"},O=Object.assign(B,{setup(i){return(o,a)=>{const t=h("ui-bg-aurora");return x(),v("div",null,[a[1]||(a[1]=r("h1",{id:"aurora-background",tabindex:"-1"},[d("Aurora Background "),r("a",{class:"header-anchor",href:"#aurora-background","aria-label":'Permalink to "Aurora Background"'},"​")],-1)),a[2]||(a[2]=r("p",null,"Aurora background effect",-1)),a[3]||(a[3]=r("h2",{id:"example",tabindex:"-1"},[d("Example "),r("a",{class:"header-anchor",href:"#example","aria-label":'Permalink to "Example"'},"​")],-1)),r("div",y,[k(t,{"show-radial-gradient":""},{default:m(()=>a[0]||(a[0]=[r("h1",null,"Hello, Aurora!",-1),r("p",null,"This is a beautiful aurora effect with a radial gradient mask.",-1)])),_:1})]),a[4]||(a[4]=r("h2",{id:"source",tabindex:"-1"},[d("Source "),r("a",{class:"header-anchor",href:"#source","aria-label":'Permalink to "Source"'},"​")],-1)),a[5]||(a[5]=r("p",null,[r("a",{href:"https://ui.aceternity.com/components/aurora-background",target:"_blank",rel:"noreferrer"},"https://ui.aceternity.com/components/aurora-background")],-1))])}}});export{A as __pageData,O as default};
+  `;g([c({type:Boolean})],n.prototype,"showRadialGradient",2);n=g([v("ui-bg-aurora")],n);const w={class:"rounded-2xl flex flex-col justify-center relative overflow-hidden"},A={class:"flex flex-col gap-4 px-8 py-24 text-center"},q=JSON.parse('{"title":"Aurora Background","description":"","frontmatter":{},"headers":[],"relativePath":"backgrounds/aurora/index.md","filePath":"backgrounds/aurora/index.md"}'),B={name:"backgrounds/aurora/index.md"},T=Object.assign(B,{setup(l){return(t,a)=>{const s=h("ui-text"),i=h("ui-bg-aurora");return y(),f("div",null,[a[2]||(a[2]=r("h1",{id:"aurora-background",tabindex:"-1"},[e("Aurora Background "),r("a",{class:"header-anchor",href:"#aurora-background","aria-label":'Permalink to "Aurora Background"'},"​")],-1)),a[3]||(a[3]=r("p",null,"An aurora background effect with a radial gradient mask.",-1)),a[4]||(a[4]=r("h2",{id:"example",tabindex:"-1"},[e("Example "),r("a",{class:"header-anchor",href:"#example","aria-label":'Permalink to "Example"'},"​")],-1)),r("div",w,[p(i,{"show-radial-gradient":""},{default:k(()=>[r("div",A,[p(s,{variant:"heading-3"},{default:k(()=>a[0]||(a[0]=[e(" Aurora Background ")])),_:1}),p(s,{variant:"display-6"},{default:k(()=>a[1]||(a[1]=[e("This is a beautiful aurora effect with a radial gradient mask.")])),_:1})])]),_:1})]),a[5]||(a[5]=m("",4))])}}});export{q as __pageData,T as default};
