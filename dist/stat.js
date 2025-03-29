@@ -1,5 +1,5 @@
-import { i as l, r as d, n as i, e as c, d as m, c as f, k as h, t as y, f as b } from "./vendor.js";
-import { U as v, v as N, s as x } from "./text-MzYcllip.js";
+import { i as l, r as c, n as i, e as d, f as m, c as f, k as h, t as y, b } from "./vendor.js";
+import { U as v, v as N, s as x } from "./text-BHSpRIon.js";
 var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, o, n) => {
   for (var e = n > 1 ? void 0 : n ? O(a, o) : a, u = s.length - 1, p; u >= 0; u--)
     (p = s[u]) && (e = (n ? p(a, o, e) : p(e)) || e);
@@ -32,7 +32,7 @@ let t = class extends v {
   }
 };
 t.styles = l`
-    ${d(x)}
+    ${c(x)}
   `;
 r([
   i({ type: Number })
@@ -47,7 +47,7 @@ r([
   i({ type: Number })
 ], t.prototype, "delay", 2);
 r([
-  c(".counter")
+  d(".counter")
 ], t.prototype, "counter", 2);
 t = r([
   y("ui-stat")

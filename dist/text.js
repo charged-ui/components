@@ -1,7 +1,9 @@
 import "./vendor.js";
-import { T as r, U as e, v as i } from "./text-MzYcllip.js";
+import { a as e, T as n, U as i, b as r, v as l } from "./text-BHSpRIon.js";
 export {
-  r as TextVariant,
-  e as UIText,
-  i as variantClasses
+  e as TextAlignment,
+  n as TextVariant,
+  i as UIText,
+  r as alignmentClasses,
+  l as variantClasses
 };
