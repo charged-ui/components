@@ -58,13 +58,20 @@ export default defineConfig({
           if (chunkInfo.name === 'vendor') {
             return 'vendor.js';
           }
+          // If it's the 'motion' chunk, name it 'motion.js'
+          if (chunkInfo.name === 'motion') {
+            return 'motion.js';
+          }
           // Otherwise, apply the default behavior with a hash for other chunks
           return '[name]-[hash].js';
         },
         assetFileNames: '[name][extname]',
         manualChunks: (id) => {
+          if (id.includes('node_modules/motion')) {
+            return 'motion'; // Give motion its own chunk
+          }
           if (id.includes('node_modules')) {
-            return 'vendor'; // All node_modules will be bundled into the 'vendor' chunk
+            return 'vendor'; // All other node_modules
           }
         }
       }
