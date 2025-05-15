@@ -21,9 +21,8 @@ export class UIIconSelector extends LitElement {
   @property({ type: String }) selectedIcon: string = '';
   @property({ type: Number }) size: number = 24;
   @property({ type: String }) variant: string = 'outline';
-
-  // Add a state property to store the loaded SVG content
-  // @state() private iconSvgMap: Map<string, string> = new Map();
+  @state() private searchQuery: string = '';
+  @state() private filteredIcons: HeroIcon[] = [];
 
   static styles = css`
     :host {
@@ -42,6 +41,23 @@ export class UIIconSelector extends LitElement {
     this.icons = (flattenedHeroicons as HeroIcon[]).filter(
       (icon) => icon.size === this.size && icon.style === this.variant
     );
+    this.applySearchFilter();
+  }
+
+  applySearchFilter(): void {
+    if (!this.searchQuery) {
+      this.filteredIcons = this.icons;
+    } else {
+      const query = this.searchQuery.toLowerCase();
+      this.filteredIcons = this.icons.filter((icon) =>
+        icon.name.toLowerCase().includes(query)
+      );
+    }
+  }
+
+  handleSearch(e: Event): void {
+    this.searchQuery = (e.target as HTMLInputElement).value;
+    this.applySearchFilter();
   }
 
   updated(changedProperties: Map<string, unknown>): void {
@@ -57,9 +73,9 @@ export class UIIconSelector extends LitElement {
         detail: {
           name: iconName,
           size: this.size,
-          variant: this.variant,
+          variant: this.variant
           // path: this.getIconPath(iconName),
-          svg: this.iconSvgMap.get(iconName) || null
+          // svg: this.iconSvgMap.get(iconName) || null
         },
         bubbles: true,
         composed: true
@@ -69,10 +85,17 @@ export class UIIconSelector extends LitElement {
 
   render() {
     return html`
-      <div class="bg-white">
+      <div class="bg-white divide-y divide-y-solid divide-zinc-200">
         <div class="p-4">
-          <input type="text" />
+          <input
+            class="border border-solid rounded-lg border-zinc-200 px-2 h-8"
+            type="text"
+            placeholder="Search for an icon"
+            @input=${this.handleSearch}
+            .value=${this.searchQuery}
+          />
           <select
+            class="border-zinc-200 rounded-lg px-2 h-9"
             @change=${(e: Event) =>
               (this.variant = (e.target as HTMLSelectElement).value)}
           >
@@ -86,11 +109,19 @@ export class UIIconSelector extends LitElement {
         </div>
 
         <div
-          class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto"
+          class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto border-t border-zinc-200"
         >
-          ${this.icons.map(
+          ${this.filteredIcons.map(
             (icon) =>
-              html`<div class="flex items-center justify-center w-12 h-12 border border-dashed rounded-xl hover:bg-emerald-100 cursor-pointer"><ui-icon name="${icon.name}""></ui-icon></div>`
+              html`<div
+                class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
+                @click=${() => this.handleIconSelect(icon.name)}
+              >
+                <ui-icon
+                  name="${icon.name}"
+                  variant="${this.variant}"
+                ></ui-icon>
+              </div>`
           )}
         </div>
       </div>

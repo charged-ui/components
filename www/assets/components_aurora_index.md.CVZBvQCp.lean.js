@@ -1,12 +1,15 @@
-import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-
-@customElement('ui-bg-aurora')
-export class AuroraBackground extends LitElement {
-  @property({ type: Boolean })
-  showRadialGradient = true;
-
-  static styles = css`
+import{i as u,n as c,h as E,k as b,t as v}from"./chunks/property.BGekRwO5.js";import"./chunks/text.CcvsKz3U.js";import{c as f,j as t,a as e,G as p,w as h,ae as m,B as k,o as y}from"./chunks/framework.B3Vu90wH.js";import"./chunks/clsx.B-dksMZM.js";var x=Object.defineProperty,_=Object.getOwnPropertyDescriptor,g=(l,r,a,s)=>{for(var i=s>1?void 0:s?_(r,a):r,o=l.length-1,d;o>=0;o--)(d=l[o])&&(i=(s?d(r,a,i):d(i))||i);return s&&i&&x(r,a,i),i};let n=class extends E{constructor(){super(...arguments),this.showRadialGradient=!0}render(){return b`
+      <div class="aurora-container">
+        <div class="absolute inset-0 overflow-hidden">
+          <div
+            class="aurora-effect ${this.showRadialGradient?"radial-mask":""}"
+          ></div>
+        </div>
+        <div class="content-slot">
+          <slot></slot>
+        </div>
+      </div>
+    `}};n.styles=u`
     :host {
       display: block;
     }
@@ -130,22 +133,4 @@ export class AuroraBackground extends LitElement {
       position: relative;
       z-index: 1;
     }
-  `;
-
-  render() {
-    return html`
-      <div class="aurora-container">
-        <div class="absolute inset-0 overflow-hidden">
-          <div
-            class="aurora-effect ${this.showRadialGradient
-              ? 'radial-mask'
-              : ''}"
-          ></div>
-        </div>
-        <div class="content-slot">
-          <slot></slot>
-        </div>
-      </div>
-    `;
-  }
-}
+  `;g([c({type:Boolean})],n.prototype,"showRadialGradient",2);n=g([v("ui-bg-aurora")],n);const w={class:"rounded-2xl flex flex-col justify-center relative overflow-hidden"},A={class:"flex flex-col gap-4 px-8 py-24 text-center"},q=JSON.parse('{"title":"Aurora Background","description":"","frontmatter":{},"headers":[],"relativePath":"components/aurora/index.md","filePath":"components/aurora/index.md"}'),B={name:"components/aurora/index.md"},T=Object.assign(B,{setup(l){return(r,a)=>{const s=k("ui-text"),i=k("ui-bg-aurora");return y(),f("div",null,[a[2]||(a[2]=t("h1",{id:"aurora-background",tabindex:"-1"},[e("Aurora Background "),t("a",{class:"header-anchor",href:"#aurora-background","aria-label":'Permalink to "Aurora Background"'},"​")],-1)),a[3]||(a[3]=t("p",null,"An aurora background effect with a radial gradient mask.",-1)),a[4]||(a[4]=t("h2",{id:"example",tabindex:"-1"},[e("Example "),t("a",{class:"header-anchor",href:"#example","aria-label":'Permalink to "Example"'},"​")],-1)),t("div",w,[p(i,{"show-radial-gradient":""},{default:h(()=>[t("div",A,[p(s,{variant:"heading-3"},{default:h(()=>a[0]||(a[0]=[e(" Aurora Background ")])),_:1}),p(s,{variant:"display-6"},{default:h(()=>a[1]||(a[1]=[e("This is a beautiful aurora effect with a radial gradient mask.")])),_:1})])]),_:1})]),a[5]||(a[5]=m("",4))])}}});export{q as __pageData,T as default};
