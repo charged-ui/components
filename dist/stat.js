@@ -1,12 +1,12 @@
-import { i as l, r as c, n as i, e as d, c as m, k as f, t as h } from "./vendor.js";
-import { U as y, v as b, s as v } from "./text-Cm9wxC7m.js";
+import { r as l, i as c, n as o, e as m, c as d, k as h, t as y } from "./vendor.js";
+import { s as f, U as v, v as b } from "./text-CsrIZ2Ib.js";
 import { i as N, a as x } from "./motion.js";
-var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, o, n) => {
-  for (var e = n > 1 ? void 0 : n ? O(a, o) : a, p = s.length - 1, u; p >= 0; p--)
-    (u = s[p]) && (e = (n ? u(a, o, e) : u(e)) || e);
-  return n && e && _(a, o, e), e;
+var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, n, i) => {
+  for (var e = i > 1 ? void 0 : i ? O(a, n) : a, p = s.length - 1, u; p >= 0; p--)
+    (u = s[p]) && (e = (i ? u(a, n, e) : u(e)) || e);
+  return i && e && _(a, n, e), e;
 };
-let t = class extends y {
+let t = class extends v {
   constructor() {
     super(...arguments), this.start = 0, this.end = 0, this.duration = 2, this.delay = 0;
   }
@@ -22,8 +22,8 @@ let t = class extends y {
     }));
   }
   render() {
-    const s = m("counter", b[this.variant]);
-    return f`
+    const s = d("counter", b[this.variant]);
+    return h`
       <div class="flex items-center">
         <slot name="prefix"></slot>
         <span class="${s}">${this.end}</span>
@@ -32,26 +32,26 @@ let t = class extends y {
     `;
   }
 };
-t.styles = l`
-    ${c(v)}
+t.styles = c`
+    ${l(f)}
   `;
 r([
-  i({ type: Number })
+  o({ type: Number })
 ], t.prototype, "start", 2);
 r([
-  i({ type: Number })
+  o({ type: Number })
 ], t.prototype, "end", 2);
 r([
-  i({ type: Number })
+  o({ type: Number })
 ], t.prototype, "duration", 2);
 r([
-  i({ type: Number })
+  o({ type: Number })
 ], t.prototype, "delay", 2);
 r([
-  d(".counter")
+  m(".counter")
 ], t.prototype, "counter", 2);
 t = r([
-  h("ui-stat")
+  y("ui-stat")
 ], t);
 export {
   t as UIStat
