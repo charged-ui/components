@@ -196,6 +196,7 @@ html.dark {
   /* border: 0; */
   font-size: 18px;
   letter-spacing: -0.05rem;
+  font-weight: 600;
 }
 
 .bg-preview {
@@ -203,6 +204,10 @@ html.dark {
   background-image: radial-gradient(circle, #aaa 1px, rgba(0, 0, 0, 0) 1px);
   background-position: top center;
   @apply bg-slate-50 bg-opacity-50 border border-solid border-slate-200;
+}
+
+.logo {
+  margin-right: 6px !important;
 }
 
 /* .curtain {

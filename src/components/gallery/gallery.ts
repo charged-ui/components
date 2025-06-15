@@ -1,11 +1,19 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { animate, stagger } from 'motion';
+import clsx from 'clsx';
 import styles from './gallery.css?raw';
 
 import '../button/button';
 
 type FilterItem = { id: string; label: string };
+
+enum Direction {
+  Up = 1,
+  Down,
+  Left,
+  Right
+}
 
 @customElement('ui-gallery')
 export class UIGallery extends LitElement {
@@ -13,8 +21,24 @@ export class UIGallery extends LitElement {
     ${unsafeCSS(styles)}
   `;
 
+  @property({
+    type: Number,
+    attribute: 'grid-mobile'
+  })
   @property({ type: Number })
-  columns = 2;
+  gridMobile = 2;
+
+  @property({
+    type: Number,
+    attribute: 'grid-tablet'
+  })
+  gridTablet = 3;
+
+  @property({
+    type: Number,
+    attribute: 'grid-desktop'
+  })
+  gridDesktop = 4;
 
   @property({ type: String })
   allLabel?: string;
@@ -26,7 +50,22 @@ export class UIGallery extends LitElement {
   private filters: FilterItem[] = [];
 
   get gridClasses(): string {
-    return `grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-2 gap-6`;
+    const gridStyles = clsx({
+      'sm:grid-cols-2': this.gridMobile === 2,
+      'sm:grid-cols-3': this.gridMobile === 3,
+      'sm:grid-cols-4': this.gridMobile === 4,
+      'sm:grid-cols-5': this.gridMobile === 5,
+      'md:grid-cols-2': this.gridTablet === 2,
+      'md:grid-cols-3': this.gridTablet === 3,
+      'md:grid-cols-4': this.gridTablet === 4,
+      'md:grid-cols-5': this.gridTablet === 5,
+      'lg:grid-cols-2': this.gridDesktop === 2,
+      'lg:grid-cols-3': this.gridDesktop === 3,
+      'lg:grid-cols-4': this.gridDesktop === 4,
+      'lg:grid-cols-5': this.gridDesktop === 5
+    });
+
+    return `grid grid-cols-1 ${gridStyles} gap-6`;
   }
 
   detectFiltersFromChildren(): void {

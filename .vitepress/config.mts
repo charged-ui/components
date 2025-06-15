@@ -49,7 +49,7 @@ export default defineConfig({
       {
         text: 'Backgrounds',
         collapsed: false,
-        items: [{ text: 'Aurora', link: '/backgrounds/aurora' }]
+        items: [{ text: 'Aurora', link: '/components/aurora' }]
       }
     ],
 

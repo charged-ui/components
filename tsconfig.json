@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "outDir": "./dist", // Output directory
     "rootDir": "./src", // Root directory of source files
     "declaration": true, // Generate .d.ts files

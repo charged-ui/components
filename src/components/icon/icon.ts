@@ -13,6 +13,7 @@ export class UIIcon extends LitElement {
   static styles = css`
     ${unsafeCSS(styles)}
     :host {
+      display: block;
       width: 24px;
       height: 24px;
     }
