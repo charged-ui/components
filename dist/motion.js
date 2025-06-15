@@ -486,7 +486,6 @@ const q = [
   "bottom",
   ...q
 ]), fs = (t) => Array.isArray(t), hs = (t) => fs(t) ? t[t.length - 1] || 0 : t, ds = {
-  skipAnimations: !1,
   useManualTiming: !1
 }, pe = [
   "read",
@@ -561,7 +560,7 @@ function gs(t, e) {
       o[pe[V]].cancel(p);
   }, state: i, steps: o };
 }
-const { schedule: O, cancel: De, state: ve, steps: Lr } = gs(typeof requestAnimationFrame < "u" ? requestAnimationFrame : L, !0);
+const { schedule: O, cancel: De, state: ve } = gs(typeof requestAnimationFrame < "u" ? requestAnimationFrame : L, !0);
 let ge;
 function ys() {
   ge = void 0;
@@ -2679,11 +2678,11 @@ function Or(t) {
   }
   return e;
 }
-const _r = Or(), Br = {
+const Lr = Or(), Br = {
   some: 0,
   all: 1
 };
-function $r(t, e, { root: n, margin: s, amount: i = "some" } = {}) {
+function _r(t, e, { root: n, margin: s, amount: i = "some" } = {}) {
   const r = Kt(t), o = /* @__PURE__ */ new WeakMap(), a = (c) => {
     c.forEach((u) => {
       const f = o.get(u.target);
@@ -2708,7 +2707,7 @@ function Kr(t, e) {
     return t === "last" ? n : n / 2;
   }
 }
-function Wr(t = 0.1, { startDelay: e = 0, from: n = 0, ease: s } = {}) {
+function $r(t = 0.1, { startDelay: e = 0, from: n = 0, ease: s } = {}) {
   return (i, r) => {
     const o = typeof n == "number" ? n : Kr(n, r), a = Math.abs(o - i);
     let l = t * a;
@@ -2720,7 +2719,7 @@ function Wr(t = 0.1, { startDelay: e = 0, from: n = 0, ease: s } = {}) {
   };
 }
 export {
-  _r as a,
-  $r as i,
-  Wr as s
+  Lr as a,
+  _r as i,
+  $r as s
 };
