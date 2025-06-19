@@ -1,8 +1,8 @@
-import { r as v, i as p, n as t, a as m, h as c, k as d, t as u } from "./vendor.js";
+import { r as v, i as p, n as t, a as d, h as c, k as m, t as u } from "./vendor.js";
 import "./icon.js";
 import "./button.js";
 import "./modal.js";
-const h = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.static{position:static}.absolute{position:absolute}.relative{position:relative}.ml-auto{margin-left:auto}.flex{display:flex}.inline-flex{display:inline-flex}.h-12{height:3rem}.h-5{height:1.25rem}.h-8{height:2rem}.h-9{height:2.25rem}.max-h-96{max-height:24rem}.w-12{width:3rem}.w-5{width:1.25rem}.cursor-pointer{cursor:pointer}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-4{gap:1rem}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-zinc-200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(228 228 231/var(--tw-divide-opacity))}.overflow-auto{overflow:auto}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-solid{border-style:solid}.border-dashed{border-style:dashed}.border-zinc-200{--tw-border-opacity:1;border-color:rgb(228 228 231/var(--tw-border-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity))}.p-2{padding:.5rem}.p-4{padding:1rem}.px-2{padding-left:.5rem;padding-right:.5rem}.pl-8{padding-left:2rem}.outline{outline-style:solid}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.hover\\:bg-emerald-100:hover{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity))}", f = [
+const h = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.static{position:static}.flex{display:flex}.h-12{height:3rem}.h-8{height:2rem}.h-9{height:2.25rem}.max-h-96{max-height:24rem}.w-12{width:3rem}.cursor-pointer{cursor:pointer}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.gap-4{gap:1rem}.divide-y>:not([hidden])~:not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px*(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px*var(--tw-divide-y-reverse))}.divide-zinc-200>:not([hidden])~:not([hidden]){--tw-divide-opacity:1;border-color:rgb(228 228 231/var(--tw-divide-opacity))}.overflow-auto{overflow:auto}.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-solid{border-style:solid}.border-dashed{border-style:dashed}.border-zinc-200{--tw-border-opacity:1;border-color:rgb(228 228 231/var(--tw-border-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity))}.p-4{padding:1rem}.px-2{padding-left:.5rem;padding-right:.5rem}.outline{outline-style:solid}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.hover\\:bg-emerald-100:hover{--tw-bg-opacity:1;background-color:rgb(209 250 229/var(--tw-bg-opacity))}", f = [
   {
     name: "academic-cap",
     size: 16,
@@ -9020,10 +9020,10 @@ const h = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spaci
     filename: "x-mark.svg"
   }
 ];
-var y = Object.defineProperty, w = Object.getOwnPropertyDescriptor, l = (e, a, n, o) => {
-  for (var i = o > 1 ? void 0 : o ? w(a, n) : a, r = e.length - 1, g; r >= 0; r--)
-    (g = e[r]) && (i = (o ? g(a, n, i) : g(i)) || i);
-  return o && i && y(a, n, i), i;
+var y = Object.defineProperty, w = Object.getOwnPropertyDescriptor, l = (e, i, n, o) => {
+  for (var a = o > 1 ? void 0 : o ? w(i, n) : i, r = e.length - 1, g; r >= 0; r--)
+    (g = e[r]) && (a = (o ? g(i, n, a) : g(a)) || a);
+  return o && a && y(i, n, a), a;
 };
 let s = class extends c {
   constructor() {
@@ -9050,7 +9050,7 @@ let s = class extends c {
     else {
       const e = this.searchQuery.toLowerCase();
       this.filteredIcons = this.icons.filter(
-        (a) => a.name.toLowerCase().includes(e)
+        (i) => i.name.toLowerCase().includes(e)
       );
     }
   }
@@ -9076,79 +9076,45 @@ let s = class extends c {
     );
   }
   render() {
-    return d`
-      <div class="flex items-center justify-between p-4">
-        <label for="charged-icon">Icon</label>
-        <div class="inline-flex relative gap-1 items-center ml-auto">
-          <ui-icon
-            name="${this.selectedIcon === "" ? "question-mark-circle" : this.selectedIcon}"
-            variant="${this.variant}"
-            class="absolute h-5 w-5 p-2"
-          ></ui-icon>
+    return m`
+      <div class="bg-white divide-y divide-y-solid divide-zinc-200">
+        <div class="p-4">
           <input
+            class="border border-solid rounded-lg border-zinc-200 px-2 h-8"
             type="text"
-            id="charged-icon"
-            readonly
-            .value="${this.selectedIcon === "" ? "No Icon Selected" : this.selectedIcon}"
-            class="rounded-lg border border-solid border-zinc-200 pl-8 h-8"
+            placeholder="Search for an icon"
+            @input=${this.handleSearch}
+            .value=${this.searchQuery}
           />
-          <ui-button
-            size="small"
-            variant="secondary"
-            class="radius-full"
-            @click=${this.openModal}
+          <select
+            class="border-zinc-200 rounded-lg px-2 h-9"
+            @change=${(e) => this.variant = e.target.value}
           >
-            <div slot="value">
-              ${this.selectedIcon === "" ? "Select" : "Edit"}
-            </div>
-          </ui-button>
+            <option value="outline" ?selected=${this.variant === "outline"}>
+              Outline
+            </option>
+            <option value="solid" ?selected=${this.variant === "solid"}>
+              Solid
+            </option>
+          </select>
+        </div>
+
+        <div
+          class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto border-t border-zinc-200"
+        >
+          ${this.filteredIcons.map(
+      (e) => m`<div
+                class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
+                @click=${() => this.handleIconSelect(e.name)}
+              >
+                <ui-icon
+                  name="${e.name}"
+                  variant="${this.variant}"
+                ></ui-icon>
+              </div>`
+    )}
         </div>
       </div>
-      <ui-modal
-        .isOpen=${this.modalOpen}
-        title="Select Icon"
-        size="lg"
-        @dialog-closed=${this.handleModalClose}
-      >
-        <div class="bg-white divide-y divide-y-solid divide-zinc-200">
-          <div class="p-4">
-            <input
-              class="border border-solid rounded-lg border-zinc-200 px-2 h-8"
-              type="text"
-              placeholder="Search for an icon"
-              @input=${this.handleSearch}
-              .value=${this.searchQuery}
-            />
-            <select
-              class="border-zinc-200 rounded-lg px-2 h-9"
-              @change=${(e) => this.variant = e.target.value}
-            >
-              <option value="outline" ?selected=${this.variant === "outline"}>
-                Outline
-              </option>
-              <option value="solid" ?selected=${this.variant === "solid"}>
-                Solid
-              </option>
-            </select>
-          </div>
-
-          <div
-            class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto border-t border-zinc-200"
-          >
-            ${this.filteredIcons.map(
-      (e) => d`<div
-                  class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
-                  @click=${() => this.handleIconSelect(e.name)}
-                >
-                  <ui-icon
-                    name="${e.name}"
-                    variant="${this.variant}"
-                  ></ui-icon>
-                </div>`
-    )}
-          </div>
-        </div>
-      </ui-modal>
     `;
   }
 };
@@ -9171,10 +9137,10 @@ l([
   t({ type: String })
 ], s.prototype, "variant", 2);
 l([
-  m()
+  d()
 ], s.prototype, "searchQuery", 2);
 l([
-  m()
+  d()
 ], s.prototype, "filteredIcons", 2);
 l([
   t({ type: Boolean })

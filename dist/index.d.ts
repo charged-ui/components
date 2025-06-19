@@ -51,13 +51,13 @@ export { }
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-modal': UIModal;
+        'ui-combobox': UICombobox;
     }
 }
 
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-combobox': UICombobox;
+        'ui-modal': UIModal;
     }
 }

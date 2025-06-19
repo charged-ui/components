@@ -103,84 +103,46 @@ export class UIIconSelector extends LitElement {
 
   render() {
     return html`
-      <div class="flex items-center justify-between p-4">
-        <label for="charged-icon">Icon</label>
-        <div class="inline-flex relative gap-1 items-center ml-auto">
-          <ui-icon
-            name="${this.selectedIcon === ''
-              ? 'question-mark-circle'
-              : this.selectedIcon}"
-            variant="${this.variant}"
-            class="absolute h-5 w-5 p-2"
-          ></ui-icon>
+      <div class="bg-white divide-y divide-y-solid divide-zinc-200">
+        <div class="p-4">
           <input
+            class="border border-solid rounded-lg border-zinc-200 px-2 h-8"
             type="text"
-            id="charged-icon"
-            readonly
-            .value="${this.selectedIcon === ''
-              ? 'No Icon Selected'
-              : this.selectedIcon}"
-            class="rounded-lg border border-solid border-zinc-200 pl-8 h-8"
+            placeholder="Search for an icon"
+            @input=${this.handleSearch}
+            .value=${this.searchQuery}
           />
-          <ui-button
-            size="small"
-            variant="secondary"
-            class="radius-full"
-            @click=${this.openModal}
+          <select
+            class="border-zinc-200 rounded-lg px-2 h-9"
+            @change=${(e: Event) =>
+              (this.variant = (e.target as HTMLSelectElement).value)}
           >
-            <div slot="value">
-              ${this.selectedIcon === '' ? 'Select' : 'Edit'}
-            </div>
-          </ui-button>
+            <option value="outline" ?selected=${this.variant === 'outline'}>
+              Outline
+            </option>
+            <option value="solid" ?selected=${this.variant === 'solid'}>
+              Solid
+            </option>
+          </select>
+        </div>
+
+        <div
+          class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto border-t border-zinc-200"
+        >
+          ${this.filteredIcons.map(
+            (icon) =>
+              html`<div
+                class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
+                @click=${() => this.handleIconSelect(icon.name)}
+              >
+                <ui-icon
+                  name="${icon.name}"
+                  variant="${this.variant}"
+                ></ui-icon>
+              </div>`
+          )}
         </div>
       </div>
-      <ui-modal
-        .isOpen=${this.modalOpen}
-        title="Select Icon"
-        size="lg"
-        @dialog-closed=${this.handleModalClose}
-      >
-        <div class="bg-white divide-y divide-y-solid divide-zinc-200">
-          <div class="p-4">
-            <input
-              class="border border-solid rounded-lg border-zinc-200 px-2 h-8"
-              type="text"
-              placeholder="Search for an icon"
-              @input=${this.handleSearch}
-              .value=${this.searchQuery}
-            />
-            <select
-              class="border-zinc-200 rounded-lg px-2 h-9"
-              @change=${(e: Event) =>
-                (this.variant = (e.target as HTMLSelectElement).value)}
-            >
-              <option value="outline" ?selected=${this.variant === 'outline'}>
-                Outline
-              </option>
-              <option value="solid" ?selected=${this.variant === 'solid'}>
-                Solid
-              </option>
-            </select>
-          </div>
-
-          <div
-            class="flex flex-wrap gap-4 p-4 justify-center max-h-96 overflow-auto border-t border-zinc-200"
-          >
-            ${this.filteredIcons.map(
-              (icon) =>
-                html`<div
-                  class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
-                  @click=${() => this.handleIconSelect(icon.name)}
-                >
-                  <ui-icon
-                    name="${icon.name}"
-                    variant="${this.variant}"
-                  ></ui-icon>
-                </div>`
-            )}
-          </div>
-        </div>
-      </ui-modal>
     `;
   }
 }
