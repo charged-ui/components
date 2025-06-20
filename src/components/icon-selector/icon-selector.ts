@@ -1,9 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import styles from './icon-selector.css?raw';
-import '../icon/icon';
-import '../button/button';
-import '../modal/modal';
 
 // Define interface for icon objects
 interface HeroIcon {
@@ -135,10 +132,14 @@ export class UIIconSelector extends LitElement {
                 class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
                 @click=${() => this.handleIconSelect(icon.name)}
               >
+<<<<<<< HEAD
+                <ui-icon name="${icon.name}" variant="${this.variant}" />
+=======
                 <ui-icon
                   name="${icon.name}"
                   variant="${this.variant}"
                 ></ui-icon>
+>>>>>>> 20aed6dda7d1b5e63d3c890ccc83f6150179b1b4
               </div>`
           )}
         </div>
