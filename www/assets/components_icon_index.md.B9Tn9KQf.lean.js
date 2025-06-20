@@ -28,7 +28,14 @@ import{r as v}from"./chunks/icon.m47xOXh0.js";import{r as c,i as h,n as r,h as u
                 class="flex items-center justify-center w-12 h-12 border border-dashed border-zinc-200 rounded-xl hover:bg-emerald-100 cursor-pointer"
                 @click=${()=>this.handleIconSelect(e.name)}
               >
+<<<<<<< HEAD
                 <ui-icon name="${e.name}" variant="${this.variant}" />
+=======
+                <ui-icon
+                  name="${e.name}"
+                  variant="${this.variant}"
+                ></ui-icon>
+>>>>>>> 20aed6dda7d1b5e63d3c890ccc83f6150179b1b4
               </div>`)}
         </div>
       </div>
