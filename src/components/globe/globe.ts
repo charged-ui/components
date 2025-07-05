@@ -28,14 +28,22 @@ export class UIGlobe extends LitElement {
   ];
   @property({ type: Array }) glowColor: [number, number, number] = [1, 1, 1];
 
+  // Scaling and positioning
+  @property({ type: Number }) aspectRatio = 1; // width/height ratio
+  @property({ type: Number }) scale = 1;
+  @property({ type: Array }) offset: [number, number] = [0, 0];
+
   // Interactive elements
   @property({ type: Array }) markers: GlobeMarker[] = [];
 
   // Internal state
   @state() private globe: any = null;
   @state() private animationPhi = 0;
+  @state() private containerWidth = 0;
+  @state() private containerHeight = 0;
 
   @query('canvas') private canvas!: HTMLCanvasElement;
+  @query('.globe-container') private container!: HTMLElement;
 
   static styles = css`
     ${unsafeCSS(styles)}
@@ -49,30 +57,32 @@ export class UIGlobe extends LitElement {
     .globe-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: var(--aspect-ratio, 1);
       overflow: hidden;
-    }
-
-    .globe-canvas-wrapper {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(var(--globe-scale, 1));
-      transform-origin: center center;
-      transition: transform 0.1s ease-out;
     }
 
     canvas {
       display: block;
-      width: 600px;
-      height: 600px;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+      contain: layout paint size;
     }
   `;
 
   firstUpdated() {
+    this.updateAspectRatio();
+    this.updateContainerSize();
     this.initializeGlobe();
-    this.updateScale();
     this.setupResizeObserver();
+
+    // Fade in the canvas
+    setTimeout(() => {
+      if (this.canvas) {
+        this.canvas.style.opacity = '1';
+      }
+    }, 100);
   }
 
   disconnectedCallback() {
@@ -82,40 +92,50 @@ export class UIGlobe extends LitElement {
     }
   }
 
-  private updateScale() {
-    const container = this.shadowRoot?.querySelector(
-      '.globe-container'
-    ) as HTMLElement;
-    if (!container) return;
+  private updateAspectRatio() {
+    this.style.setProperty('--aspect-ratio', this.aspectRatio.toString());
+  }
 
-    const containerRect = container.getBoundingClientRect();
-    const scale = containerRect.width / 600; // 600 is our fixed canvas size
+  private updateContainerSize() {
+    if (!this.container) return;
 
-    this.style.setProperty('--globe-scale', scale.toString());
+    const containerRect = this.container.getBoundingClientRect();
+    this.containerWidth = containerRect.width;
+    this.containerHeight = containerRect.height;
   }
 
   private setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') return;
 
-    const container = this.shadowRoot?.querySelector('.globe-container');
-    if (!container) return;
-
     const resizeObserver = new ResizeObserver(() => {
-      this.updateScale();
+      this.updateContainerSize();
+      this.updateGlobeSize();
     });
 
-    resizeObserver.observe(container);
+    resizeObserver.observe(this.container);
+  }
+
+  private updateGlobeSize() {
+    if (!this.globe || !this.containerWidth || !this.containerHeight) return;
+
+    // Update globe configuration with new dimensions
+    this.globe.updateConfig({
+      width: this.containerWidth * 2,
+      height: this.containerHeight * 2,
+      scale: this.scale,
+      offset: this.offset
+    });
   }
 
   private initializeGlobe() {
-    if (!this.canvas) return;
+    if (!this.canvas || !this.containerWidth || !this.containerHeight) return;
 
     this.animationPhi = this.phi;
 
     this.globe = createGlobe(this.canvas, {
       devicePixelRatio: 2,
-      width: 1200, // Fixed high resolution
-      height: 1200,
+      width: this.containerWidth * 2,
+      height: this.containerHeight * 2,
       phi: this.phi,
       theta: this.theta,
       dark: this.dark,
@@ -126,20 +146,59 @@ export class UIGlobe extends LitElement {
       markerColor: this.markerColor,
       glowColor: this.glowColor,
       markers: this.markers,
+      scale: this.scale,
+      offset: this.offset,
       onRender: (state: any) => {
         this.animationPhi += this.autoRotateSpeed;
         state.phi = this.animationPhi;
         state.theta = this.theta;
+        state.width = this.containerWidth * 2;
+        state.height = this.containerHeight * 2;
       }
     });
+  }
+
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
+    if (changedProperties.has('aspectRatio')) {
+      this.updateAspectRatio();
+    }
+
+    if (changedProperties.has('scale') || changedProperties.has('offset')) {
+      this.updateGlobeSize();
+    }
+
+    // Update globe properties that don't require recreation
+    if (this.globe) {
+      const globeProps = [
+        'phi',
+        'theta',
+        'dark',
+        'diffuse',
+        'mapSamples',
+        'mapBrightness',
+        'baseColor',
+        'markerColor',
+        'glowColor',
+        'markers',
+        'autoRotateSpeed'
+      ];
+
+      const shouldUpdate = globeProps.some((prop) =>
+        changedProperties.has(prop)
+      );
+
+      if (shouldUpdate) {
+        // For most properties, we need to recreate the globe
+        this.globe.destroy?.();
+        this.initializeGlobe();
+      }
+    }
   }
 
   render() {
     return html`
       <div class="globe-container">
-        <div class="globe-canvas-wrapper">
-          <canvas></canvas>
-        </div>
+        <canvas></canvas>
         <slot name="overlay"></slot>
       </div>
     `;
