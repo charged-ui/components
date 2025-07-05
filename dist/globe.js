@@ -1,4 +1,5 @@
-import { r as d, i as h, n as o, a as l, e as w, h as b, p as m, k as y, t as f } from "./vendor.js";
+import { r as d, a as h, n as o, b as l, e as w, h as b, k as m, t as y } from "./vendor.js";
+import { p as f } from "./cobe.js";
 const u = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.\\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\\!container{max-width:1536px!important}.container{max-width:1536px}}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.block{display:block}.hidden{display:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}";
 var x = Object.defineProperty, g = Object.getOwnPropertyDescriptor, e = (r, i, a, s) => {
   for (var n = s > 1 ? void 0 : s ? g(i, a) : i, p = r.length - 1, c; p >= 0; p--)
@@ -43,7 +44,7 @@ let t = class extends b {
     }).observe(r);
   }
   initializeGlobe() {
-    this.canvas && (this.animationPhi = this.phi, this.globe = m(this.canvas, {
+    this.canvas && (this.animationPhi = this.phi, this.globe = f(this.canvas, {
       devicePixelRatio: 2,
       width: 1200,
       // Fixed high resolution
@@ -64,7 +65,7 @@ let t = class extends b {
     }));
   }
   render() {
-    return y`
+    return m`
       <div class="globe-container">
         <div class="globe-canvas-wrapper">
           <canvas></canvas>
@@ -148,7 +149,7 @@ e([
   w("canvas")
 ], t.prototype, "canvas", 2);
 t = e([
-  f("ui-globe")
+  y("ui-globe")
 ], t);
 export {
   t as UIGlobe
