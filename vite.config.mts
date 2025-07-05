@@ -62,11 +62,19 @@ export default defineConfig({
           if (chunkInfo.name === 'motion') {
             return 'motion.js';
           }
+          console.log(chunkInfo.name);
+          // If it's the 'motion' chunk, name it 'motion.js'
+          if (chunkInfo.name === 'cobe') {
+            return 'cobe.js';
+          }
           // Otherwise, apply the default behavior with a hash for other chunks
           return '[name]-[hash].js';
         },
         assetFileNames: '[name][extname]',
         manualChunks: (id) => {
+          if (id.includes('node_modules/cobe')) {
+            return 'cobe'; // Give cobe its own chunk
+          }
           if (id.includes('node_modules/motion')) {
             return 'motion'; // Give motion its own chunk
           }

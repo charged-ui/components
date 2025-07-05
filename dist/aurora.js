@@ -1,4 +1,4 @@
-import { i as d, n as c, h as g, k as u, t as b } from "./vendor.js";
+import { a as d, n as c, h as g, k as u, t as b } from "./vendor.js";
 var v = Object.defineProperty, p = Object.getOwnPropertyDescriptor, l = (s, r, i, e) => {
   for (var a = e > 1 ? void 0 : e ? p(r, i) : r, n = s.length - 1, o; n >= 0; n--)
     (o = s[n]) && (a = (e ? o(r, i, a) : o(a)) || a);
