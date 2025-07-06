@@ -1,5 +1,5 @@
-import { r as l, i as c, n as o, e as m, c as d, k as h, t as y } from "./vendor.js";
-import { s as f, U as v, v as b } from "./text-CsrIZ2Ib.js";
+import { r as l, a as c, n as o, e as m, c as d, k as h, t as y } from "./vendor.js";
+import { s as f, U as v, v as b } from "./text-Bsuq1Gj9.js";
 import { i as N, a as x } from "./motion.js";
 var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, n, i) => {
   for (var e = i > 1 ? void 0 : i ? O(a, n) : a, p = s.length - 1, u; p >= 0; p--)

@@ -1,8 +1,8 @@
-import { r as p, i as l, n as w, a as h, h as d, b as f, t as u } from "./vendor.js";
+import { r as p, a as l, n as w, b as h, h as d, d as f, t as u } from "./vendor.js";
 const y = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.static{position:static}.block{display:block}.outline{outline-style:solid}";
-var b = Object.defineProperty, g = Object.getOwnPropertyDescriptor, i = (o, n, s, t) => {
-  for (var r = t > 1 ? void 0 : t ? g(n, s) : n, a = o.length - 1, c; a >= 0; a--)
-    (c = o[a]) && (r = (t ? c(n, s, r) : c(r)) || r);
+var b = Object.defineProperty, g = Object.getOwnPropertyDescriptor, a = (o, n, s, t) => {
+  for (var r = t > 1 ? void 0 : t ? g(n, s) : n, i = o.length - 1, c; i >= 0; i--)
+    (c = o[i]) && (r = (t ? c(n, s, r) : c(r)) || r);
   return t && r && b(n, s, r), r;
 };
 let e = class extends d {
@@ -42,19 +42,19 @@ e.styles = l`
       height: 24px;
     }
   `;
-i([
+a([
   w({ type: String })
 ], e.prototype, "name", 2);
-i([
+a([
   w({ type: String })
 ], e.prototype, "variant", 2);
-i([
+a([
   w({ type: String })
 ], e.prototype, "size", 2);
-i([
+a([
   h()
 ], e.prototype, "content", 2);
-e = i([
+e = a([
   u("ui-icon")
 ], e);
 export {
