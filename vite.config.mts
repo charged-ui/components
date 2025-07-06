@@ -31,52 +31,39 @@ export default defineConfig({
       include: ['src/components/**/*.ts', 'src/vite-env.d.ts']
     })
   ],
-  // Replace any process.env variables with their values
   define: {
     'process.env': {
       NODE_ENV: JSON.stringify('production')
-      // Add any other environment variables your code might use
     }
   },
   build: {
     lib: {
       entry: 'src/components/index.ts',
-      formats: ['es'] // Only using ES modules
+      formats: ['es']
     },
     outDir: 'dist',
-    // Ensure Vite doesn't try to polyfill node built-ins
-    commonjsOptions: {
-      transformMixedEsModules: true
-    },
     rollupOptions: {
       input: getComponentEntries(),
       output: {
-        inlineDynamicImports: false,
         entryFileNames: '[name].js',
         chunkFileNames: (chunkInfo) => {
-          // If it's the 'vendor' chunk, name it 'vendor.js'
-          if (chunkInfo.name === 'vendor') {
-            return 'vendor.js';
-          }
-          // If it's the 'motion' chunk, name it 'motion.js'
-          if (chunkInfo.name === 'motion') {
-            return 'motion.js';
-          }
-          // Otherwise, apply the default behavior with a hash for other chunks
+          if (chunkInfo.name === 'cobe') return 'cobe.js';
+          if (chunkInfo.name === 'motion') return 'motion.js';
+          if (chunkInfo.name === 'vendor') return 'vendor.js';
           return '[name]-[hash].js';
         },
-        assetFileNames: '[name][extname]',
         manualChunks: (id) => {
-          if (id.includes('node_modules/motion')) {
-            return 'motion'; // Give motion its own chunk
-          }
+          // Only chunk node_modules, keep your source code together
           if (id.includes('node_modules')) {
-            return 'vendor'; // All other node_modules
+            if (id.includes('cobe')) return 'cobe';
+            if (id.includes('motion') || id.includes('framer-motion'))
+              return 'motion';
+            return 'vendor'; // Everything else from node_modules
           }
+          // Don't chunk your own source files - let them stay in their entry points
+          return undefined;
         }
       }
-      // Explicitly tell Rollup to resolve certain Node.js APIs to empty objects
-      // external: ['fs', 'path'] // Add any Node.js modules your code might import
     }
   }
 });
