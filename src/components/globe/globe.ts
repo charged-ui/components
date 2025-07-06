@@ -19,7 +19,7 @@ export class UIGlobe extends LitElement {
   // Visual styling - explicit attribute names for multi-word properties
   @property({ type: Number }) dark = 1;
   @property({ type: Number }) diffuse = 1.2;
-  @property({ type: Number, attribute: 'map-samples' }) mapSamples = 16000;
+  @property({ type: Number, attribute: 'map-samples' }) mapSamples = 8000;
   @property({ type: Number, attribute: 'map-brightness' }) mapBrightness = 6;
   @property({ type: Array, attribute: 'base-color' }) baseColor: [
     number,
@@ -53,6 +53,7 @@ export class UIGlobe extends LitElement {
   @state() private animationPhi = 0;
   @state() private containerWidth = 0;
   @state() private containerHeight = 0;
+  @state() private scaledOffset: [number, number] = [0, 0];
 
   @query('canvas') private canvas!: HTMLCanvasElement;
   @query('.globe-container') private container!: HTMLElement;
@@ -64,6 +65,8 @@ export class UIGlobe extends LitElement {
       width: var(--globe-size, 100%);
       min-width: 200px;
       max-width: var(--globe-max-size, 800px);
+      /* Ensure the component itself can scale down */
+      max-width: min(var(--globe-max-size, 800px), 100vw);
     }
 
     .globe-container {
@@ -101,9 +104,15 @@ export class UIGlobe extends LitElement {
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has('size')) {
       this.updateSizeStyles();
+      // Recalculate scaled offset when size changes
+      this.updateContainerSize();
     }
     if (changedProperties.has('aspectRatio')) {
       this.updateAspectRatio();
+    }
+    if (changedProperties.has('offset')) {
+      // Recalculate scaled offset when offset changes
+      this.updateContainerSize();
     }
   }
 
@@ -134,6 +143,42 @@ export class UIGlobe extends LitElement {
     const containerRect = this.container.getBoundingClientRect();
     this.containerWidth = containerRect.width;
     this.containerHeight = containerRect.height;
+
+    // Calculate scaled offset based on container size vs intended size
+    if (this.size > 0) {
+      const scaleFactor = this.containerWidth / this.size;
+      let scaledX = this.offset[0] * scaleFactor;
+      let scaledY = this.offset[1] * scaleFactor;
+
+      // Calculate the intended globe size at the original dimensions
+      const intendedGlobeHeight = this.size / this.aspectRatio;
+
+      // Calculate what percentage of the globe the original offset represents
+      const offsetPercentageX = this.offset[0] / this.size;
+      const offsetPercentageY = this.offset[1] / intendedGlobeHeight;
+
+      // For responsive behavior, maintain the same visual relationship
+      // but ensure the globe doesn't get pushed completely out of view
+
+      // If the offset would push more than 90% of the globe out of view,
+      // cap it to show at least 10% of the globe
+      const maxHiddenX = this.containerWidth * 0.9;
+      const maxHiddenY = this.containerHeight * 0.9;
+
+      // Apply the caps while trying to maintain the visual intent
+      if (Math.abs(scaledY) > maxHiddenY) {
+        // Maintain the direction but cap the amount
+        scaledY = Math.sign(scaledY) * maxHiddenY;
+      }
+
+      if (Math.abs(scaledX) > maxHiddenX) {
+        scaledX = Math.sign(scaledX) * maxHiddenX;
+      }
+
+      this.scaledOffset = [scaledX, scaledY];
+    } else {
+      this.scaledOffset = [...this.offset];
+    }
   }
 
   private setupResizeObserver() {
@@ -166,7 +211,7 @@ export class UIGlobe extends LitElement {
       glowColor: this.glowColor,
       markers: this.markers,
       scale: this.scale,
-      offset: this.offset,
+      offset: this.scaledOffset,
       onRender: (state: any) => {
         this.animationPhi += this.autoRotateSpeed;
         state.phi = this.animationPhi;

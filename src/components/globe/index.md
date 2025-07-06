@@ -42,7 +42,7 @@ Create a wide, cinematic globe view perfect for hero sections or banners:
 <div class="p-12 bg-preview flex justify-center rounded-xl">
   <ui-globe 
     size="600"
-    aspectRatio="2/1"
+    aspectRatio="2"
     scale="2"
     :offset="[0, 300]"
     dark="1"
