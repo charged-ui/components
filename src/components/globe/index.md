@@ -43,7 +43,7 @@ Create a wide, cinematic globe view perfect for hero sections or banners:
   <ui-globe 
     aspectRatio="2/1"
     scale="2"
-    :offset="[0, 200]"
+    :offset="[0, 300]"
     dark="1"
     diffuse="3"
     mapBrightness="1.2"
