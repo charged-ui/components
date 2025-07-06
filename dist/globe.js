@@ -1,31 +1,29 @@
-import { r as d, a as w, n as o, b as h, e as l, h as b, k as f, t as m } from "./vendor.js";
-import { p as y } from "./cobe.js";
-const u = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.static{position:static}.relative{position:relative}.block{display:block}.hidden{display:none}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}";
-var g = Object.defineProperty, k = Object.getOwnPropertyDescriptor, e = (i, r, s, n) => {
-  for (var a = n > 1 ? void 0 : n ? k(r, s) : r, p = i.length - 1, c; p >= 0; p--)
-    (c = i[p]) && (a = (n ? c(r, s, a) : c(a)) || a);
-  return n && a && g(r, s, a), a;
+import { r as d, a as b, n as o, b as n, e as l, h as w, k as y, t as m } from "./vendor.js";
+import { p as u } from "./cobe.js";
+const f = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.static{position:static}.relative{position:relative}.block{display:block}.hidden{display:none}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}";
+var g = Object.defineProperty, k = Object.getOwnPropertyDescriptor, e = (i, r, p, s) => {
+  for (var a = s > 1 ? void 0 : s ? k(r, p) : r, h = i.length - 1, c; h >= 0; h--)
+    (c = i[h]) && (a = (s ? c(r, p, a) : c(a)) || a);
+  return s && a && g(r, p, a), a;
 };
-let t = class extends b {
+let t = class extends w {
   constructor() {
-    super(...arguments), this.phi = 0, this.theta = 0, this.autoRotateSpeed = 0.01, this.dark = 1, this.diffuse = 1.2, this.mapSamples = 16e3, this.mapBrightness = 6, this.baseColor = [
-      0.3,
-      0.3,
-      0.3
-    ], this.markerColor = [
-      0.1,
-      0.8,
-      1
-    ], this.glowColor = [1, 1, 1], this.aspectRatio = 1, this.scale = 1, this.offset = [0, 0], this.markers = [], this.globe = null, this.animationPhi = 0, this.containerWidth = 0, this.containerHeight = 0;
+    super(...arguments), this.phi = 0, this.theta = 0, this.autoRotateSpeed = 0.01, this.dark = 1, this.diffuse = 1.2, this.mapSamples = 16e3, this.mapBrightness = 6, this.baseColor = [0.3, 0.3, 0.3], this.markerColor = [0.1, 0.8, 1], this.glowColor = [1, 1, 1], this.aspectRatio = 1, this.scale = 1, this.offset = [0, 0], this.size = 400, this.markers = [], this.globe = null, this.animationPhi = 0, this.containerWidth = 0, this.containerHeight = 0;
   }
   firstUpdated() {
-    this.updateAspectRatio(), this.updateContainerSize(), this.initializeGlobe(), this.setupResizeObserver(), setTimeout(() => {
+    this.updateSizeStyles(), this.updateAspectRatio(), this.updateContainerSize(), this.initializeGlobe(), this.setupResizeObserver(), setTimeout(() => {
       this.canvas && (this.canvas.style.opacity = "1");
     }, 100);
+  }
+  updated(i) {
+    i.has("size") && this.updateSizeStyles(), i.has("aspectRatio") && this.updateAspectRatio();
   }
   disconnectedCallback() {
     var i, r;
     super.disconnectedCallback(), this.globe && ((r = (i = this.globe).destroy) == null || r.call(i));
+  }
+  updateSizeStyles() {
+    this.size > 0 ? (this.style.setProperty("--globe-size", `${this.size}px`), this.style.setProperty("--globe-max-size", `${this.size}px`)) : (this.style.removeProperty("--globe-size"), this.style.removeProperty("--globe-max-size"));
   }
   updateAspectRatio() {
     this.style.setProperty("--aspect-ratio", this.aspectRatio.toString());
@@ -38,19 +36,11 @@ let t = class extends b {
   setupResizeObserver() {
     if (typeof ResizeObserver > "u") return;
     new ResizeObserver(() => {
-      this.updateContainerSize(), this.updateGlobeSize();
+      this.updateContainerSize();
     }).observe(this.container);
   }
-  updateGlobeSize() {
-    !this.globe || !this.containerWidth || !this.containerHeight || this.globe.updateConfig({
-      width: this.containerWidth * 2,
-      height: this.containerHeight * 2,
-      scale: this.scale,
-      offset: this.offset
-    });
-  }
   initializeGlobe() {
-    !this.canvas || !this.containerWidth || !this.containerHeight || (this.animationPhi = this.phi, this.globe = y(this.canvas, {
+    !this.canvas || !this.containerWidth || !this.containerHeight || (this.animationPhi = this.phi, this.globe = u(this.canvas, {
       devicePixelRatio: 2,
       width: this.containerWidth * 2,
       height: this.containerHeight * 2,
@@ -71,26 +61,8 @@ let t = class extends b {
       }
     }));
   }
-  updated(i) {
-    var r, s;
-    i.has("aspectRatio") && this.updateAspectRatio(), (i.has("scale") || i.has("offset")) && this.updateGlobeSize(), this.globe && [
-      "phi",
-      "theta",
-      "dark",
-      "diffuse",
-      "mapSamples",
-      "mapBrightness",
-      "baseColor",
-      "markerColor",
-      "glowColor",
-      "markers",
-      "autoRotateSpeed"
-    ].some(
-      (p) => i.has(p)
-    ) && ((s = (r = this.globe).destroy) == null || s.call(r), this.initializeGlobe());
-  }
   render() {
-    return f`
+    return y`
       <div class="globe-container">
         <canvas></canvas>
         <slot name="overlay"></slot>
@@ -98,13 +70,13 @@ let t = class extends b {
     `;
   }
 };
-t.styles = w`
-    ${d(u)}
+t.styles = b`
+    ${d(f)}
     :host {
       display: block;
-      width: 100%;
+      width: var(--globe-size, 100%);
       min-width: 200px;
-      max-width: 800px;
+      max-width: var(--globe-max-size, 800px);
     }
 
     .globe-container {
@@ -130,7 +102,7 @@ e([
   o({ type: Number })
 ], t.prototype, "theta", 2);
 e([
-  o({ type: Number })
+  o({ type: Number, attribute: "auto-rotate-speed" })
 ], t.prototype, "autoRotateSpeed", 2);
 e([
   o({ type: Number })
@@ -139,22 +111,22 @@ e([
   o({ type: Number })
 ], t.prototype, "diffuse", 2);
 e([
-  o({ type: Number })
+  o({ type: Number, attribute: "map-samples" })
 ], t.prototype, "mapSamples", 2);
 e([
-  o({ type: Number })
+  o({ type: Number, attribute: "map-brightness" })
 ], t.prototype, "mapBrightness", 2);
 e([
-  o({ type: Array })
+  o({ type: Array, attribute: "base-color" })
 ], t.prototype, "baseColor", 2);
 e([
-  o({ type: Array })
+  o({ type: Array, attribute: "marker-color" })
 ], t.prototype, "markerColor", 2);
 e([
-  o({ type: Array })
+  o({ type: Array, attribute: "glow-color" })
 ], t.prototype, "glowColor", 2);
 e([
-  o({ type: Number })
+  o({ type: Number, attribute: "aspect-ratio" })
 ], t.prototype, "aspectRatio", 2);
 e([
   o({ type: Number })
@@ -163,19 +135,22 @@ e([
   o({ type: Array })
 ], t.prototype, "offset", 2);
 e([
+  o({ type: Number })
+], t.prototype, "size", 2);
+e([
   o({ type: Array })
 ], t.prototype, "markers", 2);
 e([
-  h()
+  n()
 ], t.prototype, "globe", 2);
 e([
-  h()
+  n()
 ], t.prototype, "animationPhi", 2);
 e([
-  h()
+  n()
 ], t.prototype, "containerWidth", 2);
 e([
-  h()
+  n()
 ], t.prototype, "containerHeight", 2);
 e([
   l("canvas")
