@@ -11,7 +11,7 @@ import '../icon/icon';
 ## Example
 
 <div class="p-12 bg-preview rounded-xl flex justify-center">
-<ui-gallery grid-tablet="2" grid-desktop="2">
+<ui-gallery columns="2">
   <!-- Card 1 -->
   <ui-card data-categories="design,marketing" class="grid-item group hover:shadow-sm duration-300 ease-out rounded-xl relative overflow-hidden cursor-pointer">
     <img 

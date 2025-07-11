@@ -8,37 +8,14 @@ import '../button/button';
 
 type FilterItem = { id: string; label: string };
 
-enum Direction {
-  Up = 1,
-  Down,
-  Left,
-  Right
-}
-
 @customElement('ui-gallery')
 export class UIGallery extends LitElement {
   static styles = css`
     ${unsafeCSS(styles)}
   `;
 
-  @property({
-    type: Number,
-    attribute: 'grid-mobile'
-  })
   @property({ type: Number })
-  gridMobile = 2;
-
-  @property({
-    type: Number,
-    attribute: 'grid-tablet'
-  })
-  gridTablet = 3;
-
-  @property({
-    type: Number,
-    attribute: 'grid-desktop'
-  })
-  gridDesktop = 4;
+  columns = 4; // Desktop columns, will auto-scale down for smaller screens
 
   @property({ type: String })
   allLabel?: string;
@@ -50,19 +27,28 @@ export class UIGallery extends LitElement {
   private filters: FilterItem[] = [];
 
   get gridClasses(): string {
+    // Automatically scale down columns for smaller screens
+    const mobileColumns = Math.min(this.columns, 2); // Max 2 on mobile
+    const tabletColumns = Math.min(this.columns, 3); // Max 3 on tablet
+    const desktopColumns = this.columns; // Full columns on desktop
+
     const gridStyles = clsx({
-      'sm:grid-cols-2': this.gridMobile === 2,
-      'sm:grid-cols-3': this.gridMobile === 3,
-      'sm:grid-cols-4': this.gridMobile === 4,
-      'sm:grid-cols-5': this.gridMobile === 5,
-      'md:grid-cols-2': this.gridTablet === 2,
-      'md:grid-cols-3': this.gridTablet === 3,
-      'md:grid-cols-4': this.gridTablet === 4,
-      'md:grid-cols-5': this.gridTablet === 5,
-      'lg:grid-cols-2': this.gridDesktop === 2,
-      'lg:grid-cols-3': this.gridDesktop === 3,
-      'lg:grid-cols-4': this.gridDesktop === 4,
-      'lg:grid-cols-5': this.gridDesktop === 5
+      // Mobile (sm) - max 2 columns
+      'sm:grid-cols-1': mobileColumns === 1,
+      'sm:grid-cols-2': mobileColumns === 2,
+
+      // Tablet (md) - max 3 columns
+      'md:grid-cols-1': tabletColumns === 1,
+      'md:grid-cols-2': tabletColumns === 2,
+      'md:grid-cols-3': tabletColumns === 3,
+
+      // Desktop (lg) - user-specified columns
+      'lg:grid-cols-1': desktopColumns === 1,
+      'lg:grid-cols-2': desktopColumns === 2,
+      'lg:grid-cols-3': desktopColumns === 3,
+      'lg:grid-cols-4': desktopColumns === 4,
+      'lg:grid-cols-5': desktopColumns === 5,
+      'lg:grid-cols-6': desktopColumns === 6
     });
 
     return `grid grid-cols-1 ${gridStyles} gap-6`;
