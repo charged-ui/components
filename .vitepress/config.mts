@@ -35,13 +35,13 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Alert', link: '/components/alert/' },
-          { text: 'Avatar', link: '/components/avatar/' },
+          // { text: 'Avatar', link: '/components/avatar/' },
           { text: 'Button', link: '/components/button/' },
           { text: 'Card', link: '/components/card/' },
-          { text: 'Collapse', link: '/components/collapse/' },
+          // { text: 'Collapse', link: '/components/collapse/' },
           { text: 'Gallery', link: '/components/gallery/' },
           { text: 'Icon', link: '/components/icon/' },
-          { text: 'Progress', link: '/components/progress/' },
+          // { text: 'Progress', link: '/components/progress/' },
           { text: 'Stat', link: '/components/stat/' },
           { text: 'Text', link: '/components/text/' }
         ]
@@ -49,7 +49,10 @@ export default defineConfig({
       {
         text: 'Backgrounds',
         collapsed: false,
-        items: [{ text: 'Aurora', link: '/components/aurora' }]
+        items: [
+          { text: 'Aurora', link: '/components/aurora' },
+          { text: 'Ripple', link: '/components/ripple' }
+        ]
       }
     ],
 
