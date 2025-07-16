@@ -10,28 +10,40 @@ export interface GlobeMarker {
 
 @customElement('ui-globe')
 export class UIGlobe extends LitElement {
-  // Globe positioning
+  // Globe positioning - explicit attribute names for CMS compatibility
   @property({ type: Number }) phi = 0;
   @property({ type: Number }) theta = 0;
-  @property({ type: Number }) autoRotateSpeed = 0.01;
+  @property({ type: Number, attribute: 'auto-rotate-speed' }) autoRotateSpeed =
+    0.01;
 
-  // Visual styling
+  // Visual styling - explicit attribute names for multi-word properties
   @property({ type: Number }) dark = 1;
   @property({ type: Number }) diffuse = 1.2;
-  @property({ type: Number }) mapSamples = 16000;
-  @property({ type: Number }) mapBrightness = 6;
-  @property({ type: Array }) baseColor: [number, number, number] = [
-    0.3, 0.3, 0.3
-  ];
-  @property({ type: Array }) markerColor: [number, number, number] = [
-    0.1, 0.8, 1
-  ];
-  @property({ type: Array }) glowColor: [number, number, number] = [1, 1, 1];
+  @property({ type: Number, attribute: 'map-samples' }) mapSamples = 8000;
+  @property({ type: Number, attribute: 'map-brightness' }) mapBrightness = 6;
+  @property({ type: Array, attribute: 'base-color' }) baseColor: [
+    number,
+    number,
+    number
+  ] = [0.3, 0.3, 0.3];
+  @property({ type: Array, attribute: 'marker-color' }) markerColor: [
+    number,
+    number,
+    number
+  ] = [0.1, 0.8, 1];
+  @property({ type: Array, attribute: 'glow-color' }) glowColor: [
+    number,
+    number,
+    number
+  ] = [1, 1, 1];
 
   // Scaling and positioning
-  @property({ type: Number }) aspectRatio = 1; // width/height ratio
+  @property({ type: Number, attribute: 'aspect-ratio' }) aspectRatio = 1;
   @property({ type: Number }) scale = 1;
   @property({ type: Array }) offset: [number, number] = [0, 0];
+
+  // Size control - new property
+  @property({ type: Number }) size = 400;
 
   // Interactive elements
   @property({ type: Array }) markers: GlobeMarker[] = [];
@@ -41,6 +53,7 @@ export class UIGlobe extends LitElement {
   @state() private animationPhi = 0;
   @state() private containerWidth = 0;
   @state() private containerHeight = 0;
+  @state() private scaledOffset: [number, number] = [0, 0];
 
   @query('canvas') private canvas!: HTMLCanvasElement;
   @query('.globe-container') private container!: HTMLElement;
@@ -49,9 +62,11 @@ export class UIGlobe extends LitElement {
     ${unsafeCSS(styles)}
     :host {
       display: block;
-      width: 100%;
+      width: var(--globe-size, 100%);
       min-width: 200px;
-      max-width: 800px;
+      max-width: var(--globe-max-size, 800px);
+      /* Ensure the component itself can scale down */
+      max-width: min(var(--globe-max-size, 800px), 100vw);
     }
 
     .globe-container {
@@ -72,6 +87,7 @@ export class UIGlobe extends LitElement {
   `;
 
   firstUpdated() {
+    this.updateSizeStyles();
     this.updateAspectRatio();
     this.updateContainerSize();
     this.initializeGlobe();
@@ -85,10 +101,35 @@ export class UIGlobe extends LitElement {
     }, 100);
   }
 
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('size')) {
+      this.updateSizeStyles();
+      // Recalculate scaled offset when size changes
+      this.updateContainerSize();
+    }
+    if (changedProperties.has('aspectRatio')) {
+      this.updateAspectRatio();
+    }
+    if (changedProperties.has('offset')) {
+      // Recalculate scaled offset when offset changes
+      this.updateContainerSize();
+    }
+  }
+
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.globe) {
       this.globe.destroy?.();
+    }
+  }
+
+  private updateSizeStyles() {
+    if (this.size > 0) {
+      this.style.setProperty('--globe-size', `${this.size}px`);
+      this.style.setProperty('--globe-max-size', `${this.size}px`);
+    } else {
+      this.style.removeProperty('--globe-size');
+      this.style.removeProperty('--globe-max-size');
     }
   }
 
@@ -102,6 +143,42 @@ export class UIGlobe extends LitElement {
     const containerRect = this.container.getBoundingClientRect();
     this.containerWidth = containerRect.width;
     this.containerHeight = containerRect.height;
+
+    // Calculate scaled offset based on container size vs intended size
+    if (this.size > 0) {
+      const scaleFactor = this.containerWidth / this.size;
+      let scaledX = this.offset[0] * scaleFactor;
+      let scaledY = this.offset[1] * scaleFactor;
+
+      // Calculate the intended globe size at the original dimensions
+      const intendedGlobeHeight = this.size / this.aspectRatio;
+
+      // Calculate what percentage of the globe the original offset represents
+      const offsetPercentageX = this.offset[0] / this.size;
+      const offsetPercentageY = this.offset[1] / intendedGlobeHeight;
+
+      // For responsive behavior, maintain the same visual relationship
+      // but ensure the globe doesn't get pushed completely out of view
+
+      // If the offset would push more than 90% of the globe out of view,
+      // cap it to show at least 10% of the globe
+      const maxHiddenX = this.containerWidth * 0.9;
+      const maxHiddenY = this.containerHeight * 0.9;
+
+      // Apply the caps while trying to maintain the visual intent
+      if (Math.abs(scaledY) > maxHiddenY) {
+        // Maintain the direction but cap the amount
+        scaledY = Math.sign(scaledY) * maxHiddenY;
+      }
+
+      if (Math.abs(scaledX) > maxHiddenX) {
+        scaledX = Math.sign(scaledX) * maxHiddenX;
+      }
+
+      this.scaledOffset = [scaledX, scaledY];
+    } else {
+      this.scaledOffset = [...this.offset];
+    }
   }
 
   private setupResizeObserver() {
@@ -109,22 +186,9 @@ export class UIGlobe extends LitElement {
 
     const resizeObserver = new ResizeObserver(() => {
       this.updateContainerSize();
-      this.updateGlobeSize();
     });
 
     resizeObserver.observe(this.container);
-  }
-
-  private updateGlobeSize() {
-    if (!this.globe || !this.containerWidth || !this.containerHeight) return;
-
-    // Update globe configuration with new dimensions
-    this.globe.updateConfig({
-      width: this.containerWidth * 2,
-      height: this.containerHeight * 2,
-      scale: this.scale,
-      offset: this.offset
-    });
   }
 
   private initializeGlobe() {
@@ -147,7 +211,7 @@ export class UIGlobe extends LitElement {
       glowColor: this.glowColor,
       markers: this.markers,
       scale: this.scale,
-      offset: this.offset,
+      offset: this.scaledOffset,
       onRender: (state: any) => {
         this.animationPhi += this.autoRotateSpeed;
         state.phi = this.animationPhi;
@@ -156,43 +220,6 @@ export class UIGlobe extends LitElement {
         state.height = this.containerHeight * 2;
       }
     });
-  }
-
-  updated(changedProperties: Map<string | number | symbol, unknown>) {
-    if (changedProperties.has('aspectRatio')) {
-      this.updateAspectRatio();
-    }
-
-    if (changedProperties.has('scale') || changedProperties.has('offset')) {
-      this.updateGlobeSize();
-    }
-
-    // Update globe properties that don't require recreation
-    if (this.globe) {
-      const globeProps = [
-        'phi',
-        'theta',
-        'dark',
-        'diffuse',
-        'mapSamples',
-        'mapBrightness',
-        'baseColor',
-        'markerColor',
-        'glowColor',
-        'markers',
-        'autoRotateSpeed'
-      ];
-
-      const shouldUpdate = globeProps.some((prop) =>
-        changedProperties.has(prop)
-      );
-
-      if (shouldUpdate) {
-        // For most properties, we need to recreate the globe
-        this.globe.destroy?.();
-        this.initializeGlobe();
-      }
-    }
   }
 
   render() {
