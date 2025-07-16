@@ -61,3 +61,10 @@ declare global {
         'ui-modal': UIModal;
     }
 }
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ripple-component': RippleBackground;
+    }
+}
