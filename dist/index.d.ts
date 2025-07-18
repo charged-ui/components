@@ -58,7 +58,7 @@ declare global {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ripple-component': RippleBackground;
+        'ui-bg-meteors': MeteorsComponent;
     }
 }
 
@@ -66,5 +66,12 @@ declare global {
 declare global {
     interface HTMLElementTagNameMap {
         'ui-modal': UIModal;
+    }
+}
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ui-bg-ripple': RippleBackground;
     }
 }
