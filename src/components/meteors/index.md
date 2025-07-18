@@ -25,4 +25,4 @@ import './meteors';
 
 ## Credits
 
-https://magicui.design/docs/components/ripple
+https://magicui.design/docs/components/meteors
