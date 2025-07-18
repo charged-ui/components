@@ -51,13 +51,6 @@ export { }
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-combobox': UICombobox;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
         'ui-bg-meteors': MeteorsComponent;
     }
 }
@@ -73,5 +66,19 @@ declare global {
 declare global {
     interface HTMLElementTagNameMap {
         'ui-bg-ripple': RippleBackground;
+    }
+}
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ui-bg-dots': DotsBackground;
+    }
+}
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ui-combobox': UICombobox;
     }
 }
