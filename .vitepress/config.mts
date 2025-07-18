@@ -51,6 +51,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Aurora', link: '/components/aurora' },
+          { text: 'Meteors', link: '/components/meteors' },
           { text: 'Ripple', link: '/components/ripple' }
         ]
       }
