@@ -1,5 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
+import { safeCustomElement } from '../registry';
 import clsx from 'clsx';
 import styles from './avatar.css?raw';
 
@@ -11,7 +12,7 @@ export enum AvatarVariant {
   Info = 'info'
 }
 
-@customElement('ui-avatar')
+@safeCustomElement('ui-avatar')
 export class UIAvatar extends LitElement {
   @property({ type: AvatarVariant }) variant: AvatarVariant =
     AvatarVariant.Info;

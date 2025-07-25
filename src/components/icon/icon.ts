@@ -1,9 +1,10 @@
 import { LitElement, css, unsafeCSS } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+import { safeCustomElement } from '../registry';
 import styles from './icon.css?raw';
 
-@customElement('ui-icon')
+@safeCustomElement('ui-icon')
 export class UIIcon extends LitElement {
   @property({ type: String }) name?: string; // The icon name, e.g., "arrow-right"
   @property({ type: String }) variant: 'outline' | 'solid' = 'outline'; // Heroicons type
