@@ -1,6 +1,6 @@
 import { LitElement, html, css, PropertyValues, unsafeCSS } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from './meteors.css?raw';
 
 interface MeteorStyle {
@@ -11,7 +11,7 @@ interface MeteorStyle {
   animationDuration: string;
 }
 
-@safeCustomElement('ui-bg-meteors')
+@chargedCustomElement('ui-bg-meteors')
 export class MeteorsComponent extends LitElement {
   @property({ type: Number }) number = 20;
   @property({ type: Number }) minDelay = 0.2;

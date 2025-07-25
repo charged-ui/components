@@ -1,6 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import createGlobe from 'cobe';
 import styles from './globe.css?raw';
 
@@ -9,7 +9,7 @@ export interface GlobeMarker {
   size: number;
 }
 
-@safeCustomElement('ui-globe')
+@chargedCustomElement('ui-globe')
 export class UIGlobe extends LitElement {
   // Globe positioning - explicit attribute names for CMS compatibility
   @property({ type: Number }) phi = 0;

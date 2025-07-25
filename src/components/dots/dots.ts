@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 
-@safeCustomElement('ui-bg-dots')
+@chargedCustomElement('ui-bg-dots')
 export class DotsBackground extends LitElement {
   static styles = css`
     :host {

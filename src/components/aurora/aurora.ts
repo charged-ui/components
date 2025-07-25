@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 
-@safeCustomElement('ui-bg-aurora')
+@chargedCustomElement('ui-bg-aurora')
 export class AuroraBackground extends LitElement {
   @property({ type: Boolean })
   showRadialGradient = true;

@@ -51,21 +51,7 @@ export { }
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-bg-meteors': MeteorsComponent;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-modal': UIModal;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
+        'ui-combobox': UICombobox;
     }
 }
 
@@ -79,6 +65,20 @@ declare global {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-combobox': UICombobox;
+        'ui-modal': UIModal;
+    }
+}
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ui-bg-meteors': MeteorsComponent;
+    }
+}
+
+
+declare global {
+    interface HTMLElementTagNameMap {
+        'ui-bg-ripple': RippleBackground;
     }
 }

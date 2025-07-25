@@ -1,6 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import clsx from 'clsx';
 import styles from './alert.css?raw';
 
@@ -12,7 +12,7 @@ export enum AlertVariant {
   Info = 'info'
 }
 
-@safeCustomElement('ui-alert')
+@chargedCustomElement('ui-alert')
 export class UIAlert extends LitElement {
   @property({ type: AlertVariant }) variant: AlertVariant = AlertVariant.Info;
 

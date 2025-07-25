@@ -1,10 +1,10 @@
 import { LitElement, css, html, unsafeCSS } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import clsx from 'clsx';
 import styles from './combobox.css?raw';
 
-@safeCustomElement('ui-combobox')
+@chargedCustomElement('ui-combobox')
 export class UICombobox extends LitElement {
   @property({ type: String }) placeholder: string = 'Search for anything';
   @state() private currentFocus: number = -1;

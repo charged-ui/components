@@ -1,9 +1,9 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from './card.css?raw';
 
-@safeCustomElement('ui-card')
+@chargedCustomElement('ui-card')
 export class UICard extends LitElement {
   @property({ type: String }) variant?: string;
 

@@ -1,7 +1,7 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import clsx from 'clsx';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from './text.css?raw';
 
 export enum TextVariant {
@@ -39,7 +39,7 @@ export enum TextAlignment {
 //   Wavy = 'wavy'
 // }
 
-@safeCustomElement('ui-text')
+@chargedCustomElement('ui-text')
 export class UIText extends LitElement {
   @property({ type: TextVariant }) variant: TextVariant = TextVariant.MD;
   @property({ type: TextAlignment }) align: TextAlignment = TextAlignment.LEFT;

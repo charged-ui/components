@@ -2,11 +2,11 @@ import { html, css, unsafeCSS } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { animate, inView } from 'motion';
 import clsx from 'clsx';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from '../text/text.css?raw';
 import { UIText, variantClasses } from '../text/text';
 
-@safeCustomElement('ui-stat')
+@chargedCustomElement('ui-stat')
 export class UIStat extends UIText {
   @property({ type: Number }) start = 0;
   @property({ type: Number }) end = 0;

@@ -1,6 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from './icon-selector.css?raw';
 
 // Define interface for icon objects
@@ -15,7 +15,7 @@ interface HeroIcon {
 // Create a type declaration for the JSON import
 import flattenedHeroicons from './heroicons-flattened.json';
 
-@safeCustomElement('ui-icon-selector')
+@chargedCustomElement('ui-icon-selector')
 export class UIIconSelector extends LitElement {
   @property({ type: Array }) icons: HeroIcon[] = [];
   @property({ type: String }) selectedIcon: string = '';

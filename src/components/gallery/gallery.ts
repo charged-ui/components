@@ -1,6 +1,6 @@
 import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property, state } from 'lit/decorators.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import { animate, stagger } from 'motion';
 import clsx from 'clsx';
 import styles from './gallery.css?raw';
@@ -9,7 +9,7 @@ import '../button/button';
 
 type FilterItem = { id: string; label: string };
 
-@safeCustomElement('ui-gallery')
+@chargedCustomElement('ui-gallery')
 export class UIGallery extends LitElement {
   static styles = css`
     ${unsafeCSS(styles)}

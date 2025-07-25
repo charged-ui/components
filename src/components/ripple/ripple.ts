@@ -2,10 +2,10 @@ import { LitElement, html, css, CSSResultGroup, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { repeat } from 'lit/directives/repeat.js';
-import { safeCustomElement } from '../registry';
+import { chargedCustomElement } from '../registry';
 import styles from './ripple.css?raw';
 
-@safeCustomElement('ui-bg-ripple')
+@chargedCustomElement('ui-bg-ripple')
 export class RippleBackground extends LitElement {
   @property({ type: Number })
   mainCircleSize = 210;
