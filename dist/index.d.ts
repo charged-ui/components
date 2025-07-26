@@ -72,13 +72,13 @@ declare global {
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
+        'ui-modal': UIModal;
     }
 }
 
 
 declare global {
     interface HTMLElementTagNameMap {
-        'ui-modal': UIModal;
+        'ui-bg-ripple': RippleBackground;
     }
 }
