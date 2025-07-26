@@ -1,10 +1,11 @@
-import { r as l, a as c, n as o, e as m, c as d, k as h, t as y } from "./vendor.js";
-import { s as f, U as v, v as b } from "./text-Bsuq1Gj9.js";
+import { r as m, a as l, n as i, e as c, c as d, k as h } from "./vendor.js";
+import { c as f } from "./registry-CBck5F9C.js";
+import { s as y, U as v, v as b } from "./text-dWhO7fvs.js";
 import { i as N, a as x } from "./motion.js";
-var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, n, i) => {
-  for (var e = i > 1 ? void 0 : i ? O(a, n) : a, p = s.length - 1, u; p >= 0; p--)
-    (u = s[p]) && (e = (i ? u(a, n, e) : u(e)) || e);
-  return i && e && _(a, n, e), e;
+var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, n, o) => {
+  for (var e = o > 1 ? void 0 : o ? O(a, n) : a, p = s.length - 1, u; p >= 0; p--)
+    (u = s[p]) && (e = (o ? u(a, n, e) : u(e)) || e);
+  return o && e && _(a, n, e), e;
 };
 let t = class extends v {
   constructor() {
@@ -32,26 +33,26 @@ let t = class extends v {
     `;
   }
 };
-t.styles = c`
-    ${l(f)}
+t.styles = l`
+    ${m(y)}
   `;
 r([
-  o({ type: Number })
+  i({ type: Number })
 ], t.prototype, "start", 2);
 r([
-  o({ type: Number })
+  i({ type: Number })
 ], t.prototype, "end", 2);
 r([
-  o({ type: Number })
+  i({ type: Number })
 ], t.prototype, "duration", 2);
 r([
-  o({ type: Number })
+  i({ type: Number })
 ], t.prototype, "delay", 2);
 r([
-  m(".counter")
+  c(".counter")
 ], t.prototype, "counter", 2);
 t = r([
-  y("ui-stat")
+  f("ui-stat")
 ], t);
 export {
   t as UIStat
