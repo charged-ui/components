@@ -1,7 +1,8 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
+import { chargedCustomElement } from '../registry';
 
-@customElement('ui-modal')
+@chargedCustomElement('ui-modal')
 export class UIModal extends LitElement {
   @property({ type: Boolean, reflect: true }) isOpen = false;
   @property({ type: String }) title = '';
