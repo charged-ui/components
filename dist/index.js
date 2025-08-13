@@ -13,7 +13,7 @@ import { MeteorsComponent as A } from "./meteors.js";
 import { UIModal as M } from "./modal.js";
 import { RippleBackground as y } from "./ripple.js";
 import { UIStat as R } from "./stat.js";
-import { U as h } from "./text-CcSUFUXZ.js";
+import { U as h } from "./text-BO4etHbR.js";
 export {
   m as AuroraBackground,
   c as DotsBackground,

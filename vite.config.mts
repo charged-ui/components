@@ -11,19 +11,20 @@ const getComponentEntries = () => {
   );
 
   const entries = {
-    // IMPORTANT: Main entry that will create index.js
+    // Main index entry
     index: resolve(__dirname, 'src/components/index.ts')
   };
 
-  // Add individual component entries
   componentFolders.forEach((folder) => {
-    const componentPath = resolve(componentsDir, folder, `${folder}.ts`);
-    if (fs.existsSync(componentPath)) {
-      entries[folder] = componentPath;
-    }
+    const componentFiles = readdirSync(resolve(componentsDir, folder)).filter(
+      (file) => file.endsWith('.ts')
+    );
+    componentFiles.forEach((file) => {
+      const name = path.basename(file, '.ts');
+      entries[name] = resolve(componentsDir, folder, file);
+    });
   });
 
-  console.log('Entry points:', entries); // Debug log
   return entries;
 };
 
@@ -42,28 +43,38 @@ export default defineConfig({
   build: {
     lib: {
       entry: getComponentEntries(),
-      formats: ['es']
+      formats: ['es', 'cjs'] // Add CommonJS format
     },
     outDir: 'dist',
     rollupOptions: {
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'cobe') return 'cobe.js';
-          if (chunkInfo.name === 'motion') return 'motion.js';
-          if (chunkInfo.name === 'vendor') return 'vendor.js';
-          return '[name]-[hash].js';
-        },
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('cobe')) return 'cobe';
-            if (id.includes('motion') || id.includes('framer-motion'))
-              return 'motion';
-            return 'vendor';
+      input: getComponentEntries(),
+      external: ['lit', 'motion'], // Mark peer dependencies as external
+      output: [
+        {
+          format: 'es',
+          entryFileNames: '[name].js',
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'cobe') return 'cobe.js';
+            if (chunkInfo.name === 'motion') return 'motion.js';
+            if (chunkInfo.name === 'vendor') return 'vendor.js';
+            return '[name]-[hash].js';
+          },
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('cobe')) return 'cobe';
+              if (id.includes('motion') || id.includes('framer-motion'))
+                return 'motion';
+              return 'vendor';
+            }
+            return undefined;
           }
-          return undefined;
+        },
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          exports: 'named'
         }
-      }
+      ]
     }
   }
 });

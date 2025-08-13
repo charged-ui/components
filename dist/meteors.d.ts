@@ -18,35 +18,16 @@ export declare class MeteorsComponent extends LitElement {
     render(): TemplateResult<1>;
 }
 
+export declare interface UIMeteorsProps {
+    number?: number;
+    minDelay?: number;
+    maxDelay?: number;
+    minDuration?: number;
+    maxDuration?: number;
+    angle?: number;
+}
+
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-combobox': UICombobox;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-meteors': MeteorsComponent;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-dots': DotsBackground;
-    }
-}
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-modal': UIModal;
-    }
-}
 
 
 declare global {

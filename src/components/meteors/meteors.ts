@@ -11,6 +11,15 @@ interface MeteorStyle {
   animationDuration: string;
 }
 
+export interface UIMeteorsProps {
+  number?: number;
+  minDelay?: number;
+  maxDelay?: number;
+  minDuration?: number;
+  maxDuration?: number;
+  angle?: number;
+}
+
 @chargedCustomElement('ui-bg-meteors')
 export class MeteorsComponent extends LitElement {
   @property({ type: Number }) number = 20;
@@ -114,11 +123,5 @@ export class MeteorsComponent extends LitElement {
         `
       )}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-bg-meteors': MeteorsComponent;
   }
 }

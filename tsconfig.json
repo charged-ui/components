@@ -20,7 +20,8 @@
   "include": [
     "src/vite-env.d.ts",
     "src/components/**/*.ts",
-    "src/backgrounds/**/*.ts"
+    "src/backgrounds/**/*.ts",
+    "src/types.d.ts"
   ], // Include all TypeScript files in src/ui
   "exclude": ["node_modules", "dist"] // Exclude these directories
 }
