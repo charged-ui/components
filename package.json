@@ -13,6 +13,9 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./types": {
+      "types": "./dist/index.d.ts"
+    },
     "./alert": {
       "types": "./dist/alert.d.ts",
       "import": "./dist/alert.js",
