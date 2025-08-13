@@ -1,92 +1,87 @@
-# Components
+# Welcome to React Router!
 
-## Publishing components
+A modern, production-ready template for building full-stack React applications using React Router.
 
-To publish your Lit component library to npm, you need to follow these steps:
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-### 1. Create an npm Account
+## Features
 
-If you don't have an npm account yet, create one at [npmjs.com](https://www.npmjs.com/signup).
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
 
-### 2. Login to npm
+## Getting Started
 
-Login to your npm account from your terminal:
+### Installation
+
+Install the dependencies:
 
 ```bash
-npm login
+npm install
 ```
 
-You'll be prompted to enter your username, password, and email.
+### Development
 
-### 3. Prepare Your Package for Publishing
+Start the development server with HMR:
 
-Ensure your `package.json` is correctly configured. Here’s an example:
-
-#### `package.json`
-
-```json
-{
-  "name": "my-lit-component-library",
-  "version": "1.0.0",
-  "description": "A library of Lit components",
-  "main": "dist/my-component-library.js",
-  "types": "dist/types/index.d.ts",
-  "scripts": {
-    "build": "rollup -c"
-  },
-  "keywords": ["lit", "web-components", "library"],
-  "author": "Your Name",
-  "license": "MIT",
-  "files": ["dist/**/*"],
-  "devDependencies": {
-    "rollup": "^2.52.3",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "@rollup/plugin-typescript": "^8.2.1",
-    "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "lit": "^2.0.0"
-  }
-}
+```bash
+npm run dev
 ```
 
-### 4. Build Your Library
+Your application will be available at `http://localhost:5173`.
 
-Make sure your library is built and ready to publish:
+## Building for Production
+
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-### 5. Publishing Your Library
+## Deployment
 
-To publish your library to npm, run the following command:
+### Docker Deployment
 
-```bash
-npm publish --access public
-```
-
-If you are publishing a scoped package (e.g., `@your-username/my-lit-component-library`), you need to add `--access public` to ensure it's publicly accessible.
-
-### 6. Update Your Library
-
-When you make changes to your library, increment the version number in `package.json` according to [semantic versioning](https://semver.org/), rebuild your library, and publish it again:
+To build and run using Docker:
 
 ```bash
-npm version patch  # or minor, major
-npm run build
-npm publish
+docker build -t my-app .
+
+# Run the container
+docker run -p 3000:3000 my-app
 ```
 
-### 7. Prerelease versioning
+The containerized application can be deployed to any platform that supports Docker, including:
 
-To version a prerelease, run the following command:
+- AWS ECS
+- Google Cloud Run
+- Azure Container Apps
+- Digital Ocean App Platform
+- Fly.io
+- Railway
 
-```bash
-npm version prerelease --preid alpha
+### DIY Deployment
+
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+```
+├── package.json
+├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
 ```
 
-### Summary
+## Styling
 
-By following these steps, you can publish your Lit component library to npm, making it available for others to use. Ensure your `package.json` is correctly configured, build your library, and use the `npm publish` command to publish your package.
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+---
+
+Built with ❤️ using React Router.
