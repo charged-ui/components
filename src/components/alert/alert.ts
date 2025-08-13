@@ -4,12 +4,15 @@ import { chargedCustomElement } from '../registry';
 import clsx from 'clsx';
 import styles from './alert.css?raw';
 
-// Define an enum for the variants
 export enum AlertVariant {
   Success = 'success',
   Error = 'error',
   Warning = 'warning',
   Info = 'info'
+}
+
+export interface AlertElement {
+  variant?: AlertVariant;
 }
 
 @chargedCustomElement('ui-alert')

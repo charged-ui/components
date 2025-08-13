@@ -73,9 +73,3 @@ export class DotsBackground extends LitElement {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-bg-dots': DotsBackground;
-  }
-}

@@ -89,9 +89,3 @@ export class UICombobox extends LitElement {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-combobox': UICombobox;
-  }
-}
