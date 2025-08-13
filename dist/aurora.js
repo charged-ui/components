@@ -1,16 +1,17 @@
-import { a as d, n as c, h as g, k as u } from "./vendor.js";
+import { css as d, LitElement as c, html as g } from "lit";
+import { n as u } from "./vendor.js";
 import { c as b } from "./registry-CBck5F9C.js";
 var v = Object.defineProperty, p = Object.getOwnPropertyDescriptor, l = (s, r, i, e) => {
   for (var a = e > 1 ? void 0 : e ? p(r, i) : r, n = s.length - 1, o; n >= 0; n--)
     (o = s[n]) && (a = (e ? o(r, i, a) : o(a)) || a);
   return e && a && v(r, i, a), a;
 };
-let t = class extends g {
+let t = class extends c {
   constructor() {
     super(...arguments), this.showRadialGradient = !0;
   }
   render() {
-    return u`
+    return g`
       <div class="aurora-container">
         <div class="absolute inset-0 overflow-hidden">
           <div
@@ -150,7 +151,7 @@ t.styles = d`
     }
   `;
 l([
-  c({ type: Boolean })
+  u({ type: Boolean })
 ], t.prototype, "showRadialGradient", 2);
 t = l([
   b("ui-bg-aurora")

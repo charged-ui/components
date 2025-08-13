@@ -93,9 +93,3 @@ export class RippleBackground extends LitElement {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-bg-ripple': RippleBackground;
-  }
-}

@@ -1,10 +1,11 @@
+import "lit";
 import "./vendor.js";
 import "./registry-CBck5F9C.js";
-import { a as i, T as n, U as r, b as m, v as l } from "./text-dWhO7fvs.js";
+import { a as r, T as m, U as n, b as o, v as l } from "./text-BO4etHbR.js";
 export {
-  i as TextAlignment,
-  n as TextVariant,
-  r as UIText,
-  m as alignmentClasses,
+  r as TextAlignment,
+  m as TextVariant,
+  n as UIText,
+  o as alignmentClasses,
   l as variantClasses
 };

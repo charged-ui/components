@@ -1,9 +1,34 @@
 {
   "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.19",
+  "version": "1.0.3-alpha.25",
   "description": "A library of Lit components",
-  "main": "dist/lib.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./alert": "./dist/alert.js",
+    "./aurora": "./dist/aurora.js",
+    "./button": "./dist/button.js",
+    "./card": "./dist/card.js",
+    "./combobox": "./dist/combobox.js",
+    "./dots": "./dist/dots.js",
+    "./gallery": "./dist/gallery.js",
+    "./globe": "./dist/globe.js",
+    "./icon": "./dist/icon.js",
+    "./icon-selector": "./dist/icon-selector.js",
+    "./meteors": "./dist/meteors.js",
+    "./modal": "./dist/modal.js",
+    "./ripple": "./dist/ripple.js",
+    "./stat": "./dist/stat.js",
+    "./text": "./dist/text.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "run-p build:*",
     "build:css": "node tailwind.build.js",
@@ -20,9 +45,6 @@
   ],
   "author": "Theme Boutique",
   "license": "MIT",
-  "files": [
-    "dist/**/*"
-  ],
   "directories": {
     "doc": "www"
   },

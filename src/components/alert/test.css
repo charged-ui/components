@@ -1,0 +1,11 @@
+ui-alert {
+  @apply px-4;
+}
+
+ui-alert ::slotted([slot='heading']) {
+  font-weight: 600;
+}
+
+ui-alert ::slotted([slot='message']) {
+  font-size: 14px;
+}

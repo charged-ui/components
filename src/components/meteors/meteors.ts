@@ -11,6 +11,15 @@ interface MeteorStyle {
   animationDuration: string;
 }
 
+export interface UIMeteorsProps {
+  number?: number;
+  minDelay?: number;
+  maxDelay?: number;
+  minDuration?: number;
+  maxDuration?: number;
+  angle?: number;
+}
+
 @chargedCustomElement('ui-bg-meteors')
 export class MeteorsComponent extends LitElement {
   @property({ type: Number }) number = 20;
@@ -27,6 +36,8 @@ export class MeteorsComponent extends LitElement {
 
     :host {
       display: block;
+      position: relative;
+      overflow: hidden;
     }
 
     @keyframes meteor {
@@ -45,6 +56,11 @@ export class MeteorsComponent extends LitElement {
 
     .meteor {
       animation: meteor linear infinite;
+    }
+
+    .content-slot {
+      position: relative;
+      z-index: 1;
     }
   `;
 
@@ -101,14 +117,11 @@ export class MeteorsComponent extends LitElement {
               class="pointer-events-none absolute top-1/2 -z-10 h-px w-12 -translate-y-1/2 bg-gradient-to-r from-zinc-500 to-transparent"
             ></div>
           </span>
+          <div class="content-slot">
+            <slot></slot>
+          </div>
         `
       )}
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-bg-meteors': MeteorsComponent;
   }
 }

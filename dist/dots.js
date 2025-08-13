@@ -1,8 +1,8 @@
-import { a as l, h as d, k as c } from "./vendor.js";
+import { css as l, LitElement as d, html as c } from "lit";
 import { c as g } from "./registry-CBck5F9C.js";
-var p = Object.getOwnPropertyDescriptor, b = (a, r, s, n) => {
-  for (var t = n > 1 ? void 0 : n ? p(r, s) : r, e = a.length - 1, i; e >= 0; e--)
-    (i = a[e]) && (t = i(t) || t);
+var p = Object.getOwnPropertyDescriptor, b = (r, a, s, n) => {
+  for (var t = n > 1 ? void 0 : n ? p(a, s) : a, e = r.length - 1, i; e >= 0; e--)
+    (i = r[e]) && (t = i(t) || t);
   return t;
 };
 let o = class extends d {

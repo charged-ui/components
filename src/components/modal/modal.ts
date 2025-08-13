@@ -193,9 +193,3 @@ export class UIModal extends LitElement {
     return html``;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'ui-modal': UIModal;
-  }
-}

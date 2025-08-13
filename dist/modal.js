@@ -1,11 +1,12 @@
-import { a as c, n as d, b as p, h, k as u } from "./vendor.js";
+import { css as c, LitElement as p, html as h } from "lit";
+import { n as d, r as u } from "./vendor.js";
 import { c as m } from "./registry-CBck5F9C.js";
 var C = Object.defineProperty, _ = Object.getOwnPropertyDescriptor, a = (e, n, r, l) => {
   for (var t = l > 1 ? void 0 : l ? _(n, r) : n, s = e.length - 1, o; s >= 0; s--)
     (o = e[s]) && (t = (l ? o(n, r, t) : o(t)) || t);
   return l && t && C(n, r, t), t;
 };
-let i = class extends h {
+let i = class extends p {
   constructor() {
     super(...arguments), this.isOpen = !1, this.title = "", this.closeOnBackdrop = !0, this.closeOnEscape = !0, this.size = "md", this._portalContainer = null, this._handleKeydown = (e) => {
       e.key === "Escape" && this.isOpen && this.close();
@@ -81,7 +82,7 @@ let i = class extends h {
     }), n.appendChild(r), e.appendChild(n), this._portalContainer.innerHTML = "", this._portalContainer.appendChild(e);
   }
   render() {
-    return u``;
+    return h``;
   }
 };
 i.styles = c`
@@ -105,7 +106,7 @@ a([
   d({ type: String })
 ], i.prototype, "size", 2);
 a([
-  p()
+  u()
 ], i.prototype, "_portalContainer", 2);
 i = a([
   m("ui-modal")
