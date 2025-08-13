@@ -1,10 +1,17 @@
 {
   "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.23",
+  "version": "1.0.3-alpha.22",
   "description": "A library of Lit components",
-  "main": "src/components/index.ts",
-  "module": "src/components/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./alert": "./dist/alert.js"
+  },
   "files": [
     "dist/**/*"
   ],
@@ -32,6 +39,7 @@
     "motion": "^12.4.3"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "cobe": "^0.6.4",
