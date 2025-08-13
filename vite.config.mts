@@ -31,7 +31,8 @@ export default defineConfig({
   plugins: [
     dts({
       rollupTypes: true,
-      include: ['src/components/**/*.ts', 'src/vite-env.d.ts']
+      include: ['src/components/**/*.ts', 'src/vite-env.d.ts'],
+      logLevel: 'warn'
     })
   ],
   define: {
@@ -42,13 +43,14 @@ export default defineConfig({
   build: {
     lib: {
       entry: getComponentEntries(),
-      formats: ['es'] // Add CommonJS format
+      formats: ['es', 'cjs'] // Add both ES modules and CommonJS
     },
     outDir: 'dist',
     rollupOptions: {
       input: getComponentEntries(),
       external: ['lit', 'motion'], // Mark peer dependencies as external
       output: [
+        // ES Module output
         {
           format: 'es',
           entryFileNames: '[name].js',
@@ -57,6 +59,26 @@ export default defineConfig({
             if (chunkInfo.name === 'motion') return 'motion.js';
             if (chunkInfo.name === 'vendor') return 'vendor.js';
             return '[name]-[hash].js';
+          },
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('cobe')) return 'cobe';
+              if (id.includes('motion') || id.includes('framer-motion'))
+                return 'motion';
+              return 'vendor';
+            }
+            return undefined;
+          }
+        },
+        // CommonJS output
+        {
+          format: 'cjs',
+          entryFileNames: '[name].cjs',
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'cobe') return 'cobe.cjs';
+            if (chunkInfo.name === 'motion') return 'motion.cjs';
+            if (chunkInfo.name === 'vendor') return 'vendor.cjs';
+            return '[name]-[hash].cjs';
           },
           manualChunks: (id) => {
             if (id.includes('node_modules')) {

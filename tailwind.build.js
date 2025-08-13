@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const { exec } = require('child_process');
-const chokidar = require('chokidar');
-const glob = require('glob');
+import fs from 'fs';
+import path from 'path';
+import { exec } from 'child_process';
+import chokidar from 'chokidar';
+import { glob } from 'glob';
 
 // Function to generate TailwindCSS for a specific Lit component
 const buildCSSForComponent = (componentPath) => {
@@ -33,7 +33,7 @@ const buildCSSForComponent = (componentPath) => {
       }
 
       fs.unlinkSync(tempConfigPath);
-      console.log(`Generated CSS for ${componentPath} at ${outputPath}`);
+      // console.log(`Generated CSS for ${componentPath} at ${outputPath}`);
     }
   );
 };
@@ -54,7 +54,6 @@ const args = process.argv.slice(2);
 if (args.includes('--watch')) {
   watchCSS();
 } else {
-  glob
-    .sync('./src/components/*/*.ts', './src/components/*/*.md')
-    .forEach(buildCSSForComponent);
+  const files = await glob('./src/components/*/*.ts');
+  files.forEach(buildCSSForComponent);
 }
