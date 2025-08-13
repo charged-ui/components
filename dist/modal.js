@@ -1,4 +1,4 @@
-import { a as c, n as d, b as p, h, k as u } from "./vendor.js";
+import { a as c, n as d, r as p, h, k as u } from "./vendor.js";
 import { c as m } from "./registry-CBck5F9C.js";
 var C = Object.defineProperty, _ = Object.getOwnPropertyDescriptor, a = (e, n, r, l) => {
   for (var t = l > 1 ? void 0 : l ? _(n, r) : n, s = e.length - 1, o; s >= 0; s--)

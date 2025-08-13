@@ -1,4 +1,4 @@
-import { r as g, a as w, n as c, b as p, h, c as u, k as d } from "./vendor.js";
+import { b as g, a as w, n as c, r as p, h, c as u, k as d } from "./vendor.js";
 import { c as f } from "./registry-CBck5F9C.js";
 import "./button.js";
 import { a as b, s as y } from "./motion.js";

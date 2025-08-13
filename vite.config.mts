@@ -10,17 +10,20 @@ const getComponentEntries = () => {
     fs.statSync(resolve(componentsDir, file)).isDirectory()
   );
 
-  const entries = {};
+  const entries = {
+    // IMPORTANT: Main entry that will create index.js
+    index: resolve(__dirname, 'src/components/index.ts')
+  };
+
+  // Add individual component entries
   componentFolders.forEach((folder) => {
-    const componentFiles = readdirSync(resolve(componentsDir, folder)).filter(
-      (file) => file.endsWith('.ts')
-    );
-    componentFiles.forEach((file) => {
-      const name = path.basename(file, '.ts');
-      entries[name] = resolve(componentsDir, folder, file);
-    });
+    const componentPath = resolve(componentsDir, folder, `${folder}.ts`);
+    if (fs.existsSync(componentPath)) {
+      entries[folder] = componentPath;
+    }
   });
 
+  console.log('Entry points:', entries); // Debug log
   return entries;
 };
 
@@ -38,12 +41,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: 'src/components/index.ts',
+      entry: getComponentEntries(),
       formats: ['es']
     },
     outDir: 'dist',
     rollupOptions: {
-      input: getComponentEntries(),
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: (chunkInfo) => {
@@ -53,14 +55,12 @@ export default defineConfig({
           return '[name]-[hash].js';
         },
         manualChunks: (id) => {
-          // Only chunk node_modules, keep your source code together
           if (id.includes('node_modules')) {
             if (id.includes('cobe')) return 'cobe';
             if (id.includes('motion') || id.includes('framer-motion'))
               return 'motion';
-            return 'vendor'; // Everything else from node_modules
+            return 'vendor';
           }
-          // Don't chunk your own source files - let them stay in their entry points
           return undefined;
         }
       }
