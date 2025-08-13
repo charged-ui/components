@@ -2,29 +2,92 @@
   "name": "@charged-ui/components",
   "version": "1.0.3-alpha.25",
   "description": "A library of Lit components",
-  "main": "dist/index.js",
+  "type": "module",
+  "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
-    "./alert": "./dist/alert.js",
-    "./aurora": "./dist/aurora.js",
-    "./button": "./dist/button.js",
-    "./card": "./dist/card.js",
-    "./combobox": "./dist/combobox.js",
-    "./dots": "./dist/dots.js",
-    "./gallery": "./dist/gallery.js",
-    "./globe": "./dist/globe.js",
-    "./icon": "./dist/icon.js",
-    "./icon-selector": "./dist/icon-selector.js",
-    "./meteors": "./dist/meteors.js",
-    "./modal": "./dist/modal.js",
-    "./ripple": "./dist/ripple.js",
-    "./stat": "./dist/stat.js",
-    "./text": "./dist/text.js"
+    "./alert": {
+      "types": "./dist/alert.d.ts",
+      "import": "./dist/alert.js",
+      "require": "./dist/alert.cjs"
+    },
+    "./aurora": {
+      "types": "./dist/aurora.d.ts",
+      "import": "./dist/aurora.js",
+      "require": "./dist/aurora.cjs"
+    },
+    "./button": {
+      "types": "./dist/button.d.ts",
+      "import": "./dist/button.js",
+      "require": "./dist/button.cjs"
+    },
+    "./card": {
+      "types": "./dist/card.d.ts",
+      "import": "./dist/card.js",
+      "require": "./dist/card.cjs"
+    },
+    "./combobox": {
+      "types": "./dist/combobox.d.ts",
+      "import": "./dist/combobox.js",
+      "require": "./dist/combobox.cjs"
+    },
+    "./dots": {
+      "types": "./dist/dots.d.ts",
+      "import": "./dist/dots.js",
+      "require": "./dist/dots.cjs"
+    },
+    "./gallery": {
+      "types": "./dist/gallery.d.ts",
+      "import": "./dist/gallery.js",
+      "require": "./dist/gallery.cjs"
+    },
+    "./globe": {
+      "types": "./dist/globe.d.ts",
+      "import": "./dist/globe.js",
+      "require": "./dist/globe.cjs"
+    },
+    "./icon": {
+      "types": "./dist/icon.d.ts",
+      "import": "./dist/icon.js",
+      "require": "./dist/icon.cjs"
+    },
+    "./icon-selector": {
+      "types": "./dist/icon-selector.d.ts",
+      "import": "./dist/icon-selector.js",
+      "require": "./dist/icon-selector.cjs"
+    },
+    "./meteors": {
+      "types": "./dist/meteors.d.ts",
+      "import": "./dist/meteors.js",
+      "require": "./dist/meteors.cjs"
+    },
+    "./modal": {
+      "types": "./dist/modal.d.ts",
+      "import": "./dist/modal.js",
+      "require": "./dist/modal.cjs"
+    },
+    "./ripple": {
+      "types": "./dist/ripple.d.ts",
+      "import": "./dist/ripple.js",
+      "require": "./dist/ripple.cjs"
+    },
+    "./stat": {
+      "types": "./dist/stat.d.ts",
+      "import": "./dist/stat.js",
+      "require": "./dist/stat.cjs"
+    },
+    "./text": {
+      "types": "./dist/text.d.ts",
+      "import": "./dist/text.js",
+      "require": "./dist/text.cjs"
+    }
   },
   "files": [
     "dist/**/*"
