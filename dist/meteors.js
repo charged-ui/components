@@ -1,4 +1,5 @@
-import { r as d, a as m, n, b as c, h, k as p } from "./vendor.js";
+import { unsafeCSS as m, css as d, LitElement as c, html as p } from "lit";
+import { n, r as h } from "./vendor.js";
 import { c as y } from "./registry-CBck5F9C.js";
 const g = "*,::backdrop,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#3b82f680;--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }.pointer-events-none{pointer-events:none}.static{position:static}.absolute{position:absolute}.relative{position:relative}.top-1\\/2{top:50%}.-z-10{z-index:-10}.block{display:block}.hidden{display:none}.h-0\\.5{height:.125rem}.h-px{height:1px}.w-0\\.5{width:.125rem}.w-12{width:3rem}.-translate-y-1\\/2{--tw-translate-y:-50%}.-translate-y-1\\/2,.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rounded-full{border-radius:9999px}.bg-zinc-500{--tw-bg-opacity:1;background-color:rgb(113 113 122/var(--tw-bg-opacity))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-zinc-500{--tw-gradient-from:#71717a var(--tw-gradient-from-position);--tw-gradient-to:#71717a00 var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:#0000 var(--tw-gradient-to-position)}.shadow-sm{--tw-shadow:0 1px 2px 0 #0000000d;--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}";
 var u = Object.defineProperty, b = Object.getOwnPropertyDescriptor, r = (t, e, s, i) => {
@@ -6,7 +7,7 @@ var u = Object.defineProperty, b = Object.getOwnPropertyDescriptor, r = (t, e, s
     (l = t[w]) && (o = (i ? l(e, s, o) : l(o)) || o);
   return i && o && u(e, s, o), o;
 };
-let a = class extends h {
+let a = class extends c {
   constructor() {
     super(...arguments), this.number = 20, this.minDelay = 0.2, this.maxDelay = 1.2, this.minDuration = 2, this.maxDuration = 10, this.angle = 60, this.meteorStyles = [];
   }
@@ -56,8 +57,8 @@ let a = class extends h {
     `;
   }
 };
-a.styles = m`
-    ${d(g)}
+a.styles = d`
+    ${m(g)}
 
     :host {
       display: block;
@@ -107,7 +108,7 @@ r([
   n({ type: Number })
 ], a.prototype, "angle", 2);
 r([
-  c()
+  h()
 ], a.prototype, "meteorStyles", 2);
 a = r([
   y("ui-bg-meteors")

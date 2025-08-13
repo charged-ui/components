@@ -10,7 +10,9 @@ const getComponentEntries = () => {
     fs.statSync(resolve(componentsDir, file)).isDirectory()
   );
 
-  const entries = {};
+  const entries = {
+    index: resolve(__dirname, 'src/components/index.ts')
+  };
 
   componentFolders.forEach((folder) => {
     const componentFiles = readdirSync(resolve(componentsDir, folder)).filter(
@@ -39,32 +41,34 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: 'src/components/index.ts',
-      formats: ['es']
+      entry: getComponentEntries(),
+      formats: ['es'] // Add CommonJS format
     },
     outDir: 'dist',
     rollupOptions: {
       input: getComponentEntries(),
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'cobe') return 'cobe.js';
-          if (chunkInfo.name === 'motion') return 'motion.js';
-          if (chunkInfo.name === 'vendor') return 'vendor.js';
-          return '[name]-[hash].js';
-        },
-        manualChunks: (id) => {
-          // Only chunk node_modules, keep your source code together
-          if (id.includes('node_modules')) {
-            if (id.includes('cobe')) return 'cobe';
-            if (id.includes('motion') || id.includes('framer-motion'))
-              return 'motion';
-            return 'vendor'; // Everything else from node_modules
+      external: ['lit', 'motion'], // Mark peer dependencies as external
+      output: [
+        {
+          format: 'es',
+          entryFileNames: '[name].js',
+          chunkFileNames: (chunkInfo) => {
+            if (chunkInfo.name === 'cobe') return 'cobe.js';
+            if (chunkInfo.name === 'motion') return 'motion.js';
+            if (chunkInfo.name === 'vendor') return 'vendor.js';
+            return '[name]-[hash].js';
+          },
+          manualChunks: (id) => {
+            if (id.includes('node_modules')) {
+              if (id.includes('cobe')) return 'cobe';
+              if (id.includes('motion') || id.includes('framer-motion'))
+                return 'motion';
+              return 'vendor';
+            }
+            return undefined;
           }
-          // Don't chunk your own source files - let them stay in their entry points
-          return undefined;
         }
-      }
+      ]
     }
   }
 });
