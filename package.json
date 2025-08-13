@@ -1,6 +1,6 @@
 {
   "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.25",
+  "version": "1.0.3-alpha.26",
   "description": "A library of Lit components",
   "type": "module",
   "main": "dist/index.cjs",
