@@ -1,6 +1,6 @@
 {
   "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.22",
+  "version": "1.0.3-alpha.23",
   "description": "A library of Lit components",
   "main": "src/components/index.ts",
   "module": "src/components/index.ts",
