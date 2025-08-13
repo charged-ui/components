@@ -2,30 +2,9 @@
   "name": "@charged-ui/components",
   "version": "1.0.3-alpha.22",
   "description": "A library of Lit components",
-  "main": "dist/index.js",
-  "module": "dist/index.cjs",
+  "main": "src/components/index.ts",
+  "module": "src/components/index.ts",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./alert": "./dist/alert.js",
-    "./aurora": "./dist/aurora.js",
-    "./button": "./dist/button.js",
-    "./card": "./dist/card.js",
-    "./combobox": "./dist/combobox.js",
-    "./dots": "./dist/dots.js",
-    "./gallery": "./dist/gallery.js",
-    "./globe": "./dist/globe.js",
-    "./icon": "./dist/icon.js",
-    "./icon-selector": "./dist/icon-selector.js",
-    "./meteors": "./dist/meteors.js",
-    "./modal": "./dist/modal.js",
-    "./ripple": "./dist/ripple.js",
-    "./stat": "./dist/stat.js",
-    "./text": "./dist/text.js"
-  },
   "files": [
     "dist/**/*"
   ],
@@ -53,7 +32,6 @@
     "motion": "^12.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "cobe": "^0.6.4",

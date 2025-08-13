@@ -10,10 +10,7 @@ const getComponentEntries = () => {
     fs.statSync(resolve(componentsDir, file)).isDirectory()
   );
 
-  const entries = {
-    // Main index entry
-    index: resolve(__dirname, 'src/components/index.ts')
-  };
+  const entries = {};
 
   componentFolders.forEach((folder) => {
     const componentFiles = readdirSync(resolve(componentsDir, folder)).filter(
@@ -42,39 +39,32 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: getComponentEntries(),
-      formats: ['es', 'cjs'] // Add CommonJS format
+      entry: 'src/components/index.ts',
+      formats: ['es']
     },
     outDir: 'dist',
     rollupOptions: {
       input: getComponentEntries(),
-      external: ['lit', 'motion'], // Mark peer dependencies as external
-      output: [
-        {
-          format: 'es',
-          entryFileNames: '[name].js',
-          chunkFileNames: (chunkInfo) => {
-            if (chunkInfo.name === 'cobe') return 'cobe.js';
-            if (chunkInfo.name === 'motion') return 'motion.js';
-            if (chunkInfo.name === 'vendor') return 'vendor.js';
-            return '[name]-[hash].js';
-          },
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              if (id.includes('cobe')) return 'cobe';
-              if (id.includes('motion') || id.includes('framer-motion'))
-                return 'motion';
-              return 'vendor';
-            }
-            return undefined;
-          }
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'cobe') return 'cobe.js';
+          if (chunkInfo.name === 'motion') return 'motion.js';
+          if (chunkInfo.name === 'vendor') return 'vendor.js';
+          return '[name]-[hash].js';
         },
-        {
-          format: 'cjs',
-          entryFileNames: '[name].cjs',
-          exports: 'named'
+        manualChunks: (id) => {
+          // Only chunk node_modules, keep your source code together
+          if (id.includes('node_modules')) {
+            if (id.includes('cobe')) return 'cobe';
+            if (id.includes('motion') || id.includes('framer-motion'))
+              return 'motion';
+            return 'vendor'; // Everything else from node_modules
+          }
+          // Don't chunk your own source files - let them stay in their entry points
+          return undefined;
         }
-      ]
+      }
     }
   }
 });

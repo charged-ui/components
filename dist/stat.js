@@ -1,59 +1,58 @@
-import { unsafeCSS as m, css as l, html as c } from "lit";
-import { n, e as d, c as f } from "./vendor.js";
-import { inView as h, animate as y } from "motion";
-import { c as v } from "./registry-CBck5F9C.js";
-import { s as b, U as N, v as x } from "./text-BO4etHbR.js";
-var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, s = (r, o, i, a) => {
-  for (var e = a > 1 ? void 0 : a ? O(o, i) : o, p = r.length - 1, u; p >= 0; p--)
-    (u = r[p]) && (e = (a ? u(o, i, e) : u(e)) || e);
-  return a && e && _(o, i, e), e;
+import { r as m, a as l, n as i, e as c, c as d, k as h } from "./vendor.js";
+import { c as f } from "./registry-CBck5F9C.js";
+import { s as y, U as v, v as b } from "./text-dWhO7fvs.js";
+import { i as N, a as x } from "./motion.js";
+var _ = Object.defineProperty, O = Object.getOwnPropertyDescriptor, r = (s, a, n, o) => {
+  for (var e = o > 1 ? void 0 : o ? O(a, n) : a, p = s.length - 1, u; p >= 0; p--)
+    (u = s[p]) && (e = (o ? u(a, n, e) : u(e)) || e);
+  return o && e && _(a, n, e), e;
 };
-let t = class extends N {
+let t = class extends v {
   constructor() {
     super(...arguments), this.start = 0, this.end = 0, this.duration = 2, this.delay = 0;
   }
   firstUpdated() {
-    h(this, () => (y(Number(this.start), Number(this.end), {
+    N(this, () => (x(Number(this.start), Number(this.end), {
       delay: Number(this.delay),
       duration: Number(this.duration),
       ease: "circOut",
-      onUpdate: (r) => {
-        this.counter && (this.counter.innerHTML = `${Math.round(r)}`);
+      onUpdate: (s) => {
+        this.counter && (this.counter.innerHTML = `${Math.round(s)}`);
       }
     }), () => {
     }));
   }
   render() {
-    const r = f("counter", x[this.variant]);
-    return c`
+    const s = d("counter", b[this.variant]);
+    return h`
       <div class="flex items-center">
         <slot name="prefix"></slot>
-        <span class="${r}">${this.end}</span>
+        <span class="${s}">${this.end}</span>
         <slot name="suffix"></slot>
       </div>
     `;
   }
 };
 t.styles = l`
-    ${m(b)}
+    ${m(y)}
   `;
-s([
-  n({ type: Number })
+r([
+  i({ type: Number })
 ], t.prototype, "start", 2);
-s([
-  n({ type: Number })
+r([
+  i({ type: Number })
 ], t.prototype, "end", 2);
-s([
-  n({ type: Number })
+r([
+  i({ type: Number })
 ], t.prototype, "duration", 2);
-s([
-  n({ type: Number })
+r([
+  i({ type: Number })
 ], t.prototype, "delay", 2);
-s([
-  d(".counter")
+r([
+  c(".counter")
 ], t.prototype, "counter", 2);
-t = s([
-  v("ui-stat")
+t = r([
+  f("ui-stat")
 ], t);
 export {
   t as UIStat
