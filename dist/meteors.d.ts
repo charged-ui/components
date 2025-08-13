@@ -28,10 +28,3 @@ export declare interface UIMeteorsProps {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

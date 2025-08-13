@@ -290,10 +290,3 @@ export declare class UIText extends LitElement {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

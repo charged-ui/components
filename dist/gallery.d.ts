@@ -21,10 +21,3 @@ export declare class UIGallery extends LitElement {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

@@ -30,10 +30,3 @@ export declare class UIModal extends LitElement {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

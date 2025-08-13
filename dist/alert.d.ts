@@ -16,10 +16,3 @@ export declare class UIAlert extends LitElement {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

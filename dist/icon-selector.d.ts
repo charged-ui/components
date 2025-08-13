@@ -32,10 +32,3 @@ export declare class UIIconSelector extends LitElement {
 }
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}

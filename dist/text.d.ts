@@ -41,10 +41,3 @@ export declare class UIText extends LitElement {
 export declare const variantClasses: Record<TextVariant, string>;
 
 export { }
-
-
-declare global {
-    interface HTMLElementTagNameMap {
-        'ui-bg-ripple': RippleBackground;
-    }
-}
