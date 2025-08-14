@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+/* Base styles for all headings */
+ui-text[data-variant^='heading-'] {
+	@apply font-semibold tracking-tight;
+}
+
+/* Base styles for all displays */
+ui-text[data-variant^='display-'] {
+	@apply font-light tracking-tight;
+}
+
+/* Base styles for all copy */
+ui-text[data-variant^='copy-'] {
+	@apply font-medium text-zinc-500;
+}
+
+/* Size-specific styles */
+ui-text[data-variant='heading-1'],
+ui-text[data-variant='display-1'] {
+	@apply text-7xl;
+}
+
+ui-text[data-variant='heading-2'],
+ui-text[data-variant='display-2'] {
+	@apply text-6xl;
+}
+
+ui-text[data-variant='heading-3'],
+ui-text[data-variant='display-3'] {
+	@apply text-5xl;
+}
+
+ui-text[data-variant='heading-4'],
+ui-text[data-variant='display-4'] {
+	@apply text-4xl;
+}
+
+ui-text[data-variant='heading-5'],
+ui-text[data-variant='display-5'] {
+	@apply text-3xl;
+}
+
+ui-text[data-variant='heading-6'],
+ui-text[data-variant='display-6'] {
+	@apply text-2xl;
+}
+
+ui-text[data-variant='copy-xl'] {
+	@apply text-xl;
+}
+
+ui-text[data-variant='copy-lg'] {
+	@apply text-lg;
+}
+
+ui-text[data-variant='copy-md'] {
+	@apply text-base;
+}
+
+ui-text[data-variant='copy-sm'] {
+	@apply text-sm;
+}
+
+ui-text[data-variant='copy-xs'] {
+	@apply text-xs;
+}

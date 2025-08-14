@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+ui-alert {
+	@apply p-4 border rounded-lg;
+}
+
+/* Variants */
+ui-alert[data-variant='success'] {
+	@apply bg-emerald-50 border-emerald-200 text-emerald-700;
+}
+
+ui-alert[data-variant='error'] {
+	@apply bg-red-50 border-red-200 text-red-700;
+}
+
+ui-alert[data-variant='warning'] {
+	@apply bg-orange-50 border-orange-200 text-orange-700;
+}
+
+ui-alert[data-variant='info'] {
+	@apply bg-sky-50 border-sky-200 text-sky-700;
+}
+
+/* Slots */
+ui-alert *[slot='heading'] {
+	@apply font-semibold; /* Instead of font-weight: 600 */
+}
+
+ui-alert *[slot='message'] {
+	@apply text-sm; /* Instead of font-size: 14px */
+}

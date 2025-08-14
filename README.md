@@ -1,87 +1,180 @@
-# Welcome to React Router!
+# @charged-ui/components
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A collection of universal web components built with Lit that work seamlessly in React, Vue, Angular, and vanilla HTML.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
+## Installation
 
 ```bash
-npm install
+npm install @charged-ui/components
 ```
 
-### Development
+## Usage
 
-Start the development server with HMR:
+### Import Individual Components
 
-```bash
-npm run dev
+```typescript
+// Import just the alert component
+import '@charged-ui/components/alert';
+
+// Now use it in your JSX/HTML
+<charged-alert variant="success">
+  <span slot="icon">✅</span>
+  <span slot="heading">Success!</span>
+  <span slot="message">Your action was completed successfully.</span>
+</charged-alert>
 ```
 
-Your application will be available at `http://localhost:5173`.
+### Import All Components
 
-## Building for Production
+```typescript
+// Import all components
+import '@charged-ui/components';
 
-Create a production build:
-
-```bash
-npm run build
+// Or import types if needed
+import { AlertVariant } from '@charged-ui/components';
 ```
 
-## Deployment
+## Components
 
-### Docker Deployment
+### Alert (`<charged-alert>`)
 
-To build and run using Docker:
+A flexible alert component with support for different variants and slotted content.
 
-```bash
-docker build -t my-app .
+#### Props
 
-# Run the container
-docker run -p 3000:3000 my-app
+- `variant`: `'info' | 'success' | 'warning' | 'error'` (default: `'info'`)
+
+#### Slots
+
+- `icon`: Custom icon content
+- `heading`: Alert title/heading
+- `message`: Alert message content
+
+#### Examples
+
+```html
+<!-- Basic info alert -->
+<charged-alert variant="info">
+	<span slot="message">This is an informational message.</span>
+</charged-alert>
+
+<!-- Success alert with icon and heading -->
+<charged-alert variant="success">
+	<span slot="icon">✅</span>
+	<span slot="heading">Success!</span>
+	<span slot="message">Your changes have been saved.</span>
+</charged-alert>
+
+<!-- Warning alert -->
+<charged-alert variant="warning">
+	<span slot="icon">⚠️</span>
+	<span slot="heading">Warning</span>
+	<span slot="message">Please review your input before continuing.</span>
+</charged-alert>
+
+<!-- Error alert -->
+<charged-alert variant="error">
+	<span slot="icon">❌</span>
+	<span slot="heading">Error</span>
+	<span slot="message">Something went wrong. Please try again.</span>
+</charged-alert>
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+## Framework Integration
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+### React 19+
 
-### DIY Deployment
+React 19 has excellent native web component support:
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+```tsx
+import '@charged-ui/components/alert';
 
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+function App() {
+	return (
+		<charged-alert variant="success">
+			<span slot="icon">✅</span>
+			<span slot="heading">React Integration</span>
+			<span slot="message">Works perfectly with React 19!</span>
+		</charged-alert>
+	);
+}
 ```
 
-## Styling
+### Vue 3
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+```vue
+<template>
+	<charged-alert variant="info">
+		<span slot="icon">ℹ️</span>
+		<span slot="heading">Vue Integration</span>
+		<span slot="message">Works great with Vue!</span>
+	</charged-alert>
+</template>
 
----
+<script setup>
+import '@charged-ui/components/alert';
+</script>
+```
 
-Built with ❤️ using React Router.
+### Angular
+
+```typescript
+// app.module.ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@charged-ui/components/alert';
+
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+```
+
+```html
+<!-- component.html -->
+<charged-alert variant="warning">
+	<span slot="icon">⚠️</span>
+	<span slot="heading">Angular Integration</span>
+	<span slot="message">Works with Angular too!</span>
+</charged-alert>
+```
+
+### Vanilla HTML
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="module">
+			import '@charged-ui/components/alert';
+		</script>
+	</head>
+	<body>
+		<charged-alert variant="error">
+			<span slot="icon">❌</span>
+			<span slot="heading">Vanilla HTML</span>
+			<span slot="message">No framework required!</span>
+		</charged-alert>
+	</body>
+</html>
+```
+
+## TypeScript Support
+
+Full TypeScript support is included. For React projects, JSX types are automatically available when you import the components.
+
+```typescript
+import { AlertVariant } from '@charged-ui/components';
+
+const variant: AlertVariant = AlertVariant.Success;
+```
+
+## Browser Support
+
+These components work in all modern browsers that support:
+
+- Custom Elements v1
+- Shadow DOM v1
+- ES2015+
+
+## License
+
+MIT
