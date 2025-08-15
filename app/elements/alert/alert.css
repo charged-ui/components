@@ -7,18 +7,22 @@ ui-alert {
 /* Variants */
 ui-alert[data-variant='success'] {
 	@apply bg-emerald-50 border-emerald-200 text-emerald-700;
+	@apply dark:bg-emerald-900 dark:border-emerald-700 dark:text-emerald-300;
 }
 
 ui-alert[data-variant='error'] {
 	@apply bg-red-50 border-red-200 text-red-700;
+	@apply dark:bg-red-900 dark:border-red-700 dark:text-red-300;
 }
 
 ui-alert[data-variant='warning'] {
 	@apply bg-orange-50 border-orange-200 text-orange-700;
+	@apply dark:bg-orange-900 dark:border-orange-700 dark:text-orange-300;
 }
 
 ui-alert[data-variant='info'] {
 	@apply bg-sky-50 border-sky-200 text-sky-700;
+	@apply dark:bg-sky-900 dark:border-sky-700 dark:text-sky-300;
 }
 
 /* Slots */

@@ -1,8 +1,5 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import clsx from 'clsx';
+import { LitElement, html } from 'lit';
 import { chargedCustomElement } from '../registry';
-import styles from './button.css?raw';
 
 // Define an enum for the sizes
 export enum ButtonSize {
@@ -31,28 +28,12 @@ export type ButtonProps = {
 	'data-shape': ButtonShape;
 	'data-size': ButtonSize;
 	'data-variant': ButtonVariant;
-} & React.HTMLAttributes<HTMLButtonElement>;
+} & { children: React.ReactNode };
 
 @chargedCustomElement('ui-button')
 export class UIButton extends LitElement {
-	@property({ type: ButtonSize }) size: ButtonSize = ButtonSize.Medium;
-	@property({ type: ButtonShape }) shape: ButtonShape = ButtonShape.Square;
-	@property({ type: ButtonVariant }) variant: ButtonVariant =
-		ButtonVariant.Primary;
-
-	static styles = css`
-		${unsafeCSS(styles)}
-		::slotted([slot='value']) {
-			font-family: 'Inter';
-		}
-	`;
-
 	render() {
-		const classes = clsx();
-
-		return html`<button>
-			<slot></slot>
-		</button> `;
+		return html`<slot></slot>`;
 	}
 }
 
@@ -65,7 +46,11 @@ declare global {
 declare module 'react' {
 	namespace JSX {
 		interface IntrinsicElements {
-			'ui-button': ButtonProps;
+			'ui-button': ButtonProps & {
+				children: React.ReactElement<
+					React.ButtonHTMLAttributes<HTMLButtonElement>
+				>;
+			};
 		}
 	}
 }

@@ -12,7 +12,7 @@ ui-text[data-variant^='display-'] {
 
 /* Base styles for all copy */
 ui-text[data-variant^='copy-'] {
-	@apply font-medium text-zinc-500;
+	@apply font-medium;
 }
 
 /* Size-specific styles */
