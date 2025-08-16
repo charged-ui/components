@@ -1,6 +1,5 @@
 import type { Route } from './+types/button';
 import { ButtonVariant, ButtonSize, ButtonShape } from '~/elements/button';
-
 export function meta({}: Route.MetaArgs) {
 	return [
 		{ title: 'Alert' },
@@ -8,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-export default function Alert() {
+export default function Button() {
 	return (
 		<>
 			<ui-button

@@ -3,13 +3,20 @@ import {
 	index,
 	layout,
 	route,
+	prefix,
 } from '@react-router/dev/routes';
 
 export default [
-	index('routes/home.tsx'),
-	layout('routes/elements/layout.tsx', [
-		route('alert', 'routes/elements/alert.tsx'),
-		route('button', 'routes/elements/button.tsx'),
-		route('text', 'routes/elements/text.tsx'),
+	layout('./layout.tsx', [
+		index('routes/setup.tsx'),
+		route('cloud', 'routes/cloud.tsx'),
+		route('elements', 'routes/elements.tsx'),
+		route('integrations', 'routes/integrations.tsx'),
+		route('plugins', 'routes/plugins.tsx'),
+		...prefix('elements', [
+			route('alert', 'routes/elements/alert.tsx'),
+			route('button', 'routes/elements/button.tsx'),
+			route('text', 'routes/elements/text.tsx'),
+		]),
 	]),
 ] satisfies RouteConfig;
