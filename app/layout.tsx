@@ -1,14 +1,15 @@
-import { NavLink, Link, Outlet, type NavLinkRenderProps } from 'react-router';
+import { NavLink, Outlet, type NavLinkRenderProps } from 'react-router';
 import { TextVariant } from '~/elements/text';
 
 const menuLinkBase =
-	'flex gap-1 items-center justify-center text-sm px-3 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg';
+	'relative -bottom-px flex gap-1 items-center justify-center text-sm px-3 py-5 border-b-2 border-transparent';
+
 const navLinkStyles = ({ isActive, isPending }: NavLinkRenderProps) =>
 	isPending
-		? 'block px-4 py-2'
+		? 'block px-4 py-2 font-medium'
 		: isActive
-			? 'block px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg'
-			: 'block px-4 py-2 text-neutral-500';
+			? 'block px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg dark:!text-white !text-zinc-950 font-medium'
+			: 'block px-4 py-2 text-neutral-500 font-medium';
 
 const menuLinkStyles = ({ isActive, isPending }: NavLinkRenderProps) =>
 	isPending
@@ -16,20 +17,23 @@ const menuLinkStyles = ({ isActive, isPending }: NavLinkRenderProps) =>
 		: isActive
 			? menuLinkBase +
 				' ' +
-				'bg-zinc-100  dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg'
+				'dark:!text-white !text-neutral-950 !border-neutral-950 dark:!border-white'
 			: menuLinkBase;
 
 export default function Layout() {
 	return (
 		<div className="flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700 divide-dashed w-screen h-screen px-8">
-			<header className="flex divide-x divide-neutral-200 dark:divide-neutral-700 divide-dashed gap-8 bg-white dark:bg-neutral-900 border-x border-neutral-200 dark:border-neutral-700 border-dashed">
+			<header className="flex divide-x divide-neutral-200 dark:divide-neutral-700 divide-dashed gap-8 bg-white dark:bg-neutral-950 border-x border-neutral-200 dark:border-neutral-700 border-dashed">
 				<div className="flex gap-1.5 items-center px-4 py-4 max-w-2xs w-full">
-					<img src="/logo.svg" alt="Charged Logo" className="size-5" />
-					<ui-text data-variant={TextVariant.MD} className="font-semibold">
+					<img src="/logo.svg" alt="Charged Logo" className="size-6" />
+					<ui-text
+						data-variant={TextVariant.LG}
+						className="!font-bold tracking-tight"
+					>
 						Charged
 					</ui-text>
 				</div>
-				<div className="flex items-center border-l border-dashed border-neutral-200 dark:border-neutral-700 px-4 py-2">
+				<div className="flex items-center border-l border-dashed border-neutral-200 dark:border-neutral-700 px-4">
 					<ul className="flex gap-2">
 						<li>
 							<NavLink to="/" className={menuLinkStyles}>
@@ -39,7 +43,7 @@ export default function Layout() {
 									viewBox="0 0 24 24"
 									strokeWidth={1.5}
 									stroke="currentColor"
-									className="size-5"
+									className="size-5 relative top-px"
 								>
 									<path
 										strokeLinecap="round"
@@ -48,7 +52,12 @@ export default function Layout() {
 									/>
 								</svg>
 
-								<ui-text data-variant={TextVariant.SM}>Setup</ui-text>
+								<ui-text
+									data-variant={TextVariant.SM}
+									className="!font-semibold relative top-px"
+								>
+									Installation
+								</ui-text>
 							</NavLink>
 						</li>
 						<li>
@@ -59,7 +68,7 @@ export default function Layout() {
 									viewBox="0 0 24 24"
 									strokeWidth={1.5}
 									stroke="currentColor"
-									className="size-4"
+									className="size-4 relative top-px"
 								>
 									<path
 										strokeLinecap="round"
@@ -68,18 +77,23 @@ export default function Layout() {
 									/>
 								</svg>
 
-								<ui-text data-variant={TextVariant.SM}>Elements</ui-text>
+								<ui-text
+									data-variant={TextVariant.SM}
+									className="!font-semibold relative top-px"
+								>
+									Elements
+								</ui-text>
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/integrations" className={menuLinkStyles}>
+							<NavLink to="/themes" className={menuLinkStyles}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
 									viewBox="0 0 24 24"
 									strokeWidth={1.5}
 									stroke="currentColor"
-									className="size-4"
+									className="size-4 relative top-px"
 								>
 									<path
 										strokeLinecap="round"
@@ -88,7 +102,12 @@ export default function Layout() {
 									/>
 								</svg>
 
-								<ui-text data-variant={TextVariant.SM}>Integrations</ui-text>
+								<ui-text
+									data-variant={TextVariant.SM}
+									className="!font-semibold relative top-px"
+								>
+									Themes
+								</ui-text>
 							</NavLink>
 						</li>
 						<li>
@@ -99,7 +118,7 @@ export default function Layout() {
 									viewBox="0 0 24 24"
 									strokeWidth={1.5}
 									stroke="currentColor"
-									className="size-4"
+									className="size-4 relative top-px"
 								>
 									<path
 										strokeLinecap="round"
@@ -108,7 +127,12 @@ export default function Layout() {
 									/>
 								</svg>
 
-								<ui-text data-variant={TextVariant.SM}>Plugins</ui-text>
+								<ui-text
+									data-variant={TextVariant.SM}
+									className="!font-semibold relative top-px"
+								>
+									Plugins
+								</ui-text>
 							</NavLink>
 						</li>
 						<li>
@@ -119,7 +143,7 @@ export default function Layout() {
 									viewBox="0 0 24 24"
 									strokeWidth={1.5}
 									stroke="currentColor"
-									className="size-4"
+									className="size-4 relative top-px"
 								>
 									<path
 										strokeLinecap="round"
@@ -128,7 +152,12 @@ export default function Layout() {
 									/>
 								</svg>
 
-								<ui-text data-variant={TextVariant.SM}>Cloud</ui-text>
+								<ui-text
+									data-variant={TextVariant.SM}
+									className="!font-semibold relative top-px"
+								>
+									Cloud
+								</ui-text>
 							</NavLink>
 						</li>
 					</ul>
@@ -136,8 +165,8 @@ export default function Layout() {
 				</div>
 			</header>
 			<main className="flex flex-1 overflow-hidden divide-x divide-neutral-200 dark:divide-neutral-700 divide-dashed gap-8 border-x border-neutral-200 dark:border-neutral-700 border-dashed">
-				<nav className="flex flex-col min-w-2xs bg-white dark:bg-neutral-900 px-4 py-8 max-w-2xs overflow-auto gap-2">
-					<ui-text data-variant={TextVariant.SM} className="px-4">
+				<nav className="flex flex-col min-w-2xs bg-white dark:bg-neutral-950 px-4 py-8 max-w-2xs overflow-auto gap-2">
+					<ui-text data-variant={TextVariant.SM} className="px-4 !font-bold">
 						Elements
 					</ui-text>
 					<ul className="text-sm">
@@ -158,7 +187,7 @@ export default function Layout() {
 						</li>
 					</ul>
 				</nav>
-				<div className="flex flex-col w-full gap-4 bg-white dark:bg-neutral-900 p-8 overflow-auto border-l border-neutral-200 dark:border-neutral-700 border-dashed">
+				<div className="flex flex-col w-full gap-4 bg-white dark:bg-neutral-950 p-8 overflow-auto border-l border-neutral-200 dark:border-neutral-700 border-dashed">
 					<Outlet />
 				</div>
 			</main>

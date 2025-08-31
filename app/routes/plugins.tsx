@@ -1,4 +1,4 @@
-import type { Route } from './+types/home';
+import type { Route } from './+types/plugins';
 import { TextVariant } from '~/elements/text';
 
 export function meta({}: Route.MetaArgs) {

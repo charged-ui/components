@@ -1,0 +1,24 @@
+{
+	"name": "ui-alert",
+	"description": "An alert keeps users informed of important and sometimes time-sensitive changes.",
+	"props": {
+		"variant": {
+			"type": "string",
+			"description": "The visual style of the alert.",
+			"default": "success",
+			"enum": ["success", "warning", "error", "info"]
+		}
+	},
+	"slots": {
+		"icon": {
+			"description": "An optional slot for an icon to be placed before the text."
+		},
+		"heading": {
+			"description": "An optional slot for an icon to be placed before the text."
+		},
+		"message": {
+			"description": "An optional slot for an icon to be placed before the text."
+		}
+	},
+	"children": false
+}

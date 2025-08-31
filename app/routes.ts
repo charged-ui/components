@@ -8,10 +8,10 @@ import {
 
 export default [
 	layout('./layout.tsx', [
-		index('routes/setup.tsx'),
+		index('routes/setup.tsx', {}),
 		route('cloud', 'routes/cloud.tsx'),
 		route('elements', 'routes/elements.tsx'),
-		route('integrations', 'routes/integrations.tsx'),
+		route('themes', 'routes/themes.tsx'),
 		route('plugins', 'routes/plugins.tsx'),
 		...prefix('elements', [
 			route('alert', 'routes/elements/alert.tsx'),

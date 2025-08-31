@@ -25,9 +25,9 @@ export enum ButtonVariant {
 }
 
 export type ButtonProps = {
-	'data-shape': ButtonShape;
-	'data-size': ButtonSize;
-	'data-variant': ButtonVariant;
+	'data-shape'?: ButtonShape;
+	'data-size'?: ButtonSize;
+	'data-variant'?: ButtonVariant;
 } & { children: React.ReactNode };
 
 @chargedCustomElement('ui-button')
