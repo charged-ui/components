@@ -1,92 +1,180 @@
-# Components
+# @charged-ui/components
 
-## Publishing components
+A collection of universal web components built with Lit that work seamlessly in React, Vue, Angular, and vanilla HTML.
 
-To publish your Lit component library to npm, you need to follow these steps:
-
-### 1. Create an npm Account
-
-If you don't have an npm account yet, create one at [npmjs.com](https://www.npmjs.com/signup).
-
-### 2. Login to npm
-
-Login to your npm account from your terminal:
+## Installation
 
 ```bash
-npm login
+npm install @charged-ui/components
 ```
 
-You'll be prompted to enter your username, password, and email.
+## Usage
 
-### 3. Prepare Your Package for Publishing
+### Import Individual Components
 
-Ensure your `package.json` is correctly configured. Here’s an example:
+```typescript
+// Import just the alert component
+import '@charged-ui/components/alert';
 
-#### `package.json`
+// Now use it in your JSX/HTML
+<charged-alert variant="success">
+  <span slot="icon">✅</span>
+  <span slot="heading">Success!</span>
+  <span slot="message">Your action was completed successfully.</span>
+</charged-alert>
+```
 
-```json
-{
-  "name": "my-lit-component-library",
-  "version": "1.0.0",
-  "description": "A library of Lit components",
-  "main": "dist/my-component-library.js",
-  "types": "dist/types/index.d.ts",
-  "scripts": {
-    "build": "rollup -c"
-  },
-  "keywords": ["lit", "web-components", "library"],
-  "author": "Your Name",
-  "license": "MIT",
-  "files": ["dist/**/*"],
-  "devDependencies": {
-    "rollup": "^2.52.3",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "@rollup/plugin-typescript": "^8.2.1",
-    "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "lit": "^2.0.0"
-  }
+### Import All Components
+
+```typescript
+// Import all components
+import '@charged-ui/components';
+
+// Or import types if needed
+import { AlertVariant } from '@charged-ui/components';
+```
+
+## Components
+
+### Alert (`<charged-alert>`)
+
+A flexible alert component with support for different variants and slotted content.
+
+#### Props
+
+- `variant`: `'info' | 'success' | 'warning' | 'error'` (default: `'info'`)
+
+#### Slots
+
+- `icon`: Custom icon content
+- `heading`: Alert title/heading
+- `message`: Alert message content
+
+#### Examples
+
+```html
+<!-- Basic info alert -->
+<charged-alert variant="info">
+	<span slot="message">This is an informational message.</span>
+</charged-alert>
+
+<!-- Success alert with icon and heading -->
+<charged-alert variant="success">
+	<span slot="icon">✅</span>
+	<span slot="heading">Success!</span>
+	<span slot="message">Your changes have been saved.</span>
+</charged-alert>
+
+<!-- Warning alert -->
+<charged-alert variant="warning">
+	<span slot="icon">⚠️</span>
+	<span slot="heading">Warning</span>
+	<span slot="message">Please review your input before continuing.</span>
+</charged-alert>
+
+<!-- Error alert -->
+<charged-alert variant="error">
+	<span slot="icon">❌</span>
+	<span slot="heading">Error</span>
+	<span slot="message">Something went wrong. Please try again.</span>
+</charged-alert>
+```
+
+## Framework Integration
+
+### React 19+
+
+React 19 has excellent native web component support:
+
+```tsx
+import '@charged-ui/components/alert';
+
+function App() {
+	return (
+		<charged-alert variant="success">
+			<span slot="icon">✅</span>
+			<span slot="heading">React Integration</span>
+			<span slot="message">Works perfectly with React 19!</span>
+		</charged-alert>
+	);
 }
 ```
 
-### 4. Build Your Library
+### Vue 3
 
-Make sure your library is built and ready to publish:
+```vue
+<template>
+	<charged-alert variant="info">
+		<span slot="icon">ℹ️</span>
+		<span slot="heading">Vue Integration</span>
+		<span slot="message">Works great with Vue!</span>
+	</charged-alert>
+</template>
 
-```bash
-npm run build
+<script setup>
+import '@charged-ui/components/alert';
+</script>
 ```
 
-### 5. Publishing Your Library
+### Angular
 
-To publish your library to npm, run the following command:
+```typescript
+// app.module.ts
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import '@charged-ui/components/alert';
 
-```bash
-npm publish --access public
+@NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
 ```
 
-If you are publishing a scoped package (e.g., `@your-username/my-lit-component-library`), you need to add `--access public` to ensure it's publicly accessible.
-
-### 6. Update Your Library
-
-When you make changes to your library, increment the version number in `package.json` according to [semantic versioning](https://semver.org/), rebuild your library, and publish it again:
-
-```bash
-npm version patch  # or minor, major
-npm run build
-npm publish
+```html
+<!-- component.html -->
+<charged-alert variant="warning">
+	<span slot="icon">⚠️</span>
+	<span slot="heading">Angular Integration</span>
+	<span slot="message">Works with Angular too!</span>
+</charged-alert>
 ```
 
-### 7. Prerelease versioning
+### Vanilla HTML
 
-To version a prerelease, run the following command:
-
-```bash
-npm version prerelease --preid alpha
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="module">
+			import '@charged-ui/components/alert';
+		</script>
+	</head>
+	<body>
+		<charged-alert variant="error">
+			<span slot="icon">❌</span>
+			<span slot="heading">Vanilla HTML</span>
+			<span slot="message">No framework required!</span>
+		</charged-alert>
+	</body>
+</html>
 ```
 
-### Summary
+## TypeScript Support
 
-By following these steps, you can publish your Lit component library to npm, making it available for others to use. Ensure your `package.json` is correctly configured, build your library, and use the `npm publish` command to publish your package.
+Full TypeScript support is included. For React projects, JSX types are automatically available when you import the components.
+
+```typescript
+import { AlertVariant } from '@charged-ui/components';
+
+const variant: AlertVariant = AlertVariant.Success;
+```
+
+## Browser Support
+
+These components work in all modern browsers that support:
+
+- Custom Elements v1
+- Shadow DOM v1
+- ES2015+
+
+## License
+
+MIT

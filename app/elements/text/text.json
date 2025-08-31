@@ -1,0 +1,32 @@
+{
+	"name": "ui-text",
+	"description": "A customizable text element for consistent type styles.",
+	"props": {
+		"variant": {
+			"type": "string",
+			"description": "The visual style of the button.",
+			"default": "primary",
+			"enum": ["primary", "secondary", "outline", "text"]
+		},
+		"size": {
+			"type": "string",
+			"description": "The size of the button.",
+			"default": "medium",
+			"enum": ["small", "medium", "large"]
+		},
+		"disabled": {
+			"type": "boolean",
+			"description": "If true, the button is disabled and cannot be clicked.",
+			"default": false
+		}
+	},
+	"slots": {
+		"default": {
+			"description": "The main content of the button, usually text or an icon."
+		},
+		"icon": {
+			"description": "An optional slot for an icon to be placed before the text."
+		}
+	},
+	"children": false
+}

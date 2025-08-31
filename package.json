@@ -1,78 +1,53 @@
 {
-  "name": "@charged-ui/components",
-  "version": "1.0.3-alpha.25",
-  "description": "A library of Lit components",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./alert": "./dist/alert.js",
-    "./aurora": "./dist/aurora.js",
-    "./button": "./dist/button.js",
-    "./card": "./dist/card.js",
-    "./combobox": "./dist/combobox.js",
-    "./dots": "./dist/dots.js",
-    "./gallery": "./dist/gallery.js",
-    "./globe": "./dist/globe.js",
-    "./icon": "./dist/icon.js",
-    "./icon-selector": "./dist/icon-selector.js",
-    "./meteors": "./dist/meteors.js",
-    "./modal": "./dist/modal.js",
-    "./ripple": "./dist/ripple.js",
-    "./stat": "./dist/stat.js",
-    "./text": "./dist/text.js"
-  },
-  "files": [
-    "dist/**/*"
-  ],
-  "scripts": {
-    "build": "run-p build:*",
-    "build:css": "node tailwind.build.js",
-    "build:components": "vite build",
-    "build:website": "vitepress build",
-    "dev": "npm run watch:css & vitepress dev",
-    "preview": "vitepress preview",
-    "watch:css": "node tailwind.build.js --watch"
-  },
-  "keywords": [
-    "lit",
-    "web-components",
-    "library"
-  ],
-  "author": "Theme Boutique",
-  "license": "MIT",
-  "directories": {
-    "doc": "www"
-  },
-  "dependencies": {
-    "lit": "^3.1.4",
-    "motion": "^12.4.3"
-  },
-  "devDependencies": {
-    "@tailwindcss/forms": "^0.5.10",
-    "autoprefixer": "^10.4.20",
-    "clsx": "^2.1.1",
-    "cobe": "^0.6.4",
-    "glob": "^10.4.3",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.41",
-    "prettier": "^3.3.3",
-    "tailwindcss": "^3.4.10",
-    "tslib": "^2.6.3",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.1",
-    "vite-plugin-dts": "^4.0.3",
-    "vitepress": "^2.0.0-alpha.2",
-    "vue": "^3.4.19"
-  },
-  "postcss": {
-    "plugins": {
-      "tailwindcss": {},
-      "autoprefixer": {}
-    }
-  }
+	"name": "charged-ui",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "react-router build",
+		"dev": "react-router dev",
+		"start": "react-router-serve ./build/server/index.js",
+		"typecheck": "react-router typegen && tsc"
+	},
+	"dependencies": {
+		"@heroicons/react": "^2.2.0",
+		"@lit/react": "^1.0.8",
+		"@react-router/node": "^7.7.1",
+		"@react-router/serve": "^7.7.1",
+		"clsx": "^2.1.1",
+		"isbot": "^5.1.27",
+		"lit": "^3.3.1",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"react-router": "^7.7.1"
+	},
+	"devDependencies": {
+		"@react-router/dev": "^7.7.1",
+		"@tailwindcss/vite": "^4.1.4",
+		"@types/node": "^20",
+		"@types/react": "^19.1.2",
+		"@types/react-dom": "^19.1.2",
+		"shiki": "^3.9.2",
+		"tailwindcss": "^4.1.4",
+		"typescript": "^5.8.3",
+		"vite": "^6.3.3",
+		"vite-tsconfig-paths": "^5.1.4"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./alert": {
+			"types": "./dist/alert.d.ts",
+			"import": "./dist/alert.js"
+		},
+		"./package.json": "./package.json"
+	}
 }

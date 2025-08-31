@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-sans:
+		'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+		'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+html,
+body {
+	text-rendering: optimizeLegibility;
+	font-synthesis: style;
+	-webkit-font-smoothing: antialiased;
+
+	@apply bg-neutral-50 dark:bg-neutral-900;
+
+	@media (prefers-color-scheme: dark) {
+		color-scheme: dark;
+	}
+}
+
+a {
+	@apply text-neutral-500 dark:text-neutral-400;
+}
+
+/* a {
+	@apply underline;
+	@apply text-neutral-950;
+	@apply dark:text-neutral-50;
+	@apply decoration-dotted;
+	@apply hover:decoration-solid;
+	@apply font-medium;
+} */
