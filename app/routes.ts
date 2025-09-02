@@ -16,6 +16,7 @@ export default [
 		...prefix('elements', [
 			route('alert', 'routes/elements/alert.tsx'),
 			route('button', 'routes/elements/button.tsx'),
+			route('details', 'routes/elements/details.tsx'),
 			route('text', 'routes/elements/text.tsx'),
 		]),
 	]),
