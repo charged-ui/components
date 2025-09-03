@@ -1,29 +1,21 @@
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { animate } from 'motion/mini';
 import { chargedCustomElement } from '../registry';
 import './details.css';
 
 export type DetailsProps = {
 	'data-expanded'?: boolean;
-	name?: String;
+	name?: string;
+	open?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-declare global {
-	interface HTMLElementTagNameMap {
-		'ui-details': UIDetails;
-	}
-	interface DocumentEventMap {
-		'ui-details-toggle': CustomEvent;
-	}
-}
-
-declare module 'react' {
-	namespace JSX {
-		interface IntrinsicElements {
-			'ui-details': DetailsProps & { children?: React.ReactNode };
-		}
-	}
+// Better typing for the custom event
+export interface UIDetailsToggleEvent extends CustomEvent {
+	detail: {
+		name: string;
+		source: UIDetails;
+	};
 }
 
 @chargedCustomElement('ui-details')
@@ -33,6 +25,9 @@ export class UIDetails extends LitElement {
 
 	@property({ type: String, reflect: true, attribute: 'name' })
 	name: String = '';
+
+	@query('#content')
+	content!: HTMLElement;
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -45,78 +40,62 @@ export class UIDetails extends LitElement {
 	}
 
 	private handleClick(event: Event) {
-		const summary = event.target as HTMLElement;
-		const details = summary.parentElement as HTMLDetailsElement;
-		// const content = details.querySelector('#content') as HTMLElement;
-		// const height = content.clientHeight;
-
 		// Prevent <details> toggle event
 		event.preventDefault();
-
-		// Check if <details> has name attribute
-		const name = details.getAttribute('name');
 
 		// Dispatch ui-details-toggle event
 		this.dispatchEvent(
 			new CustomEvent('ui-details-toggle', {
 				bubbles: true,
-				detail: { name },
+				detail: { name: this.name, source: this },
 			})
 		);
 	}
 
-	private handleToggle = (event: CustomEvent) => {
-		const details = this.shadowRoot?.querySelector(
-			'details'
-		) as HTMLDetailsElement;
-		const content = details?.querySelector('#content') as HTMLElement;
-		const height = content?.clientHeight;
-		const name = event.detail.name;
+	private handleToggle = (event: UIDetailsToggleEvent) => {
+		const { name, source } = event.detail;
 
-		if (this === event.target) {
-			if (!details.open) {
-				this.expand(details, content, height);
+		if (this === source) {
+			if (!this.open) {
+				this.expand();
 			} else {
-				this.collapse(details, content, height);
+				this.collapse();
 			}
-		} else if (details.name === name) {
-			this.collapse(details, content, height);
+		} else if (this.name === name) {
+			this.collapse();
 		}
 	};
 
-	// Expand animation
-	private expand(
-		details: HTMLDetailsElement,
-		content: HTMLElement,
-		height: number
-	) {
-		content.style.height = '0px';
-		content.style.overflow = 'hidden';
-		details.open = true; // Open <details>
-		animate(content, { height }, { duration: 0.3 }).then(() => {
-			content.style.height = ''; // Reset height
-			content.style.overflow = ''; // Reset overflow
+	private expand() {
+		// Get content height
+		const height = this.content.clientHeight;
+		// Set initial state
+		this.content.style.height = '0px';
+		this.content.style.overflow = 'hidden';
+		// Open <details> element
+		this.open = true;
+		// Expand animation
+		animate(this.content, { height }, { duration: 0.3 }).then(() => {
+			this.content.style.height = ''; // Reset height
+			this.content.style.overflow = ''; // Reset overflow
 		});
 	}
 
-	// Collapse animation
-	private collapse(
-		details: HTMLDetailsElement,
-		content: HTMLElement,
-		height: number
-	) {
-		content.style.height = height + 'px';
-		content.style.overflow = 'hidden';
-		animate(content, { height: 0 }, { duration: 0.3 }).then(() => {
-			details.open = false; // Close <details>
-			content.style.height = ''; // Reset height
-			content.style.overflow = ''; // Reset overflow
+	private collapse() {
+		// Set initial state
+		this.content.style.height = this.content.clientHeight + 'px';
+		this.content.style.overflow = 'hidden';
+		// Collapse animation
+		animate(this.content, { height: 0 }, { duration: 0.3 }).then(() => {
+			this.open = false; // Close <details>
+			this.content.style.height = ''; // Reset height
+			this.content.style.overflow = ''; // Reset overflow
 		});
 	}
 
 	render() {
 		return html`
-			<details name="${this.name}">
+			<details name="${this.name}" ?open=${this.open}>
 				<summary
 					aria-expanded=${this.open}
 					aria-controls="content"
@@ -129,5 +108,22 @@ export class UIDetails extends LitElement {
 				</div>
 			</details>
 		`;
+	}
+}
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'ui-details': UIDetails;
+	}
+	interface DocumentEventMap {
+		'ui-details-toggle': UIDetailsToggleEvent;
+	}
+}
+
+declare module 'react' {
+	namespace JSX {
+		interface IntrinsicElements {
+			'ui-details': DetailsProps & { children?: React.ReactNode };
+		}
 	}
 }
