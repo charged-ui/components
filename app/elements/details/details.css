@@ -7,7 +7,12 @@ ui-details *[slot='summary'] {
 	@apply pointer-events-none;
 	@apply cursor-pointer;
 	@apply flex;
-	@apply marker:absolute;
+	@apply p-4;
+	@apply font-semibold;
+}
+
+ui-details *[slot='content'] {
+	@apply p-4;
 }
 
 ui-details:not(:defined) *[slot='content'] {

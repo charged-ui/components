@@ -30,12 +30,6 @@ export class UIDetails extends LitElement {
 	content!: HTMLElement;
 
 	static styles = css`
-		:host {
-		}
-
-		details {
-		}
-
 		summary {
 			display: flex;
 			cursor: pointer;
