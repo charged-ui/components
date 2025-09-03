@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { animate } from 'motion/mini';
 import { chargedCustomElement } from '../registry';
@@ -24,10 +24,23 @@ export class UIDetails extends LitElement {
 	open: boolean = false;
 
 	@property({ type: String, reflect: true, attribute: 'name' })
-	name: String = '';
+	name: string = '';
 
 	@query('#content')
 	content!: HTMLElement;
+
+	static styles = css`
+		:host {
+		}
+
+		details {
+		}
+
+		summary {
+			display: flex;
+			cursor: pointer;
+		}
+	`;
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -97,13 +110,19 @@ export class UIDetails extends LitElement {
 		return html`
 			<details name="${this.name}" ?open=${this.open}>
 				<summary
+					id="summary"
 					aria-expanded=${this.open}
 					aria-controls="content"
 					@click=${this.handleClick}
 				>
 					<slot name="summary" />
 				</summary>
-				<div id="content">
+				<div
+					id="content"
+					role="region"
+					aria-labelledby="summary"
+					aria-hidden="${!this.open}"
+				>
 					<slot name="content" />
 				</div>
 			</details>

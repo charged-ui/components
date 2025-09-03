@@ -11,7 +11,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Details() {
 	return (
 		<div>
-			<ui-details name="test">
+			<ui-details name="test" open>
 				<div slot="summary">Heading 1</div>
 				<div slot="content">Content 1</div>
 			</ui-details>

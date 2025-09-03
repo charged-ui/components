@@ -1,17 +1,19 @@
 @import 'tailwindcss';
 
 /* Base styles */
-details {
-	@apply cursor-pointer;
-}
-
-/* Slots */
-ui-details details {
-}
 ui-details *[slot='summary'] {
 	@apply w-full;
 	@apply border-y;
 	@apply pointer-events-none;
+	@apply cursor-pointer;
 	@apply flex;
 	@apply marker:absolute;
+}
+
+ui-details:not(:defined) *[slot='content'] {
+	display: none;
+}
+
+ui-details:not(:defined)[open] *[slot='content'] {
+	display: block;
 }
