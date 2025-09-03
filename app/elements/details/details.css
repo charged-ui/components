@@ -7,7 +7,6 @@ details {
 
 /* Slots */
 ui-details details {
-	@apply flex;
 }
 ui-details *[slot='summary'] {
 	@apply w-full;

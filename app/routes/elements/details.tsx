@@ -11,15 +11,15 @@ export function meta({}: Route.MetaArgs) {
 export default function Details() {
 	return (
 		<div>
-			<ui-details>
+			<ui-details name="test">
 				<div slot="summary">Heading 1</div>
 				<div slot="content">Content 1</div>
 			</ui-details>
-			<ui-details>
+			<ui-details name="test">
 				<div slot="summary">Heading 2</div>
 				<div slot="content">Content 2</div>
 			</ui-details>
-			<ui-details>
+			<ui-details name="test">
 				<div slot="summary">Heading 3</div>
 				<div slot="content">Content 3</div>
 			</ui-details>

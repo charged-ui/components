@@ -13,6 +13,9 @@ declare global {
 	interface HTMLElementTagNameMap {
 		'ui-details': UIDetails;
 	}
+	interface DocumentEventMap {
+		'ui-details-toggle': CustomEvent;
+	}
 }
 
 declare module 'react' {
@@ -25,28 +28,61 @@ declare module 'react' {
 
 @chargedCustomElement('ui-details')
 export class UIDetails extends LitElement {
-	@property({ type: Boolean, reflect: true, attribute: 'aria-expanded' })
-	expanded: boolean = false;
+	@property({ type: Boolean, reflect: true, attribute: 'open' })
+	open: boolean = false;
+
+	@property({ type: String, reflect: true, attribute: 'name' })
+	name: String = '';
+
+	connectedCallback() {
+		super.connectedCallback();
+		document.addEventListener('ui-details-toggle', this.handleToggle);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		document.removeEventListener('ui-details-toggle', this.handleToggle);
+	}
 
 	private handleClick(event: Event) {
 		const summary = event.target as HTMLElement;
 		const details = summary.parentElement as HTMLDetailsElement;
-		const content = details.querySelector('#content') as HTMLElement;
-		const height = content.clientHeight;
+		// const content = details.querySelector('#content') as HTMLElement;
+		// const height = content.clientHeight;
 
-		// Prevent <details> from opening
+		// Prevent <details> toggle event
 		event.preventDefault();
 
-		// Close previously open <details> if grouped
+		// Check if <details> has name attribute
 		const name = details.getAttribute('name');
 
-		// Start expand or collapse animation
-		if (!details.open) {
-			this.expand(details, content, height);
-		} else {
+		// Dispatch ui-details-toggle event
+		this.dispatchEvent(
+			new CustomEvent('ui-details-toggle', {
+				bubbles: true,
+				detail: { name },
+			})
+		);
+	}
+
+	private handleToggle = (event: CustomEvent) => {
+		const details = this.shadowRoot?.querySelector(
+			'details'
+		) as HTMLDetailsElement;
+		const content = details?.querySelector('#content') as HTMLElement;
+		const height = content?.clientHeight;
+		const name = event.detail.name;
+
+		if (this === event.target) {
+			if (!details.open) {
+				this.expand(details, content, height);
+			} else {
+				this.collapse(details, content, height);
+			}
+		} else if (details.name === name) {
 			this.collapse(details, content, height);
 		}
-	}
+	};
 
 	// Expand animation
 	private expand(
@@ -80,9 +116,9 @@ export class UIDetails extends LitElement {
 
 	render() {
 		return html`
-			<details name="test">
+			<details name="${this.name}">
 				<summary
-					aria-expanded=${this.expanded}
+					aria-expanded=${this.open}
 					aria-controls="content"
 					@click=${this.handleClick}
 				>
