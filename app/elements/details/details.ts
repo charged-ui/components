@@ -37,33 +37,53 @@ export class UIDetails extends LitElement {
 		// Prevent <details> from opening
 		event.preventDefault();
 
+		// Close previously open <details> if grouped
+		const name = details.getAttribute('name');
+
+		// Start expand or collapse animation
 		if (!details.open) {
-			// Expand animation
-			content.style.height = '0px';
-			content.style.overflow = 'hidden';
-			details.open = true;
-			animate(content, { height }, { duration: 0.3 }).then(() => {
-				content.style.height = 'auto';
-				content.style.overflow = '';
-			});
+			this.expand(details, content, height);
 		} else {
-			// Collapse Animation
-			content.style.height = height + 'px';
-			content.style.overflow = 'hidden';
-			animate(content, { height: 0 }, { duration: 0.3 }).then(() => {
-				details.open = false;
-				content.style.height = 'auto';
-				content.style.overflow = '';
-			});
+			this.collapse(details, content, height);
 		}
+	}
+
+	// Expand animation
+	private expand(
+		details: HTMLDetailsElement,
+		content: HTMLElement,
+		height: number
+	) {
+		content.style.height = '0px';
+		content.style.overflow = 'hidden';
+		details.open = true; // Open <details>
+		animate(content, { height }, { duration: 0.3 }).then(() => {
+			content.style.height = ''; // Reset height
+			content.style.overflow = ''; // Reset overflow
+		});
+	}
+
+	// Collapse animation
+	private collapse(
+		details: HTMLDetailsElement,
+		content: HTMLElement,
+		height: number
+	) {
+		content.style.height = height + 'px';
+		content.style.overflow = 'hidden';
+		animate(content, { height: 0 }, { duration: 0.3 }).then(() => {
+			details.open = false; // Close <details>
+			content.style.height = ''; // Reset height
+			content.style.overflow = ''; // Reset overflow
+		});
 	}
 
 	render() {
 		return html`
-			<details>
+			<details name="test">
 				<summary
-					data-expanded=${this.expanded}
-					data-controls="content"
+					aria-expanded=${this.expanded}
+					aria-controls="content"
 					@click=${this.handleClick}
 				>
 					<slot name="summary" />

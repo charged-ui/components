@@ -1,5 +1,6 @@
 import type { Route } from './+types/alert';
 import '~/elements/details';
+
 export function meta({}: Route.MetaArgs) {
 	return [
 		{ title: 'Charged | Details' },
@@ -17,6 +18,10 @@ export default function Details() {
 			<ui-details>
 				<div slot="summary">Heading 2</div>
 				<div slot="content">Content 2</div>
+			</ui-details>
+			<ui-details>
+				<div slot="summary">Heading 3</div>
+				<div slot="content">Content 3</div>
 			</ui-details>
 		</div>
 	);

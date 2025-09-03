@@ -6,7 +6,7 @@ details {
 }
 
 /* Slots */
-ui-details summary {
+ui-details details {
 	@apply flex;
 }
 ui-details *[slot='summary'] {
