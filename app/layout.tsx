@@ -186,6 +186,11 @@ export default function Layout() {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/icon" className={navLinkStyles}>
+								Icon
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/text" className={navLinkStyles}>
 								Text
 							</NavLink>

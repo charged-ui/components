@@ -2,15 +2,14 @@ import { LitElement, css, html } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { animate } from 'motion/mini';
 import { chargedCustomElement } from '../registry';
+import '../icon';
 import './details.css';
 
 export type DetailsProps = {
-	'data-expanded'?: boolean;
 	name?: string;
 	open?: boolean;
-} & React.HTMLAttributes<HTMLElement>;
+} & React.HTMLAttributes<HTMLDetailsElement>;
 
-// Better typing for the custom event
 export interface UIDetailsToggleEvent extends CustomEvent {
 	detail: {
 		name: string;
@@ -32,7 +31,16 @@ export class UIDetails extends LitElement {
 	static styles = css`
 		summary {
 			display: flex;
+			align-items: center;
 			cursor: pointer;
+			position: relative;
+		}
+
+		ui-icon {
+			position: absolute;
+			right: 1rem;
+			width: 20px;
+			height: 20px;
 		}
 	`;
 
@@ -109,7 +117,8 @@ export class UIDetails extends LitElement {
 					aria-controls="content"
 					@click=${this.handleClick}
 				>
-					<slot name="summary" />
+					<slot name="summary"></slot>
+					<ui-icon name="chevron-down" />
 				</summary>
 				<div
 					id="content"
