@@ -1,9 +1,17 @@
 @import 'tailwindcss';
 
+ui-details {
+	@apply block;
+	@apply border-b;
+}
+
+* ui-details:last-child {
+	@apply border-0;
+}
+
 /* Base styles */
 ui-details *[slot='summary'] {
 	@apply w-full;
-	@apply border-y;
 	@apply pointer-events-none;
 	@apply cursor-pointer;
 	@apply flex;
@@ -13,6 +21,7 @@ ui-details *[slot='summary'] {
 
 ui-details *[slot='content'] {
 	@apply p-4;
+	@apply border-t;
 }
 
 ui-details:not(:defined) *[slot='content'] {

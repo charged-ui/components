@@ -28,6 +28,9 @@ export class UIDetails extends LitElement {
 	@query('#content')
 	content!: HTMLElement;
 
+	@query('ui-icon')
+	icon!: HTMLElement;
+
 	static styles = css`
 		summary {
 			display: flex;
@@ -41,6 +44,11 @@ export class UIDetails extends LitElement {
 			right: 1rem;
 			width: 20px;
 			height: 20px;
+			transition: all 0.3s;
+		}
+
+		details[open] ui-icon {
+			transform: rotate(180deg);
 		}
 	`;
 
@@ -100,12 +108,16 @@ export class UIDetails extends LitElement {
 		// Set initial state
 		this.content.style.height = this.content.clientHeight + 'px';
 		this.content.style.overflow = 'hidden';
+		this.icon.style.transform = 'rotate(0deg)';
+
 		// Collapse animation
 		animate(this.content, { height: 0 }, { duration: 0.3 }).then(() => {
 			this.open = false; // Close <details>
 			this.content.style.height = ''; // Reset height
 			this.content.style.overflow = ''; // Reset overflow
+			this.icon.style.transform = ''; // Reset transform
 		});
+		animate(this.icon, { rotate: 0 }, { duration: 0.3 });
 	}
 
 	render() {
