@@ -191,6 +191,11 @@ export default function Layout() {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/spinner" className={navLinkStyles}>
+								Spinner
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/text" className={navLinkStyles}>
 								Text
 							</NavLink>

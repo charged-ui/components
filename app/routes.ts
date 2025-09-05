@@ -18,6 +18,7 @@ export default [
 			route('button', 'routes/elements/button.tsx'),
 			route('details', 'routes/elements/details.tsx'),
 			route('icon', 'routes/elements/icon.tsx'),
+			route('spinner', 'routes/elements/spinner.tsx'),
 			route('text', 'routes/elements/text.tsx'),
 		]),
 	]),
