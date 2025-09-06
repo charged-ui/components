@@ -12,6 +12,20 @@ export type AlertProps = {
 	'data-variant': AlertVariant;
 } & React.HTMLAttributes<HTMLElement>;
 
+declare global {
+	interface HTMLElementTagNameMap {
+		'ui-alert': UIAlert;
+	}
+}
+
+declare module 'react' {
+	namespace JSX {
+		interface IntrinsicElements {
+			'ui-alert': AlertProps;
+		}
+	}
+}
+
 @chargedCustomElement('ui-alert')
 export class UIAlert extends LitElement {
 	render() {
@@ -24,19 +38,5 @@ export class UIAlert extends LitElement {
 				</div>
 			</div>
 		`;
-	}
-}
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'ui-alert': UIAlert;
-	}
-}
-
-declare module 'react' {
-	namespace JSX {
-		interface IntrinsicElements {
-			'ui-alert': AlertProps;
-		}
 	}
 }

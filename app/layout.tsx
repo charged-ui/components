@@ -6,10 +6,10 @@ const menuLinkBase =
 
 const navLinkStyles = ({ isActive, isPending }: NavLinkRenderProps) =>
 	isPending
-		? 'block px-4 py-2 font-medium'
+		? 'block px-4 py-2 font-medium rounded-lg'
 		: isActive
-			? 'block px-4 py-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg dark:!text-white !text-zinc-950 font-medium'
-			: 'block px-4 py-2 text-neutral-500 font-medium';
+			? 'block px-4 py-2 bg-neutral-100 dark:bg-neutral-800 dark:!text-white !text-zinc-950 font-medium rounded-lg'
+			: 'block px-4 py-2 text-neutral-500 font-medium hover:bg-neutral-50 dark:hover:bg-zinc-900 rounded-lg';
 
 const menuLinkStyles = ({ isActive, isPending }: NavLinkRenderProps) =>
 	isPending
@@ -169,7 +169,7 @@ export default function Layout() {
 					<ui-text data-variant={TextVariant.SM} className="px-4 !font-bold">
 						Elements
 					</ui-text>
-					<ul className="text-sm">
+					<ul className="flex flex-col gap-1 text-sm">
 						<li>
 							<NavLink to="elements/alert" className={navLinkStyles}>
 								Alert
@@ -178,6 +178,21 @@ export default function Layout() {
 						<li>
 							<NavLink to="elements/button" className={navLinkStyles}>
 								Button
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/details" className={navLinkStyles}>
+								Details
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/icon" className={navLinkStyles}>
+								Icon
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/spinner" className={navLinkStyles}>
+								Spinner
 							</NavLink>
 						</li>
 						<li>
