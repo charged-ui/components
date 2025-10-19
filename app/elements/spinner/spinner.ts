@@ -6,6 +6,8 @@ export type SpinnerProps = {} & React.HTMLAttributes<HTMLDivElement>;
 
 @chargedCustomElement('ui-spinner')
 export class UISpinner extends LitElement {
+	private animationControls: any = null; // Store animation reference
+
 	static styles = css`
 		:host {
 			display: block;
@@ -29,7 +31,7 @@ export class UISpinner extends LitElement {
 		const offset = 0.1;
 		const duration = numSegments * offset;
 
-		animate(
+		this.animationControls = animate(
 			segments,
 			//@ts-expect-error (Motion library has incomplete type definitions for keyframes)
 			{ opacity: [0, 1, 0] },
@@ -40,6 +42,15 @@ export class UISpinner extends LitElement {
 				repeat: Infinity,
 			}
 		);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		// Clean up animation when component unmounts
+		if (this.animationControls) {
+			this.animationControls.stop();
+			this.animationControls = null;
+		}
 	}
 
 	render() {
@@ -90,11 +101,5 @@ declare module 'react' {
 		interface IntrinsicElements {
 			'ui-spinner': SpinnerProps;
 		}
-	}
-}
-
-declare module 'motion' {
-	interface KeyframeObject {
-		[key: string]: any;
 	}
 }
