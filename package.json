@@ -1,6 +1,6 @@
 {
 	"name": "@charged-ui/components",
-	"version": "1.0.3-alpha.27",
+	"version": "1.0.3-alpha.28",
 	"description": "Universal web components built with Lit.",
 	"type": "module",
 	"main": "./dist/index.js",
