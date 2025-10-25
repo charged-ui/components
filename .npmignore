@@ -1,0 +1,21 @@
+# Source files
+app/
+public/
+.react-router/
+build/
+
+# Config files
+vite.config.ts
+react-router.config.ts
+tsconfig.json
+tsconfig.lib.json
+.vscode/
+.dockerignore
+Dockerfile
+
+# Development
+node_modules/
+*.log
+.DS_Store
+*.md
+!README.md
