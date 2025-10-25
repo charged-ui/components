@@ -1,7 +1,7 @@
 {
-	"name": "@charged/ui",
-	"version": "0.1.0",
-	"description": "Universal web components built with Lit that work seamlessly in React, Vue, Angular, and vanilla HTML",
+	"name": "@charged-ui/components",
+	"version": "1.0.3-alpha.27",
+	"description": "Universal web components built with Lit.",
 	"type": "module",
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
