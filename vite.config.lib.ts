@@ -17,17 +17,25 @@ export default defineConfig({
 		},
 		outDir: 'dist',
 		rollupOptions: {
-			external: [
-				'lit',
-				'lit/decorators.js',
-				'lit/directives/unsafe-html.js',
-				'motion',
-				'motion/mini',
-			],
+			// Don't externalize anything - bundle all dependencies
+			external: [],
 			output: {
-				preserveModules: true,
-				preserveModulesRoot: 'app/elements',
 				entryFileNames: '[name].js',
+				// Create separate chunks for lit and motion,
+				chunkFileNames: (chunkInfo) => {
+					if (chunkInfo.name === 'cobe') return 'cobe.js';
+					if (chunkInfo.name === 'motion') return 'motion.js';
+					if (chunkInfo.name === 'vendor') return 'vendor.js';
+					return '[name].js';
+				},
+				manualChunks: (id) => {
+					if (id.includes('node_modules/lit')) {
+						return 'vendor/lit';
+					}
+					if (id.includes('node_modules/motion')) {
+						return 'vendor/motion';
+					}
+				},
 			},
 		},
 	},
