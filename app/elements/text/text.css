@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@reference 'tailwindcss';
 
 /* Base styles for all headings */
 ui-text[data-variant^='heading-'] {

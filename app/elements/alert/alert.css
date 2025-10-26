@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@reference 'tailwindcss';
 
 ui-alert {
 	@apply p-4 border rounded-lg;
