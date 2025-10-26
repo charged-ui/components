@@ -18,7 +18,8 @@
 		},
 		"./alert": {
 			"types": "./dist/alert/index.d.ts",
-			"import": "./dist/alert/index.js"
+			"import": "./dist/alert/alert.js",
+			"style": "./dist/alert/alert.css"
 		},
 		"./button": {
 			"types": "./dist/button/index.d.ts",
@@ -61,7 +62,7 @@
 		"lit": "^3.0.0"
 	},
 	"dependencies": {
-		"lit": "^3.3.1"
+		"lit": "^3.0.0"
 	},
 	"devDependencies": {
 		"@heroicons/react": "^2.2.0",
@@ -73,6 +74,7 @@
 		"@types/node": "^20",
 		"@types/react": "^19.1.2",
 		"@types/react-dom": "^19.1.2",
+		"autoprefixer": "^10.4.21",
 		"clsx": "^2.1.1",
 		"isbot": "^5.1.27",
 		"motion": "^12.23.12",
@@ -80,7 +82,7 @@
 		"react-dom": "^19.1.0",
 		"react-router": "^7.7.1",
 		"shiki": "^3.9.2",
-		"tailwindcss": "^4.1.4",
+		"tailwindcss": "^4.1.16",
 		"typescript": "^5.8.3",
 		"vite": "^6.3.3",
 		"vite-tsconfig-paths": "^5.1.4"

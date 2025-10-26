@@ -1,0 +1,8 @@
+@reference 'tailwindcss';
+
+/* Export only the CSS custom properties and common styles */
+@layer base {
+	:root {
+		/* This will contain all the Tailwind CSS variables */
+	}
+}
