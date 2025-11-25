@@ -1,0 +1,11 @@
+ui-alert{border-radius:var(--radius-lg,.5rem);border-style:var(--tw-border-style);padding:calc(var(--spacing,.25rem)*4);border-width:1px}
+ui-alert[data-variant=success]{border-color:var(--color-emerald-200,oklch(90.5% .093 164.15));background-color:var(--color-emerald-50,oklch(97.9% .021 166.113));color:var(--color-emerald-700,oklch(50.8% .118 165.612))}@media(prefers-color-scheme:dark){
+ui-alert[data-variant=success]{border-color:var(--color-emerald-700,oklch(50.8% .118 165.612));background-color:var(--color-emerald-900,oklch(37.8% .077 168.94));color:var(--color-emerald-300,oklch(84.5% .143 164.978))}}
+ui-alert[data-variant=error]{border-color:var(--color-red-200,oklch(88.5% .062 18.334));background-color:var(--color-red-50,oklch(97.1% .013 17.38));color:var(--color-red-700,oklch(50.5% .213 27.518))}@media(prefers-color-scheme:dark){
+ui-alert[data-variant=error]{border-color:var(--color-red-700,oklch(50.5% .213 27.518));background-color:var(--color-red-900,oklch(39.6% .141 25.723));color:var(--color-red-300,oklch(80.8% .114 19.571))}}
+ui-alert[data-variant=warning]{border-color:var(--color-orange-200,oklch(90.1% .076 70.697));background-color:var(--color-orange-50,oklch(98% .016 73.684));color:var(--color-orange-700,oklch(55.3% .195 38.402))}@media(prefers-color-scheme:dark){
+ui-alert[data-variant=warning]{border-color:var(--color-orange-700,oklch(55.3% .195 38.402));background-color:var(--color-orange-900,oklch(40.8% .123 38.172));color:var(--color-orange-300,oklch(83.7% .128 66.29))}}
+ui-alert[data-variant=info]{border-color:var(--color-sky-200,oklch(90.1% .058 230.902));background-color:var(--color-sky-50,oklch(97.7% .013 236.62));color:var(--color-sky-700,oklch(50% .134 242.749))}@media(prefers-color-scheme:dark){
+ui-alert[data-variant=info]{border-color:var(--color-sky-700,oklch(50% .134 242.749));background-color:var(--color-sky-900,oklch(39.1% .09 240.876));color:var(--color-sky-300,oklch(82.8% .111 230.318))}}
+ui-alert [slot=heading]{--tw-font-weight:var(--font-weight-semibold,600);font-weight:var(--font-weight-semibold,600)}
+ui-alert [slot=message]{font-size:var(--text-sm,.875rem);line-height:var(--tw-leading,var(--text-sm--line-height,calc(1.25/.875)))}
