@@ -18,6 +18,8 @@ export default [
 			route('button', 'routes/elements/button.tsx'),
 			route('card', 'routes/elements/card.tsx'),
 			route('details', 'routes/elements/details.tsx'),
+			route('draggable', 'routes/elements/draggable.tsx'),
+			route('droppable', 'routes/elements/droppable.tsx'),
 			route('icon', 'routes/elements/icon.tsx'),
 			route('spinner', 'routes/elements/spinner.tsx'),
 			route('text', 'routes/elements/text.tsx'),

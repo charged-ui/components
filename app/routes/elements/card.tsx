@@ -13,18 +13,18 @@ export default function Button() {
 		<>
 			<ui-card className="w-80">
 				<div
-					className="h-[210px] bg-slate-200 flex justify-center items-center"
+					className="h-[210px] bg-neutral-100 flex justify-center items-center"
 					slot="media"
 				>
-					<ui-icon name="photo" className="w-12 h-12 text-slate-500" />
+					<ui-icon name="photo" className="w-12 h-12 text-neutral-500" />
 				</div>
-				<div className="text-lg font-bold pt-8 px-8" slot="header">
+				<div className="font-bold pt-6 px-6" slot="header">
 					Card Header
 				</div>
-				<div slot="body" className="pb-8 px-8">
+				<div slot="body" className="pb-6 px-6">
 					Card Body
 				</div>
-				<footer slot="footer" className="border-t border-neutral-200 px-8 py-4">
+				<footer slot="footer" className="border-t border-neutral-200 px-6 py-4">
 					Card Footer
 				</footer>
 			</ui-card>

@@ -191,6 +191,16 @@ export default function Layout() {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/draggable" className={navLinkStyles}>
+								Draggable
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/droppable" className={navLinkStyles}>
+								Droppable
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/icon" className={navLinkStyles}>
 								Icon
 							</NavLink>
