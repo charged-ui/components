@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-globe {
+	@apply block;
+}
+
+ui-globe:not(:defined) {
+	display: none;
+}
