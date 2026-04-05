@@ -37,6 +37,9 @@ export default defineConfig({
 					if (chunkInfo.name === 'cobe') return 'cobe.js';
 					if (chunkInfo.name === 'motion') return 'motion.js';
 					if (chunkInfo.name === 'vendor') return 'vendor.js';
+					if (chunkInfo.name === 'vendor/cobe') return 'vendor/cobe.js';
+					if (chunkInfo.name === 'vendor/lit') return 'vendor/lit.js';
+					if (chunkInfo.name === 'vendor/motion') return 'vendor/motion.js';
 					return '[name].js';
 				},
 				manualChunks: (id) => {
@@ -45,6 +48,9 @@ export default defineConfig({
 					}
 					if (id.includes('node_modules/motion')) {
 						return 'vendor/motion';
+					}
+					if (id.includes('node_modules/cobe')) {
+						return 'vendor/cobe';
 					}
 				},
 			},
