@@ -176,8 +176,18 @@ export default function Layout() {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/aurora" className={navLinkStyles}>
+								Aurora
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/button" className={navLinkStyles}>
 								Button
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/card" className={navLinkStyles}>
+								Card
 							</NavLink>
 						</li>
 						<li>
@@ -186,13 +196,53 @@ export default function Layout() {
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/dots" className={navLinkStyles}>
+								Dots
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/draggable" className={navLinkStyles}>
+								Draggable
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/droppable" className={navLinkStyles}>
+								Droppable
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/globe" className={navLinkStyles}>
+								Globe
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/icon" className={navLinkStyles}>
 								Icon
 							</NavLink>
 						</li>
 						<li>
+							<NavLink to="elements/icon-selector" className={navLinkStyles}>
+								Icon Selector
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/meteors" className={navLinkStyles}>
+								Meteors
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/ripple" className={navLinkStyles}>
+								Ripple
+							</NavLink>
+						</li>
+						<li>
 							<NavLink to="elements/spinner" className={navLinkStyles}>
 								Spinner
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to="elements/stat" className={navLinkStyles}>
+								Stat
 							</NavLink>
 						</li>
 						<li>
