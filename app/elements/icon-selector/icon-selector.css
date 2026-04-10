@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-icon-selector {
+	@apply block;
+}
+
+ui-icon-selector:not(:defined) {
+	display: none;
+}
