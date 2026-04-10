@@ -54,6 +54,10 @@
 			"types": "./dist/alert.d.ts",
 			"import": "./dist/alert.js"
 		},
+		"./gallery": {
+			"types": "./dist/gallery.d.ts",
+			"import": "./dist/gallery.js"
+		},
 		"./package.json": "./package.json"
 	}
 }

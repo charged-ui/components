@@ -5,6 +5,9 @@ import { extractBaseStyles } from './utils/extract-base-styles';
 import { extractComponentStyles } from './utils/extract-component-styles';
 
 export default defineConfig({
+	define: {
+		'process.env.NODE_ENV': JSON.stringify('production'),
+	},
 	build: {
 		lib: {
 			entry: {
@@ -17,6 +20,7 @@ export default defineConfig({
 				'dots/index': resolve(__dirname, 'app/elements/dots/index.ts'),
 				'draggable/index': resolve(__dirname, 'app/elements/draggable/index.ts'),
 				'droppable/index': resolve(__dirname, 'app/elements/droppable/index.ts'),
+				'gallery/index': resolve(__dirname, 'app/elements/gallery/index.ts'),
 				'globe/index': resolve(__dirname, 'app/elements/globe/index.ts'),
 				'icon/index': resolve(__dirname, 'app/elements/icon/index.ts'),
 				'icon-selector/index': resolve(__dirname, 'app/elements/icon-selector/index.ts'),
