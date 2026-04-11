@@ -22,6 +22,7 @@ export default [
 			route('dots', 'routes/elements/dots.tsx'),
 			route('draggable', 'routes/elements/draggable.tsx'),
 			route('droppable', 'routes/elements/droppable.tsx'),
+			route('gallery', 'routes/elements/gallery.tsx'),
 			route('globe', 'routes/elements/globe.tsx'),
 			route('icon', 'routes/elements/icon.tsx'),
 			route('icon-selector', 'routes/elements/icon-selector.tsx'),

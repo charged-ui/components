@@ -2,15 +2,14 @@ import { LitElement, html, css, unsafeCSS } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { chargedCustomElement } from '../registry';
 import { animate, stagger } from 'motion';
-import clsx from 'clsx';
-import styles from './gallery.css?raw';
+import styles from './gallery.css?inline';
 
 import '../button/index';
 
 type FilterItem = { id: string; label: string };
 
 export type GalleryProps = {
-	columns?: number;
+	'data-columns'?: number;
 	allLabel?: string;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -20,7 +19,7 @@ export class UIGallery extends LitElement {
 		${unsafeCSS(styles)}
 	`;
 
-	@property({ type: Number })
+	@property({ type: Number, attribute: 'data-columns', reflect: true })
 	columns = 4;
 
 	@property({ type: String })
@@ -31,30 +30,6 @@ export class UIGallery extends LitElement {
 
 	@state()
 	private filters: FilterItem[] = [];
-
-	get gridClasses(): string {
-		const mobileColumns = Math.min(this.columns, 2);
-		const tabletColumns = Math.min(this.columns, 3);
-		const desktopColumns = this.columns;
-
-		const gridStyles = clsx({
-			'sm:grid-cols-1': mobileColumns === 1,
-			'sm:grid-cols-2': mobileColumns === 2,
-
-			'md:grid-cols-1': tabletColumns === 1,
-			'md:grid-cols-2': tabletColumns === 2,
-			'md:grid-cols-3': tabletColumns === 3,
-
-			'lg:grid-cols-1': desktopColumns === 1,
-			'lg:grid-cols-2': desktopColumns === 2,
-			'lg:grid-cols-3': desktopColumns === 3,
-			'lg:grid-cols-4': desktopColumns === 4,
-			'lg:grid-cols-5': desktopColumns === 5,
-			'lg:grid-cols-6': desktopColumns === 6,
-		});
-
-		return `grid grid-cols-1 ${gridStyles} gap-6`;
-	}
 
 	detectFiltersFromChildren(): void {
 		const slot = this.shadowRoot?.querySelector('slot');
@@ -86,7 +61,6 @@ export class UIGallery extends LitElement {
 		return category
 			.split(' ')
 			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-			.slice(0, 1)
 			.join(' ');
 	}
 
@@ -127,7 +101,7 @@ export class UIGallery extends LitElement {
 		animate(
 			visibleItems,
 			{ opacity: [0, 1], scale: [0.8, 1] },
-			{ delay: stagger(0.05, { ease: [0.4, 0.0, 0.2, 1] }) }
+			{ delay: stagger(0.05, { ease: [0.4, 0.0, 0.2, 1] }) },
 		);
 	}
 
@@ -157,26 +131,26 @@ export class UIGallery extends LitElement {
 		return html`
 			${this.filters.length > 1
 				? html`
-						<div class="flex flex-wrap gap-2 mb-8">
+						<div class="gallery-filters">
 							${this.filters.map(
 								(filter) => html`
 									<ui-button
 										@click=${() => this.setFilter(filter.id)}
-										size="small"
-										variant=${this.activeFilter === filter.id
+										data-size="small"
+										data-variant=${this.activeFilter === filter.id
 											? 'primary'
 											: 'secondary'}
-										shape="rounded"
+										data-shape="rounded"
 									>
-										<div slot="value">${filter.label}</div>
+										<button>${filter.label}</button>
 									</ui-button>
-								`
+								`,
 							)}
 						</div>
 					`
 				: ''}
 
-			<div class="${this.gridClasses}">
+			<div class="gallery-grid">
 				<slot @slotchange=${() => this.handleSlotChange()}></slot>
 			</div>
 		`;
