@@ -1,5 +1,6 @@
 import type { Route } from './+types/alert';
 import { AlertVariant } from '~/elements/alert';
+import '~/elements/icon';
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -12,7 +13,7 @@ export default function Alert() {
 	return (
 		<>
 			<ui-alert data-variant={AlertVariant.Success}>
-				{/* <ui-icon slot="icon" name="check-circle" /> */}
+				<ui-icon slot="icon" name="check-circle" />
 				<div slot="heading">Success</div>
 				<div slot="message">Operation completed successfully.</div>
 			</ui-alert>

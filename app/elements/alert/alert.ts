@@ -30,13 +30,9 @@ declare module 'react' {
 export class UIAlert extends LitElement {
 	render() {
 		return html`
-			<div role="alert">
-				<slot name="icon"></slot>
-				<div>
-					<slot name="heading"></slot>
-					<slot name="message"></slot>
-				</div>
-			</div>
+			<slot name="icon"></slot>
+			<slot name="heading"></slot>
+			<slot name="message"></slot>
 		`;
 	}
 }
