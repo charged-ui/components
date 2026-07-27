@@ -1,7 +1,9 @@
-import { AlertProps } from './app/elements/alert';
+declare module '*.css?inline' {
+	const css: string;
+	export default css;
+}
 
-declare namespace JSX {
-	interface IntrinsicElements {
-		'ui-alert': AlertProps & { children?: React.ReactNode };
-	}
+declare module '*.css' {
+	const css: string;
+	export default css;
 }

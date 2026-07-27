@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-card {
+	@apply flex flex-col bg-white border border-solid border-neutral-200 rounded-xl relative overflow-hidden shadow-xs;
+}
+
+ui-card *[slot='body'] {
+	@apply flex flex-1;
+}

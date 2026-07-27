@@ -1,0 +1,75 @@
+/* Charged UI · details
+ *
+ * All shipped styles live in @layer components behind :where(), so any
+ * consumer Tailwind utility (always in the later utilities layer) wins
+ * every conflict — no specificity fights, no !important. In apps without
+ * Tailwind the same holds: unlayered author CSS beats layered library CSS.
+ *
+ * The --ui-details-* custom properties are the CMS-facing theming API
+ * (Gutenberg / Drupal Canvas emit inline custom properties, not classes).
+ * They act as defaults; utility classes simply override them.
+ */
+@layer components {
+	:where(ui-details) {
+		--ui-details-bg: transparent;
+		--ui-details-border: currentColor;
+		--ui-details-radius: 0px;
+		--ui-details-padding: 1rem;
+		--ui-details-summary-fg: inherit;
+		--ui-details-gap: 0.5rem;
+		--ui-details-icon-size: 20px;
+		--ui-details-icon-color: currentColor;
+
+		display: block;
+		background: var(--ui-details-bg);
+		border-radius: var(--ui-details-radius);
+		/* stacked-list default: hairline divider between items */
+		border-bottom: 1px solid var(--ui-details-border);
+	}
+
+	:where(* ui-details:last-child) {
+		border-width: 0;
+	}
+
+	:where(ui-details > [slot='summary']) {
+		display: flex;
+		align-items: center;
+		gap: var(--ui-details-gap);
+		padding: var(--ui-details-padding);
+		font-weight: 600;
+		color: var(--ui-details-summary-fg);
+		cursor: pointer;
+		user-select: none;
+	}
+
+	/* Chevron — pure CSS mask, so it needs no icon component and no
+	 * network fetch. Color/size stay on the --ui-details-icon-* vars. */
+	:where(ui-details > [slot='summary'])::after {
+		content: '';
+		flex: none;
+		margin-left: auto;
+		width: var(--ui-details-icon-size);
+		height: var(--ui-details-icon-size);
+		background-color: var(--ui-details-icon-color);
+		-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='black'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E")
+			center / 100% 100% no-repeat;
+		mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='black'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E")
+			center / 100% 100% no-repeat;
+		transition: transform 0.3s;
+	}
+
+	:where(ui-details[open] > [slot='summary'])::after {
+		transform: rotate(180deg);
+	}
+
+	:where(ui-details > [slot='content']) {
+		padding: var(--ui-details-padding);
+		border-top: 1px solid var(--ui-details-border);
+	}
+
+	/* Closed state. Attribute-driven, so SSR'd/CMS markup renders the
+	 * correct initial state before the element is even defined. */
+	:where(ui-details:not([open]) > [slot='content']) {
+		display: none;
+	}
+}
