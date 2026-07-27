@@ -1,63 +1,54 @@
 {
-	"name": "@charged-ui/components",
-	"version": "1.0.3-alpha.29",
-	"description": "Universal web components built with Lit.",
-	"type": "module",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"files": [
-		"dist",
-		"README.md"
-	],
-	"scripts": {
-		"build": "react-router build",
-		"build:lib": "npm run build:types && vite build --config vite.config.lib.ts",
-		"build:types": "tsc --project tsconfig.lib.json",
-		"dev": "react-router dev",
-		"start": "react-router-serve ./build/server/index.js",
-		"typecheck": "react-router typegen && tsc"
-	},
-	"dependencies": {
-		"@heroicons/react": "^2.2.0",
-		"@lit/react": "^1.0.8",
-		"@react-router/node": "^7.7.1",
-		"@react-router/serve": "^7.7.1",
-		"clsx": "^2.1.1",
-		"cobe": "^0.6.3",
-		"isbot": "^5.1.27",
-		"lit": "^3.3.1",
-		"lit-html": "^3.3.1",
-		"motion": "^12.23.24",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
-		"react-router": "^7.7.1"
-	},
-	"devDependencies": {
-		"@react-router/dev": "^7.7.1",
-		"@tailwindcss/vite": "^4.1.4",
-		"@types/node": "^20",
-		"@types/react": "^19.1.2",
-		"@types/react-dom": "^19.1.2",
-		"shiki": "^3.9.2",
-		"tailwindcss": "^4.1.4",
-		"typescript": "^5.8.3",
-		"vite": "^6.3.3",
-		"vite-tsconfig-paths": "^5.1.4"
-	},
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
-		},
-		"./alert": {
-			"types": "./dist/alert.d.ts",
-			"import": "./dist/alert.js"
-		},
-		"./gallery": {
-			"types": "./dist/gallery.d.ts",
-			"import": "./dist/gallery.js"
-		},
-		"./package.json": "./package.json"
-	}
+  "name": "charged-ui",
+  "version": "1.0.3-alpha.29",
+  "description": "Universal web components built with Lit.",
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./registry": "./registry.ts",
+    "./alert": "./alert/index.ts",
+    "./aurora": "./aurora/index.ts",
+    "./button": "./button/index.ts",
+    "./card": "./card/index.ts",
+    "./code-block": "./code-block/index.ts",
+    "./details": "./details/index.ts",
+    "./dots": "./dots/index.ts",
+    "./draggable": "./draggable/index.ts",
+    "./droppable": "./droppable/index.ts",
+    "./gallery": "./gallery/index.ts",
+    "./globe": "./globe/index.ts",
+    "./icon": "./icon/index.ts",
+    "./icon-selector": "./icon-selector/index.ts",
+    "./logo": "./logo/index.ts",
+    "./nav-menu": "./nav-menu/index.ts",
+    "./meteors": "./meteors/index.ts",
+    "./ripple": "./ripple/index.ts",
+    "./spinner": "./spinner/index.ts",
+    "./stat": "./stat/index.ts",
+    "./tabs": "./tabs/index.ts",
+    "./text": "./text/index.ts",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "vite build && node scripts/postbuild.js && npm run build:types",
+    "build:types": "tsc --project tsconfig.build.json"
+  },
+  "dependencies": {
+    "cobe": "^0.6.3",
+    "lit": "^3.3.1",
+    "lit-html": "^3.3.1",
+    "motion": "^12.23.24",
+    "prismjs": "^1.30.0",
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/prismjs": "^1.26.6",
+    "@types/react": "^19.1.2",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
 }
