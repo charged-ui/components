@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-bg-meteors {
+  @apply block;
+}
+
+ui-bg-meteors:not(:defined) {
+  display: none;
+}

@@ -1,0 +1,109 @@
+---
+name: Button
+tag: ui-button
+description: Buttons across sizes, shapes, and semantic variants.
+---
+
+`<ui-button>` is a light-DOM wrapper: it styles a native `<button>` or `<a>`
+child rather than rendering its own control. The child keeps its semantics,
+focus behaviour, and form participation, so link CTAs and submit buttons use
+the same element.
+
+<Demo label="Sizes">
+  <div className="flex flex-wrap items-center gap-4">
+    <ui-button data-size="small" data-variant="primary" data-shape="rounded">
+      <button>Small</button>
+    </ui-button>
+    <ui-button data-size="medium" data-variant="primary" data-shape="rounded">
+      <button>Medium</button>
+    </ui-button>
+    <ui-button data-size="large" data-variant="primary" data-shape="rounded">
+      <button>Large</button>
+    </ui-button>
+  </div>
+</Demo>
+
+```html
+<ui-button data-size="small" data-variant="primary" data-shape="rounded">
+  <button>Small</button>
+</ui-button>
+```
+
+## Variants
+
+Variants are semantic, not decorative — `error` and `warning` should carry
+real consequence, and `tertiary` is the quiet option for dense toolbars.
+
+<Demo label="Variants">
+  <div className="flex flex-wrap items-center gap-4">
+    <ui-button data-variant="primary" data-size="medium" data-shape="square">
+      <button>Primary</button>
+    </ui-button>
+    <ui-button data-variant="secondary" data-size="medium" data-shape="square">
+      <button>Secondary</button>
+    </ui-button>
+    <ui-button data-variant="tertiary" data-size="medium" data-shape="square">
+      <button>Tertiary</button>
+    </ui-button>
+    <ui-button data-variant="warning" data-size="medium" data-shape="square">
+      <button>Warning</button>
+    </ui-button>
+    <ui-button data-variant="error" data-size="medium" data-shape="square">
+      <button>Error</button>
+    </ui-button>
+    <ui-button data-variant="success" data-size="medium" data-shape="square">
+      <button>Success</button>
+    </ui-button>
+    <ui-button data-variant="info" data-size="medium" data-shape="square">
+      <button>Info</button>
+    </ui-button>
+  </div>
+</Demo>
+
+## Shape
+
+<Demo label="Shape">
+  <div className="flex flex-wrap items-center gap-4">
+    <ui-button data-shape="square" data-variant="secondary" data-size="medium">
+      <button>Square</button>
+    </ui-button>
+    <ui-button data-shape="rounded" data-variant="secondary" data-size="medium">
+      <button>Rounded</button>
+    </ui-button>
+  </div>
+</Demo>
+
+## Links
+
+Swap the child for an `<a>` when the action navigates. Nothing else changes.
+
+<Demo label="Link">
+  <ui-button data-variant="primary" data-shape="rounded" data-size="medium">
+    <a href="#">Read the guide</a>
+  </ui-button>
+</Demo>
+
+```html
+<ui-button data-variant="primary" data-shape="rounded" data-size="medium">
+  <a href="/guide">Read the guide</a>
+</ui-button>
+```
+
+## API
+
+Each attribute is opt-in and independent. Omitting one leaves that axis
+unstyled — the child keeps the shared base styles (inline-flex, medium
+weight, focus ring) and nothing else.
+
+| Attribute      | Values                                                                    |
+| -------------- | ------------------------------------------------------------------------- |
+| `data-variant` | `primary`, `secondary`, `tertiary`, `warning`, `error`, `success`, `info` |
+| `data-size`    | `small`, `medium`, `large`                                                |
+| `data-shape`   | `square`, `rounded`                                                       |
+
+TypeScript consumers can import the `ButtonVariant`, `ButtonSize`, and
+`ButtonShape` enums instead of writing the string literals by hand:
+
+```ts
+import { ButtonVariant, ButtonSize } from '@charged/ui/button';
+```

@@ -1,8 +1,0 @@
-@reference 'tailwindcss';
-
-ui-draggable {
-	@apply hover:cursor-move;
-	@apply p-4;
-	@apply border-dashed;
-	@apply border;
-}

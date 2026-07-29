@@ -1,0 +1,36 @@
+---
+name: Ripple
+tag: ui-bg-ripple
+description: Radiating ripple background effect.
+---
+
+Concentric circles radiating outward from the centre. `<ui-bg-ripple>` is
+`display: contents` and positions itself absolutely, so it sits inside a
+positioned container alongside the content it sits behind — not wrapped
+around it.
+
+<Demo bleed plain>
+  <div className="relative flex h-[400px] items-center justify-center bg-white">
+    <p className="z-10 text-5xl font-semibold tracking-[-0.04em]">Ripple</p>
+    <ui-bg-ripple></ui-bg-ripple>
+  </div>
+</Demo>
+
+```html
+<div style="position: relative">
+  <p>Ripple</p>
+  <ui-bg-ripple></ui-bg-ripple>
+</div>
+```
+
+## API
+
+| Attribute           | Type   | Default |
+| ------------------- | ------ | ------- |
+| `maincirclesize`    | number | `210`   |
+| `maincircleopacity` | number | `0.24`  |
+| `numcircles`        | number | `8`     |
+
+| CSS variable        | Purpose              |
+| ------------------- | -------------------- |
+| `--ripple-bg-color` | Circle stroke colour |

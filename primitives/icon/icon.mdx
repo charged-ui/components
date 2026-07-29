@@ -1,0 +1,33 @@
+---
+name: Icon
+tag: ui-icon
+description: Icon element backed by the Heroicons set.
+---
+
+`<ui-icon>` renders a named [Heroicon](https://heroicons.com) inline. Only
+the icons you actually name are fetched, so the page never pays for the full
+set.
+
+<Demo>
+  <div className="flex items-center gap-6">
+    <ui-icon name="home" />
+    <ui-icon name="check-circle" />
+    <ui-icon name="arrow-top-right-on-square" />
+  </div>
+</Demo>
+
+```html
+<ui-icon name="home"></ui-icon>
+<ui-icon name="check-circle" variant="solid" size="32"></ui-icon>
+```
+
+## API
+
+| Attribute | Type                 | Default   |
+| --------- | -------------------- | --------- |
+| `name`    | string               | —         |
+| `variant` | `outline` \| `solid` | `outline` |
+| `size`    | string               | `24`      |
+
+To browse the full set interactively, see
+[Icon Selector](/elements/icon-selector).

@@ -1,0 +1,60 @@
+@reference 'tailwindcss';
+
+ui-tabs {
+  display: block;
+  --ui-tabs-fg: var(--color-neutral-900);
+  --ui-tabs-muted: var(--color-neutral-500);
+  --ui-tabs-border: var(--color-neutral-200);
+  --ui-tabs-hover-bg: var(--color-neutral-100);
+}
+
+/* TODO: Re-enable dark mode
+@media (prefers-color-scheme: dark) {
+	ui-tabs {
+		--ui-tabs-fg: var(--color-neutral-50);
+		--ui-tabs-muted: var(--color-neutral-400);
+		--ui-tabs-border: var(--color-neutral-800);
+		--ui-tabs-hover-bg: color-mix(in oklab, var(--color-neutral-800) 60%, transparent);
+	}
+}
+
+.dark ui-tabs {
+	--ui-tabs-fg: var(--color-neutral-50);
+	--ui-tabs-muted: var(--color-neutral-400);
+	--ui-tabs-border: var(--color-neutral-800);
+	--ui-tabs-hover-bg: color-mix(in oklab, var(--color-neutral-800) 60%, transparent);
+}
+*/
+
+ui-tabs:not(:defined) {
+  display: none;
+}
+
+ui-tabs *[slot='tab'] {
+  @apply relative inline-flex items-center gap-2 px-4 py-3 font-medium cursor-pointer select-none bg-transparent border-none outline-none;
+  color: var(--ui-tabs-muted);
+  transition: color 0.15s ease;
+}
+
+ui-tabs *[slot='tab']:hover {
+  color: var(--ui-tabs-fg);
+}
+
+ui-tabs *[slot='tab'][aria-selected='true'] {
+  color: var(--ui-tabs-fg);
+  background-color: transparent;
+}
+
+ui-tabs *[slot='tab']:focus-visible {
+  outline: 2px solid var(--ui-tabs-focus-color, var(--color-blue-500));
+  outline-offset: 2px;
+}
+
+ui-tabs *[slot='panel'] {
+  @apply pt-4;
+  color: var(--ui-tabs-fg);
+}
+
+ui-tabs *[slot='panel'][hidden] {
+  display: none !important;
+}

@@ -1,0 +1,51 @@
+---
+name: Alert
+tag: ui-alert
+description: Status messaging with success, error, warning, and info variants.
+---
+
+`<ui-alert>` carries a short status message. The heading and message are
+slotted, so the alert never guesses at your copy or truncates it. The `icon`
+slot is optional — leave it out and the layout closes up.
+
+<Demo label="Variants">
+  <div className="flex flex-col gap-4">
+    <ui-alert data-variant="success">
+      <ui-icon slot="icon" name="check-circle" />
+      <div slot="heading">Success</div>
+      <div slot="message">Operation completed successfully.</div>
+    </ui-alert>
+    <ui-alert data-variant="error">
+      <div slot="heading">Error</div>
+      <div slot="message">Something went wrong. Try again.</div>
+    </ui-alert>
+    <ui-alert data-variant="warning">
+      <div slot="heading">Warning</div>
+      <div slot="message">Please be cautious.</div>
+    </ui-alert>
+    <ui-alert data-variant="info">
+      <div slot="heading">Status</div>
+      <div slot="message">Here is some important information.</div>
+    </ui-alert>
+  </div>
+</Demo>
+
+```html
+<ui-alert data-variant="success">
+  <ui-icon slot="icon" name="check-circle"></ui-icon>
+  <div slot="heading">Success</div>
+  <div slot="message">Operation completed successfully.</div>
+</ui-alert>
+```
+
+## API
+
+| Attribute      | Values                                |
+| -------------- | ------------------------------------- |
+| `data-variant` | `success`, `error`, `warning`, `info` |
+
+| Slot      | Purpose                                         |
+| --------- | ----------------------------------------------- |
+| `icon`    | Leading status icon — pairs well with `ui-icon` |
+| `heading` | Short title line                                |
+| `message` | Body copy                                       |

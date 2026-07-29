@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-bg-aurora {
+  @apply block;
+}
+
+ui-bg-aurora:not(:defined) {
+  display: none;
+}

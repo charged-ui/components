@@ -1,0 +1,106 @@
+---
+name: Details
+tag: ui-details
+description: Accessible accordion built on native details, themeable via CSS variables.
+---
+
+`<ui-details>` keeps the summary and content in the light DOM, so your markup
+stays yours — the element only manages open state, the expand animation, and
+the ARIA wiring. Give several of them the same `name` and they behave as one
+accordion group: opening one closes the rest.
+
+<Demo label="Accordion group">
+  <div className="max-w-xl bg-white">
+    <ui-details name="faq" open>
+      <div slot="summary">What is your return policy?</div>
+      <div slot="content">
+        <p>
+          {
+            'You can return items within 30 days of purchase for a full refund. Items must be in original condition with tags attached.'
+          }
+        </p>
+      </div>
+    </ui-details>
+    <ui-details name="faq">
+      <div slot="summary">How long does shipping take?</div>
+      <div slot="content">
+        <p>
+          {
+            'Standard shipping takes 3-5 business days. Express shipping is available for next-day delivery.'
+          }
+        </p>
+      </div>
+    </ui-details>
+    <ui-details name="faq">
+      <div slot="summary">Do you offer international shipping?</div>
+      <div slot="content">
+        <p>
+          {
+            'Yes, we ship to over 50 countries worldwide. International shipping rates vary by destination.'
+          }
+        </p>
+      </div>
+    </ui-details>
+  </div>
+</Demo>
+
+```html
+<ui-details name="faq" open>
+  <div slot="summary">What is your return policy?</div>
+  <div slot="content">
+    <p>You can return items within 30 days of purchase.</p>
+  </div>
+</ui-details>
+```
+
+## Theming
+
+Every surface is exposed as a custom property, so a theme can restyle the
+element without touching the component.
+
+<Demo label="Themed via CSS variables">
+  <div className="max-w-xl">
+    <ui-details
+      open
+      style={{
+        '--ui-details-bg': '#dbeafe',
+        '--ui-details-border': '#2563eb',
+        '--ui-details-radius': '12px',
+        '--ui-details-summary-fg': '#1d4ed8',
+        '--ui-details-icon-color': '#2563eb',
+      }}
+    >
+      <div slot="summary">Can I restyle this element?</div>
+      <div slot="content">
+        <p>
+          {
+            'Every surface is exposed as a CSS custom property, so themes can restyle it without touching the component.'
+          }
+        </p>
+      </div>
+    </ui-details>
+  </div>
+</Demo>
+
+## API
+
+| Attribute | Type    | Notes                                       |
+| --------- | ------- | ------------------------------------------- |
+| `open`    | boolean | Reflected — read it back to check state     |
+| `name`    | string  | Shared name groups items into one accordion |
+
+| Slot      | Purpose                       |
+| --------- | ----------------------------- |
+| `summary` | The always-visible header row |
+| `content` | The revealed content          |
+
+| CSS variable              | Purpose                      |
+| ------------------------- | ---------------------------- |
+| `--ui-details-bg`         | Row background               |
+| `--ui-details-border`     | Border colour                |
+| `--ui-details-radius`     | Corner radius                |
+| `--ui-details-padding`    | Row padding                  |
+| `--ui-details-gap`        | Gap between summary and icon |
+| `--ui-details-summary-fg` | Summary text colour          |
+| `--ui-details-icon-color` | Chevron colour               |
+| `--ui-details-icon-size`  | Chevron size                 |

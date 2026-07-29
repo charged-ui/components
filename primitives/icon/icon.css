@@ -1,0 +1,9 @@
+ui-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+ui-icon:not(:defined) {
+  display: none;
+}

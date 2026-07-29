@@ -1,0 +1,31 @@
+---
+name: Dots
+tag: ui-bg-dots
+description: Dot-field background surface for technical sections.
+---
+
+A quiet background surface for technical sections — documentation, settings,
+anything that benefits from texture without pattern noise. Set
+`--dot-bg-color` to tune the field against your page background.
+
+<Demo bleed plain>
+  <div className="h-[400px]">
+    <ui-bg-dots style={{ height: '100%', '--dot-bg-color': '#f5f5f5' }}>
+      <div className="flex h-full items-center justify-center">
+        <h2 className="text-3xl font-bold tracking-tight">Dots Background</h2>
+      </div>
+    </ui-bg-dots>
+  </div>
+</Demo>
+
+```html
+<ui-bg-dots style="height: 100%; --dot-bg-color: #f5f5f5">
+  <h2>Dots Background</h2>
+</ui-bg-dots>
+```
+
+## API
+
+| CSS variable     | Purpose                 |
+| ---------------- | ----------------------- |
+| `--dot-bg-color` | Colour of the dot field |

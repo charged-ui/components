@@ -1,0 +1,44 @@
+---
+name: Meteors
+tag: ui-bg-meteors
+description: Meteor shower background effect for dark surfaces.
+---
+
+A meteor shower for dark hero sections. The streaks are drawn in white, so
+this needs a dark surface underneath to read at all — put it over
+`--color-surface-dark` or your own near-black.
+
+<Demo bleed plain>
+  <div className="h-[400px] bg-surface-dark">
+    <ui-bg-meteors
+      number={20}
+      style={{
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div className="text-center text-2xl font-semibold text-white">
+        Meteors Background
+      </div>
+    </ui-bg-meteors>
+  </div>
+</Demo>
+
+```html
+<ui-bg-meteors number="20" angle="60" style="height: 100%">
+  <h2>Meteors Background</h2>
+</ui-bg-meteors>
+```
+
+## API
+
+| Attribute     | Type   | Default | Notes                    |
+| ------------- | ------ | ------- | ------------------------ |
+| `number`      | number | `20`    | Meteors on screen        |
+| `angle`       | number | `60`    | Travel angle in degrees  |
+| `mindelay`    | number | `0.2`   | Shortest start delay (s) |
+| `maxdelay`    | number | `1.2`   | Longest start delay (s)  |
+| `minduration` | number | `2`     | Fastest crossing (s)     |
+| `maxduration` | number | `10`    | Slowest crossing (s)     |
