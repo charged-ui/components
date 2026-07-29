@@ -10,9 +10,8 @@ const entry = {
   'card/index': resolve(__dirname, 'primitives/card/index.ts'),
   'details/index': resolve(__dirname, 'primitives/details/index.ts'),
   'icon/index': resolve(__dirname, 'primitives/icon/index.ts'),
-  'logo/index': resolve(__dirname, 'primitives/logo/index.ts'),
+  'menu/index': resolve(__dirname, 'primitives/menu/index.ts'),
   'nav-menu/index': resolve(__dirname, 'primitives/nav-menu/index.ts'),
-  'spinner/index': resolve(__dirname, 'primitives/spinner/index.ts'),
   'tabs/index': resolve(__dirname, 'primitives/tabs/index.ts'),
   'text/index': resolve(__dirname, 'primitives/text/index.ts'),
   // backgrounds

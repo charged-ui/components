@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>menu fixture</title>
+    <style>
+      /* The fixture loads no theme, so set a contrast-safe surface for axe. */
+      body {
+        background: #fff;
+        color: #171717;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+      }
+      [slot='trigger'] {
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.375rem;
+        background: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import './index.js';
+    </script>
+
+    <ui-menu>
+      <button slot="trigger" id="trigger">Options</button>
+      <div id="panel" slot="menu">
+        <ui-menu-label>Actions</ui-menu-label>
+        <div role="group" aria-label="Actions">
+          <ui-menu-item>Profile</ui-menu-item>
+          <ui-menu-item>Account settings</ui-menu-item>
+        </div>
+        <ui-menu-separator></ui-menu-separator>
+        <ui-menu-item disabled>Disabled item</ui-menu-item>
+        <ui-menu-item id="signout">Sign out</ui-menu-item>
+      </div>
+    </ui-menu>
+  </body>
+</html>

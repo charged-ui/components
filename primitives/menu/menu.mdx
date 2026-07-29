@@ -1,0 +1,270 @@
+---
+name: Menu
+tag: ui-menu
+description: Accessible menu with keyboard navigation, positioned with native CSS Anchor Positioning.
+---
+
+`<ui-menu>` is a disclosure menu: it wraps a trigger (your own control, slotted
+into `slot="trigger"`) and a menu panel of `ui-menu-item`s, and adds the ARIA
+menu pattern, full keyboard support, and smart positioning.
+
+The trigger and panel stay in the light DOM, so your markup is yours — the
+component only adds behaviour. Positioning uses native **CSS Anchor
+Positioning** plus the **Popover API**, so the panel floats above the page
+(escaping `overflow: hidden`), flips when it would overflow the viewport, and
+needs no JavaScript layout library.
+
+The `ui-menu-item`, `ui-menu-label`, and `ui-menu-separator` primitives are
+shared by any menu-style component — a future `ui-context-menu` reuses them and
+differs only in its trigger.
+
+<Demo label="Basic menu">
+  <div className="max-w-xl">
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>Options</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Profile</ui-menu-item>
+        <ui-menu-item>Account settings</ui-menu-item>
+        <ui-menu-separator></ui-menu-separator>
+        <ui-menu-item>Sign out</ui-menu-item>
+      </div>
+    </ui-menu>
+  </div>
+</Demo>
+
+## Usage
+
+Slot the trigger into `trigger`, and the menu panel — a `<div>` (or any
+element) containing `ui-menu-item`s — into `menu`. The component marks the
+panel `role="menu"` and positions it relative to the trigger.
+
+The trigger can be any focusable control. A bare `<button>` works, and so does
+a `<ui-button>` wrapper — the component wires ARIA and focus onto the focusable
+control inside it and anchors the panel to the trigger region.
+
+<ui-code-block
+language="html"
+code={`<ui-menu>
+
+  <button slot="trigger">Options</button>
+  <div slot="menu">
+    <ui-menu-item>Profile</ui-menu-item>
+    <ui-menu-item>Settings</ui-menu-item>
+    <ui-menu-separator></ui-menu-separator>
+    <ui-menu-item>Sign out</ui-menu-item>
+  </div>
+</ui-menu>`}
+/>
+
+## Triggers
+
+Any button variant slots in. The panel anchors to the trigger's box, so a
+`<ui-button>` styled as primary, secondary, or tertiary all position the same
+way.
+
+<Demo label="Trigger variants">
+  <div className="flex flex-wrap items-center gap-4">
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="primary" data-size="small">
+        <button>Primary</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Open</ui-menu-item>
+        <ui-menu-item>Edit</ui-menu-item>
+      </div>
+    </ui-menu>
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>Secondary</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Open</ui-menu-item>
+        <ui-menu-item>Edit</ui-menu-item>
+      </div>
+    </ui-menu>
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="tertiary" data-size="small">
+        <button>Tertiary</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Open</ui-menu-item>
+        <ui-menu-item>Edit</ui-menu-item>
+      </div>
+    </ui-menu>
+  </div>
+</Demo>
+
+## Placement
+
+The panel prefers `bottom-end` and flips to the opposite side (or shifts along
+the trigger) when there isn't room — all handled by the browser. Use the
+`placement` and `distance` attributes to tune it.
+
+<Demo label="Placement">
+  <div className="flex flex-wrap items-center gap-4">
+    <ui-menu placement="bottom-start" distance={8}>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>bottom-start</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Edit</ui-menu-item>
+        <ui-menu-item>Duplicate</ui-menu-item>
+        <ui-menu-item>Archive</ui-menu-item>
+      </div>
+    </ui-menu>
+    <ui-menu placement="bottom-end" distance={8}>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>bottom-end</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Edit</ui-menu-item>
+        <ui-menu-item>Duplicate</ui-menu-item>
+        <ui-menu-item>Archive</ui-menu-item>
+      </div>
+    </ui-menu>
+    <ui-menu placement="top-start" distance={8}>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>top-start</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-item>Edit</ui-menu-item>
+        <ui-menu-item>Duplicate</ui-menu-item>
+        <ui-menu-item>Archive</ui-menu-item>
+      </div>
+    </ui-menu>
+  </div>
+</Demo>
+
+<ui-code-block
+language="html"
+code={`<ui-menu placement="top-end" distance="12">
+
+  <button slot="trigger">Open</button>
+  <div slot="menu">
+    <ui-menu-item>Edit</ui-menu-item>
+    <ui-menu-item>Duplicate</ui-menu-item>
+  </div>
+</ui-menu>`}
+/>
+
+## Groups and separators
+
+Wrap items in an element with `role="group"` and precede it with a
+`ui-menu-label` for an optgroup-style section. A `ui-menu-separator` draws a
+divider between sections, and `disabled` removes an item from keyboard
+navigation.
+
+<Demo label="Grouped menu">
+  <div className="max-w-xl">
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>File</button>
+      </ui-button>
+      <div slot="menu">
+        <ui-menu-label>Actions</ui-menu-label>
+        <div role="group" aria-label="Actions">
+          <ui-menu-item>New file</ui-menu-item>
+          <ui-menu-item>Open…</ui-menu-item>
+          <ui-menu-item>Save</ui-menu-item>
+        </div>
+        <ui-menu-separator></ui-menu-separator>
+        <ui-menu-label>Recent</ui-menu-label>
+        <div role="group" aria-label="Recent">
+          <ui-menu-item>README.md</ui-menu-item>
+          <ui-menu-item>index.html</ui-menu-item>
+        </div>
+        <ui-menu-separator></ui-menu-separator>
+        <ui-menu-item disabled>Export (disabled)</ui-menu-item>
+      </div>
+    </ui-menu>
+  </div>
+</Demo>
+
+## Keyboard support
+
+| Key                     | Action                                      |
+| ----------------------- | ------------------------------------------- |
+| `Enter` / `Space`       | Open the menu / activate the focused item   |
+| `ArrowDown` / `ArrowUp` | Move between items (wraps); opens if closed |
+| `Home` / `End`          | Jump to first / last item                   |
+| Type a character        | Jump to the next item starting with it      |
+| `Escape` / `Tab`        | Close and return focus to the trigger       |
+
+The menu uses a **roving tabindex**: only one item is in the tab order at a
+time, and arrow keys move that focus ring between items.
+
+## Theming
+
+Every surface is exposed as a custom property on the panel, so a theme can
+restyle the element without touching the component.
+
+<Demo label="Themed via CSS variables">
+  <div className="max-w-xl">
+    <ui-menu>
+      <ui-button slot="trigger" data-variant="secondary" data-size="small">
+        <button>Options</button>
+      </ui-button>
+      <div
+        slot="menu"
+        style={{
+          '--ui-menu-bg': '#0a0a0a',
+          '--ui-menu-fg': '#fafafa',
+          '--ui-menu-muted': '#a3a3a3',
+          '--ui-menu-border': '#262626',
+          '--ui-menu-hover-bg': '#262626',
+          '--ui-menu-radius': '12px',
+        }}
+      >
+        <ui-menu-item>Profile</ui-menu-item>
+        <ui-menu-item>Account settings</ui-menu-item>
+        <ui-menu-separator></ui-menu-separator>
+        <ui-menu-item>Sign out</ui-menu-item>
+      </div>
+    </ui-menu>
+  </div>
+</Demo>
+
+| CSS variable          | Purpose                  |
+| --------------------- | ------------------------ |
+| `--ui-menu-bg`        | Panel background         |
+| `--ui-menu-fg`        | Item text colour         |
+| `--ui-menu-muted`     | Disabled / label colour  |
+| `--ui-menu-border`    | Panel + separator border |
+| `--ui-menu-hover-bg`  | Item hover background    |
+| `--ui-menu-padding`   | Panel inner padding      |
+| `--ui-menu-radius`    | Panel corner radius      |
+| `--ui-menu-shadow`    | Panel box shadow         |
+| `--ui-menu-min-width` | Panel minimum width      |
+
+## API
+
+### `ui-menu`
+
+| Attribute        | Type                                                             | Default      | Notes                                      |
+| ---------------- | ---------------------------------------------------------------- | ------------ | ------------------------------------------ |
+| `open`           | boolean                                                          | `false`      | Reflected — read back to check state       |
+| `placement`      | `top`/`top-start`/`top-end`/`bottom`/`bottom-start`/`bottom-end` | `bottom-end` | Preferred placement; flips on overflow     |
+| `distance`       | number                                                           | `8`          | Gap (px) between trigger and panel         |
+| `close-on-click` | boolean                                                          | `true`       | Whether activating an item closes the menu |
+
+| Slot      | Purpose                                                              |
+| --------- | -------------------------------------------------------------------- |
+| `trigger` | The activating control (a `<button>`, or a `ui-button` wrapping one) |
+| `menu`    | One element wrapping `ui-menu-item`s — becomes the menu panel        |
+
+### `ui-menu-item`
+
+| Attribute        | Type    | Default | Notes                                               |
+| ---------------- | ------- | ------- | --------------------------------------------------- |
+| `disabled`       | boolean | `false` | Removes from keyboard nav and blocks activation     |
+| `close-on-click` | boolean | inherit | Override the parent's `close-on-click` for one item |
+
+### `ui-menu-label`
+
+A non-interactive section header inside the panel.
+
+### `ui-menu-separator`
+
+A visual + `role="separator"` divider between items.

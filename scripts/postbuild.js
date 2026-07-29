@@ -22,11 +22,10 @@ const componentNames = [
   'details',
   'dots',
   'icon',
-  'logo',
+  'menu',
   'meteors',
   'nav-menu',
   'ripple',
-  'spinner',
   'tabs',
   'text',
 ];
