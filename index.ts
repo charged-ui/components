@@ -4,9 +4,8 @@ export * from './primitives/button';
 export * from './primitives/card';
 export * from './primitives/details';
 export * from './primitives/icon';
-export * from './primitives/logo';
+export * from './primitives/menu';
 export * from './primitives/nav-menu';
-export * from './primitives/spinner';
 export * from './primitives/tabs';
 export * from './primitives/text';
 
@@ -22,9 +21,8 @@ import './primitives/button';
 import './primitives/card';
 import './primitives/details';
 import './primitives/icon';
-import './primitives/logo';
+import './primitives/menu';
 import './primitives/nav-menu';
-import './primitives/spinner';
 import './primitives/tabs';
 import './primitives/text';
 

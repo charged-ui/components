@@ -1,0 +1,141 @@
+@reference 'tailwindcss';
+
+/* Charged UI · menu
+ *
+ * All shipped styles live in @layer components behind :where(), so any
+ * consumer Tailwind utility (always in the later utilities layer) wins every
+ * conflict — no specificity fights, no !important. In apps without Tailwind
+ * the same holds: unlayered author CSS beats layered library CSS.
+ *
+ * The --ui-menu-* custom properties are the theming API; utility classes and
+ * inline custom properties override them. The item/label/separator styles are
+ * shared by any menu-style component (e.g. a future ui-context-menu).
+ *
+ * Positioning: native CSS Anchor Positioning + the Popover API do the work —
+ * the trigger names itself an anchor, the panel references it with
+ * position-anchor / position-area, and position-try-fallbacks flips and shifts
+ * it back into the viewport on overflow. Browsers that predate the Anchor
+ * Positioning baseline are handled imperatively in menu.ts (fixed coords).
+ */
+
+@layer components {
+  :where(ui-menu) {
+    @apply inline-block;
+  }
+
+  /* The panel is the [slot="menu"] element. It lives in the top layer via the
+   * native popover API, so it escapes overflow:hidden and z-index stacking.
+   * Scoped under ui-menu (and items under their own tags) the way ui-tabs
+   * targets [slot="tab"] — no marker classes. */
+  :where(ui-menu [slot='menu']) {
+    --ui-menu-bg: var(--color-white, #fff);
+    --ui-menu-fg: var(--color-neutral-900, #171717);
+    --ui-menu-muted: var(--color-neutral-500, #737373);
+    --ui-menu-border: var(--color-neutral-200, #e5e5e5);
+    --ui-menu-hover-bg: var(--color-neutral-100, #f5f5f5);
+    --ui-menu-padding: 0.25rem;
+    --ui-menu-radius: var(--radius-lg, 0.5rem);
+    --ui-menu-shadow:
+      0 4px 12px -2px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --ui-menu-min-width: 10rem;
+
+    /* The `distance` gap between trigger and panel is applied inline by the
+     * component as block-axis (top/bottom) margin only — so left/right stay
+     * zero and the panel aligns flush to the trigger's edges. Only the side
+     * facing the trigger carries the gap; the other is harmless. */
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    @apply border border-solid p-1 min-w-40;
+    background: var(--ui-menu-bg);
+    color: var(--ui-menu-fg);
+    border-color: var(--ui-menu-border);
+    border-radius: var(--ui-menu-radius);
+    box-shadow: var(--ui-menu-shadow);
+  }
+
+  :where(ui-menu-item) {
+    @apply flex items-center gap-2 w-full py-2 px-3 border-none rounded-md bg-transparent text-sm leading-5 text-start cursor-pointer select-none m-0;
+    /* font: inherit has no Tailwind equivalent — keep as raw so the item
+     * matches the surrounding type rather than resetting to the Tailwind base. */
+    font: inherit;
+    color: var(--ui-menu-fg);
+  }
+
+  /* data-active is set by the host's roving-tabindex controller; :hover and
+   * keyboard focus reuse the same surface so pointer and keyboard agree. */
+  :where(ui-menu-item[data-active='true']),
+  :where(ui-menu-item:hover) {
+    background: var(--ui-menu-hover-bg);
+  }
+
+  :where(ui-menu-item:focus-visible) {
+    @apply outline-2 outline-offset-[-2px];
+    outline-style: solid;
+    outline-color: var(--color-blue-500, #3b82f6);
+  }
+
+  :where(ui-menu-item[disabled]),
+  :where(ui-menu-item[aria-disabled='true']) {
+    @apply cursor-not-allowed pointer-events-none;
+    color: var(--ui-menu-muted);
+  }
+
+  :where(ui-menu-label) {
+    @apply block py-2 pb-1 px-3 text-xs leading-4 font-semibold select-none;
+    color: var(--ui-menu-muted);
+  }
+
+  :where(ui-menu-separator) {
+    @apply block h-px my-1;
+    background: var(--ui-menu-border);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Native CSS Anchor Positioning. Hidden from pre-Baseline browsers by
+ * @supports so the JS fallback (which sets position/top/left inline) wins
+ * there. The component sets position-anchor + margin inline; here we map
+ * data-placement → position-area and declare the collision fallbacks.
+ * ------------------------------------------------------------------ */
+@supports (anchor-name: --x) {
+  ui-menu [slot='menu'] {
+    @apply fixed;
+    position-area: bottom;
+    position-try-fallbacks: flip-block, flip-inline, shift-start, shift-end;
+    inset: auto;
+  }
+  ui-menu [slot='menu'][data-placement='bottom-start'] {
+    position-area: bottom span-left;
+  }
+  ui-menu [slot='menu'][data-placement='bottom-end'] {
+    position-area: bottom span-right;
+  }
+  ui-menu [slot='menu'][data-placement='bottom'] {
+    position-area: bottom center;
+  }
+  ui-menu [slot='menu'][data-placement='top-start'] {
+    position-area: top span-left;
+  }
+  ui-menu [slot='menu'][data-placement='top-end'] {
+    position-area: top span-right;
+  }
+  ui-menu [slot='menu'][data-placement='top'] {
+    position-area: top center;
+  }
+}
+
+/* Pre-definition guard: hide the panel until the component wires it, so SSR'd
+ * markup never flashes an unstyled, unpositioned menu. */
+ui-menu:not(:defined) > [slot='menu'] {
+  @apply hidden;
+}
+
+/* Browsers without the Popover API get a class-based open state driven by
+ * menu.ts (the JS fallback also positions the panel). The .ui-menu-open class
+ * is a behavioural toggle, not a styling hook. */
+@supports not (inset: auto) {
+  ui-menu [slot='menu']:not(.ui-menu-open) {
+    @apply hidden;
+  }
+}
