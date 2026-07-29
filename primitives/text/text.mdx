@@ -1,0 +1,71 @@
+---
+name: Text
+tag: ui-text
+description: Typography element covering display, heading, and copy scales.
+---
+
+export const SCALES = [
+  [
+    'Display',
+    [
+      'display-1',
+      'display-2',
+      'display-3',
+      'display-4',
+      'display-5',
+      'display-6',
+    ],
+  ],
+  [
+    'Headings',
+    [
+      'heading-1',
+      'heading-2',
+      'heading-3',
+      'heading-4',
+      'heading-5',
+      'heading-6',
+    ],
+  ],
+  ['Copy', ['copy-xl', 'copy-lg', 'copy-md', 'copy-sm', 'copy-xs']],
+];
+
+`<ui-text>` applies one step of the type scale. It carries no semantics —
+pick the heading level in your own markup and use `<ui-text>` for the size,
+so a visually large label can still be an `<h3>` where that's correct.
+
+{SCALES.map(([label, variants]) => (
+<Demo key={label} label={label} plain>
+<div className="flex flex-col gap-4">
+{variants.map((variant) => (
+<div
+					key={variant}
+					className="flex items-baseline gap-6 border-b border-line pb-4 last:border-b-0 last:pb-0"
+				>
+<code className="w-24 shrink-0 font-mono text-[11px] text-muted">
+{variant}
+</code>
+<ui-text data-variant={variant}>The quick brown fox</ui-text>
+</div>
+))}
+</div>
+</Demo>
+))}
+
+```html
+<ui-text data-variant="display-2">Charged</ui-text>
+<ui-text data-variant="copy-md">Universal web components.</ui-text>
+```
+
+## API
+
+| Attribute      | Values                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------- |
+| `data-variant` | `display-1`…`display-6`, `heading-1`…`heading-6`, `copy-xl`, `copy-lg`, `copy-md`, `copy-sm`, `copy-xs` |
+
+TypeScript consumers can use the `TextVariant` enum instead of the string
+literals:
+
+```ts
+import { TextVariant } from '@charged/ui/text';
+```

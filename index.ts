@@ -1,43 +1,35 @@
-export * from './alert';
-export * from './aurora';
-export * from './button';
-export * from './card';
-export * from './code-block';
-export * from './details';
-export * from './dots';
-export * from './draggable';
-export * from './droppable';
-export * from './gallery';
-export * from './globe';
-export * from './icon';
-export * from './icon-selector';
-export * from './logo';
-export * from './meteors';
-export * from './nav-menu';
-export * from './ripple';
-export * from './spinner';
-export * from './stat';
-export * from './tabs';
-export * from './text';
+/* Primitives — structural building blocks. */
+export * from './primitives/alert';
+export * from './primitives/button';
+export * from './primitives/card';
+export * from './primitives/details';
+export * from './primitives/icon';
+export * from './primitives/logo';
+export * from './primitives/nav-menu';
+export * from './primitives/spinner';
+export * from './primitives/tabs';
+export * from './primitives/text';
 
-import './alert';
-import './aurora';
-import './button';
-import './card';
-import './code-block';
-import './details';
-import './dots';
-import './draggable';
-import './droppable';
-import './gallery';
-import './globe';
-import './icon';
-import './icon-selector';
-import './logo';
-import './meteors';
-import './nav-menu';
-import './ripple';
-import './spinner';
-import './stat';
-import './tabs';
-import './text';
+/* Backgrounds — animated visual surfaces. */
+export * from './backgrounds/aurora';
+export * from './backgrounds/dots';
+export * from './backgrounds/meteors';
+export * from './backgrounds/ripple';
+
+/* Primitives — side-effect imports for custom element registration. */
+import './primitives/alert';
+import './primitives/button';
+import './primitives/card';
+import './primitives/details';
+import './primitives/icon';
+import './primitives/logo';
+import './primitives/nav-menu';
+import './primitives/spinner';
+import './primitives/tabs';
+import './primitives/text';
+
+/* Backgrounds — side-effect imports for custom element registration. */
+import './backgrounds/aurora';
+import './backgrounds/dots';
+import './backgrounds/meteors';
+import './backgrounds/ripple';

@@ -1,0 +1,9 @@
+@reference 'tailwindcss';
+
+ui-bg-dots {
+  @apply block;
+}
+
+ui-bg-dots:not(:defined) {
+  display: none;
+}

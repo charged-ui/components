@@ -1,5 +1,0 @@
-@reference 'tailwindcss';
-
-ui-droppable {
-	@apply border border-dotted p-8;
-}

@@ -1,9 +1,0 @@
-@reference 'tailwindcss';
-
-ui-stat {
-	@apply inline-block;
-}
-
-ui-stat:not(:defined) {
-	display: none;
-}

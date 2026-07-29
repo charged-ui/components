@@ -1,9 +1,0 @@
-@reference 'tailwindcss';
-
-ui-bg-ripple {
-	@apply block;
-}
-
-ui-bg-ripple:not(:defined) {
-	display: none;
-}

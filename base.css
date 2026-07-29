@@ -2,7 +2,7 @@
 
 /* Export only the CSS custom properties and common styles */
 @layer base {
-	:root {
-		color-scheme: light;
-	}
+  :root {
+    color-scheme: light;
+  }
 }

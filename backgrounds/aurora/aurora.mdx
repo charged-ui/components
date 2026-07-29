@@ -1,0 +1,35 @@
+---
+name: Aurora
+tag: ui-bg-aurora
+description: Soft animated aurora gradient background surface.
+---
+
+A decorative background surface. Anything you slot in renders above the
+animated gradient, so `<ui-bg-aurora>` usually wraps a hero section rather
+than sitting beside one. Give it a height — it fills its container.
+
+<Demo bleed plain>
+  <div className="h-[420px]">
+    <ui-bg-aurora style={{ height: '100%' }}>
+      <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
+        <h2 className="text-3xl font-bold tracking-tight">Aurora Background</h2>
+        <p className="text-muted">A smooth animated aurora effect.</p>
+      </div>
+    </ui-bg-aurora>
+  </div>
+</Demo>
+
+```html
+<ui-bg-aurora style="height: 100%">
+  <div class="hero">Aurora Background</div>
+</ui-bg-aurora>
+```
+
+## API
+
+| Attribute            | Type    | Default | Notes                                     |
+| -------------------- | ------- | ------- | ----------------------------------------- |
+| `showradialgradient` | boolean | `true`  | Radial mask that fades the effect outward |
+
+The effect is motion-heavy by nature — pair it with a static fallback where
+reduced motion matters.

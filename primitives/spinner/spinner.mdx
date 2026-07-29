@@ -1,0 +1,28 @@
+---
+name: Spinner
+tag: ui-spinner
+description: Loading indicator.
+---
+
+A loading indicator with no attributes to configure — size it with CSS and
+colour it with `currentColor`, like an icon.
+
+<Demo>
+  <div className="flex justify-center py-8">
+    <ui-spinner />
+  </div>
+</Demo>
+
+```html
+<ui-spinner></ui-spinner>
+```
+
+Announce state changes yourself when the spinner replaces content — the
+element renders no live region of its own.
+
+```html
+<div role="status" aria-live="polite">
+  <ui-spinner></ui-spinner>
+  <span class="sr-only">Loading…</span>
+</div>
+```

@@ -1,0 +1,79 @@
+---
+name: Tabs
+tag: ui-tabs
+description: Accessible tabs with an animated indicator and smooth panel transitions.
+---
+
+Slot one `[slot="tab"]` button and one `[slot="panel"]` element per view, in
+matching order — the element pairs them up, wires the ARIA roles and arrow-key
+navigation, and animates the indicator between them.
+
+<Demo>
+  <div className="rounded-lg bg-white">
+    <ui-tabs>
+      <button slot="tab">Overview</button>
+      <button slot="tab">Features</button>
+      <button slot="tab">Pricing</button>
+      <div slot="panel">
+        <h3>Overview</h3>
+        <p>
+          {
+            'Tabs organize content into separate views where only one view is visible at a time. They support keyboard navigation and screen readers.'
+          }
+        </p>
+      </div>
+      <div slot="panel">
+        <h3>Features</h3>
+        <ul>
+          <li>Animated underline indicator</li>
+          <li>Smooth panel transitions</li>
+          <li>WCAG 2 accessible (ARIA roles, keyboard nav)</li>
+          <li>Dark mode support</li>
+        </ul>
+      </div>
+      <div slot="panel">
+        <h3>Pricing</h3>
+        <p>
+          {
+            'Free and open source. Use it in any project, personal or commercial.'
+          }
+        </p>
+      </div>
+    </ui-tabs>
+  </div>
+</Demo>
+
+```html
+<ui-tabs>
+  <button slot="tab">Overview</button>
+  <button slot="tab">Features</button>
+  <div slot="panel">Overview content</div>
+  <div slot="panel">Features content</div>
+</ui-tabs>
+```
+
+## Selected index
+
+<Demo label="With selected index">
+  <div className="rounded-lg bg-white">
+    <ui-tabs selected-index={2}>
+      <button slot="tab">First</button>
+      <button slot="tab">Second</button>
+      <button slot="tab">Third</button>
+      <div slot="panel">First panel content.</div>
+      <div slot="panel">Second panel content.</div>
+      <div slot="panel">This tab is selected by default.</div>
+    </ui-tabs>
+  </div>
+</Demo>
+
+## API
+
+| Attribute        | Type   | Default | Notes                  |
+| ---------------- | ------ | ------- | ---------------------- |
+| `selected-index` | number | `0`     | Reflected — zero-based |
+
+| Slot    | Purpose                              |
+| ------- | ------------------------------------ |
+| `tab`   | One button per tab, in order         |
+| `panel` | One panel per tab, in the same order |

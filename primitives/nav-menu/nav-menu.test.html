@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nav-menu fixture</title>
+    <style>
+      /* Ensure trigger buttons meet WCAG contrast (the component's CSS
+         uses var() with fallbacks, but the fixture has no theme loaded,
+         so we set explicit contrast-safe colors here). */
+      body {
+        background: #18181b;
+        padding: 2rem;
+      }
+      [data-target] {
+        color: #fff;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import './index.js';
+    </script>
+
+    <ui-nav-menu>
+      <nav slot="trigger" style="display: flex; gap: 2rem;">
+        <button data-target="products">Products</button>
+        <button data-target="pricing">Pricing</button>
+        <button data-target="docs">Docs</button>
+      </nav>
+      <div slot="content" data-id="products" style="width: 400px;">
+        Products panel
+      </div>
+      <div slot="content" data-id="pricing" style="width: 400px;">
+        Pricing panel
+      </div>
+      <div slot="content" data-id="docs" style="width: 400px;">
+        Docs panel
+      </div>
+    </ui-nav-menu>
+  </body>
+</html>
+

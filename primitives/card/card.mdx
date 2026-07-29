@@ -1,0 +1,45 @@
+---
+name: Card
+tag: ui-card
+description: Slotted content container with header, body, and footer.
+---
+
+A three-slot container. Every slot is optional — a card with only a `body`
+renders as a plain surface — and none of them impose padding, so the card
+adapts to dense layouts as easily as roomy ones.
+
+<Demo>
+  <div className="max-w-sm">
+    <ui-card>
+      <div slot="header" className="p-4 font-semibold">
+        Card Header
+      </div>
+      <div slot="body" className="p-4">
+        This is the card body content. Add anything here.
+      </div>
+      <div slot="footer" className="border-t border-line p-4 text-muted">
+        Card Footer
+      </div>
+    </ui-card>
+  </div>
+</Demo>
+
+```html
+<ui-card>
+  <div slot="header">Card Header</div>
+  <div slot="body">This is the card body content.</div>
+  <div slot="footer">Card Footer</div>
+</ui-card>
+```
+
+## API
+
+| Slot     | Purpose                                    |
+| -------- | ------------------------------------------ |
+| `media`  | Full-bleed image or video above the header |
+| `header` | Title row                                  |
+| `body`   | Main content                               |
+| `footer` | Actions or metadata                        |
+
+`<ui-card>` is also the item primitive for [Gallery](/elements/gallery) —
+cards there carry `data-categories` for filtering.
