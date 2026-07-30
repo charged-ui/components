@@ -20,6 +20,7 @@ const componentNames = [
   'button',
   'card',
   'details',
+  'dialog',
   'dots',
   'icon',
   'menu',

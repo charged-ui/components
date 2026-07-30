@@ -18,6 +18,8 @@
     "./card/card.mdx": "./primitives/card/card.mdx",
     "./details": "./primitives/details/index.ts",
     "./details/details.mdx": "./primitives/details/details.mdx",
+    "./dialog": "./primitives/dialog/index.ts",
+    "./dialog/dialog.mdx": "./primitives/dialog/dialog.mdx",
     "./dots": "./backgrounds/dots/index.ts",
     "./dots/dots.mdx": "./backgrounds/dots/dots.mdx",
     "./icon": "./primitives/icon/index.ts",
