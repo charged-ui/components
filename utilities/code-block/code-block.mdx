@@ -1,0 +1,122 @@
+---
+name: Code Block
+tag: ui-code-block
+description: Syntax highlighting with filenames, line numbers, highlights, and diffs.
+---
+
+export const tsCode = `// Hello, World!
+function greet(name: string): string {
+  return \`Hello, \${name}!\`;
+}
+
+console.log(greet('Charged'));
+`;
+
+export const phpCode = `<?php
+namespace App\\Controller;
+
+use Symfony\\Component\\HttpFoundation\\Response;
+
+class DashboardController {
+public function index(): Response {
+return new Response("Welcome to Charged!");
+}
+}`;
+
+export const diffCode = `module.exports = {
+  experimental: {
+    appDir: true,
+  },
+  appDir: true,
+}
+`;
+
+export const cssCode = `/* Simple CSS example */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.card {
+border-radius: 8px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+transition: transform 0.2s ease;
+}
+
+.card:hover {
+transform: translateY(-2px);
+}
+`;
+
+Highlighting runs through Prism. Pass the source as the `code` attribute or
+as the element's text content — the attribute wins when both are present, and
+is the safer choice for code containing markup.
+
+<Section label="Basic">
+  <ui-code-block code={tsCode} language="typescript" filename="greet.ts" />
+</Section>
+
+```html
+<ui-code-block language="typescript" filename="greet.ts">
+  console.log('Hello');
+</ui-code-block>
+```
+
+## Line numbers & highlights
+
+`highlight-lines` accepts single lines and ranges — `"7-9"`, `"2,4"`, or both
+together.
+
+<Section label="Line numbers & highlights">
+  <ui-code-block
+    code={phpCode}
+    language="php"
+    filename="DashboardController.php"
+    showLineNumbers
+    highlightLines="7-9"
+  />
+  <ui-code-block
+    code={cssCode}
+    language="css"
+    filename="styles.css"
+    showLineNumbers
+  />
+</Section>
+
+## Diffs
+
+<Section label="Diff">
+  <ui-code-block
+    language="javascript"
+    filename="next.config.js"
+    showLineNumbers
+    removedLines={[2, 3, 4]}
+    addedLines={[5]}
+  >
+    {diffCode}
+  </ui-code-block>
+</Section>
+
+## Bare
+
+Without a filename the chrome collapses to just the code surface.
+
+<Section label="Bare">
+  <ui-code-block language="typescript">{tsCode}</ui-code-block>
+</Section>
+
+## API
+
+| Attribute           | Type     | Notes                                     |
+| ------------------- | -------- | ----------------------------------------- |
+| `code`              | string   | Source; overrides text content            |
+| `language`          | string   | Prism language id                         |
+| `filename`          | string   | Shown in the header bar                   |
+| `block-id`          | string   | Stable id for the copy button and anchors |
+| `show-line-numbers` | boolean  | Presence enables it                       |
+| `show-copy-button`  | boolean  | Presence enables it                       |
+| `highlight-lines`   | string   | `"7-9"`, `"2,4"`, or a combination        |
+| `added-lines`       | number[] | Rendered as diff additions                |
+| `removed-lines`     | number[] | Rendered as diff removals                 |

@@ -9,7 +9,6 @@ const entry = {
   'button/index': resolve(__dirname, 'primitives/button/index.ts'),
   'card/index': resolve(__dirname, 'primitives/card/index.ts'),
   'details/index': resolve(__dirname, 'primitives/details/index.ts'),
-  'dialog/index': resolve(__dirname, 'primitives/dialog/index.ts'),
   'icon/index': resolve(__dirname, 'primitives/icon/index.ts'),
   'menu/index': resolve(__dirname, 'primitives/menu/index.ts'),
   'nav-menu/index': resolve(__dirname, 'primitives/nav-menu/index.ts'),
@@ -20,6 +19,8 @@ const entry = {
   'dots/index': resolve(__dirname, 'backgrounds/dots/index.ts'),
   'meteors/index': resolve(__dirname, 'backgrounds/meteors/index.ts'),
   'ripple/index': resolve(__dirname, 'backgrounds/ripple/index.ts'),
+  // utilities
+  'code-block/index': resolve(__dirname, 'utilities/code-block/index.ts'),
 };
 
 export default defineConfig({
