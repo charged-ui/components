@@ -23,11 +23,13 @@ the same element.
   </div>
 </Demo>
 
-```html
-<ui-button data-size="small" data-variant="primary" data-shape="rounded">
+<ui-code-block
+language="html"
+code={`<ui-button data-size="small" data-variant="primary" data-shape="rounded">
+
   <button>Small</button>
-</ui-button>
-```
+</ui-button>`}
+/>
 
 ## Variants
 
@@ -83,11 +85,13 @@ Swap the child for an `<a>` when the action navigates. Nothing else changes.
   </ui-button>
 </Demo>
 
-```html
-<ui-button data-variant="primary" data-shape="rounded" data-size="medium">
+<ui-code-block
+language="html"
+code={`<ui-button data-variant="primary" data-shape="rounded" data-size="medium">
+
   <a href="/guide">Read the guide</a>
-</ui-button>
-```
+</ui-button>`}
+/>
 
 ## API
 
@@ -104,6 +108,7 @@ weight, focus ring) and nothing else.
 TypeScript consumers can import the `ButtonVariant`, `ButtonSize`, and
 `ButtonShape` enums instead of writing the string literals by hand:
 
-```ts
-import { ButtonVariant, ButtonSize } from '@charged/ui/button';
-```
+<ui-code-block
+language="typescript"
+code={`import { ButtonVariant, ButtonSize } from '@charged/ui/button';`}
+/>
