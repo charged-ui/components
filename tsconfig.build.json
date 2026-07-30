@@ -23,11 +23,12 @@
     "skipLibCheck": true
   },
   "include": [
-    "primitives/**/*.ts",
-    "backgrounds/**/*.ts",
-    "index.ts",
-    "registry.ts",
-    "types.d.ts"
+    "src/primitives/**/*.ts",
+    "src/backgrounds/**/*.ts",
+    "src/utilities/**/*.ts",
+    "src/index.ts",
+    "src/registry.ts",
+    "src/types.d.ts"
   ],
-  "exclude": ["**/*.json", "node_modules", "dist", "utils"]
+  "exclude": ["**/*.json", "node_modules", "dist"]
 }
