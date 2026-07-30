@@ -9,5 +9,5 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": ["**/*.ts", "types.d.ts"]
+  "include": ["**/*.ts", "src/types.d.ts"]
 }

@@ -21,6 +21,7 @@ const componentNames = [
   'card',
   'code-block',
   'details',
+  'dialog',
   'dots',
   'icon',
   'menu',

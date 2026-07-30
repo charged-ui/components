@@ -1,0 +1,199 @@
+@reference 'tailwindcss';
+
+/* Charged UI · dialog
+ *
+ * All shipped styles live in @layer components behind :where(), so any
+ * consumer Tailwind utility (always in the later utilities layer) wins every
+ * conflict — no specificity fights, no !important. In apps without Tailwind
+ * the same holds: unlayered author CSS beats layered library CSS.
+ *
+ * The --ui-dialog-* custom properties are the theming API; utility classes and
+ * inline custom properties override them. Colours come from the Tailwind
+ * neutral palette (with hard-coded fallbacks for non-Tailwind consumers).
+ *
+ * The surface is the author's own native `<dialog>`: it lives in the top layer
+ * via showModal(), so it escapes overflow:hidden and z-index stacking and gets
+ * a real focus trap and ::backdrop for free. Header / body / footer are plain
+ * slotted children the component never re-parents.
+ */
+
+@layer components {
+  :where(ui-dialog) {
+    @apply contents;
+  }
+
+  :where(ui-dialog > dialog) {
+    --ui-dialog-bg: var(--color-white, #fff);
+    --ui-dialog-fg: var(--color-neutral-900, #171717);
+    --ui-dialog-muted: var(--color-neutral-500, #737373);
+    --ui-dialog-border: var(--color-neutral-200, #e5e5e5);
+    --ui-dialog-radius: var(--radius-xl, 0.75rem);
+    --ui-dialog-padding: 1.5rem;
+    --ui-dialog-width: 32rem;
+    --ui-dialog-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --ui-dialog-backdrop: rgb(0 0 0 / 0.5);
+    /* How far a parent slides back / shrinks per open nested level. */
+    --ui-dialog-nested-offset: 1.25rem;
+    --ui-dialog-nested-scale-step: 0.06;
+
+    @apply fixed inset-0 m-auto h-fit p-0 border border-solid max-h-[calc(100dvh-2rem)] overflow-hidden flex-col;
+    width: min(var(--ui-dialog-width), calc(100vw - 2rem));
+    color: var(--ui-dialog-fg);
+    background: var(--ui-dialog-bg);
+    border-color: var(--ui-dialog-border);
+    border-radius: var(--ui-dialog-radius);
+    box-shadow: var(--ui-dialog-shadow);
+    /* Center the modal ourselves rather than leaning on the native `<dialog>`
+     * UA centering: that relies on `margin: auto`, which a global reset —
+     * notably Tailwind Preflight's `*, ::backdrop { margin: 0 }` — clobbers,
+     * pinning the dialog to the top-left. `inset: 0` + `margin: auto` +
+     * definite width + `height: fit-content` centers on both axes and survives
+     * the reset (this @layer components rule outranks Preflight's @layer base).
+     *
+     * `flex-direction: column` lives here, not on [open], so it survives the
+     * exit: the animation holds `display: flex` for 0.2s via
+     * `transition-behavior: allow-discrete`, and if the direction reverted with
+     * [open] the dialog would flash as a flex row while animating out.
+     * flex-direction is inert while `display` is none, so it's safe here. */
+  }
+
+  /* Only `display` is scoped to [open]: the base rule must never set `display`,
+   * or it would beat the UA `dialog:not([open]) { display: none }` (author
+   * origin wins over UA) and leave closed dialogs visible. */
+  :where(ui-dialog > dialog[open]) {
+    @apply flex;
+  }
+
+  :where(ui-dialog > dialog)::backdrop {
+    background: var(--ui-dialog-backdrop);
+  }
+
+  /* Nested dialogs. Native `showModal()` already stacks children in the top
+   * layer above their parent. A nested dialog's own ::backdrop is suppressed
+   * so it doesn't double-dim the parent — the topmost dialog's backdrop dims
+   * the page once, and the scale/translate depth cue (below) separates the
+   * two surfaces. */
+  :where(ui-dialog > dialog[data-nested])::backdrop {
+    @apply bg-transparent;
+  }
+
+  /* Structure — every part is optional. Authors can ignore these slots and
+   * lay the dialog out themselves; utilities still win. */
+  :where(ui-dialog > dialog > [slot='header']) {
+    @apply flex items-start justify-between gap-4 shrink-0;
+    padding: var(--ui-dialog-padding);
+    padding-bottom: 0;
+  }
+
+  :where(ui-dialog > dialog > [slot='body']) {
+    @apply min-h-0 flex-1 overflow-y-auto;
+    padding: var(--ui-dialog-padding);
+    color: var(--ui-dialog-muted);
+  }
+
+  :where(ui-dialog > dialog > [slot='footer']) {
+    @apply flex flex-wrap items-center justify-end gap-3 shrink-0;
+    padding: var(--ui-dialog-padding);
+    padding-top: 0;
+  }
+
+  :where([slot='title']) {
+    @apply text-lg font-semibold leading-6 m-0;
+    color: var(--ui-dialog-fg);
+  }
+
+  /* Close affordance in the header — a bare, unstyled control gets a minimal
+   * neutral hover surface; add Tailwind utilities to restyle it. */
+  :where(ui-dialog > dialog [slot='close']) {
+    @apply inline-flex items-center justify-center shrink-0 size-8 -mr-1 -mt-1 p-0 rounded-md border-none bg-transparent cursor-pointer;
+    color: var(--ui-dialog-muted);
+    font: inherit;
+    line-height: 1;
+  }
+
+  :where(ui-dialog > dialog [slot='close']:hover) {
+    background: var(--color-neutral-100, #f5f5f5);
+    color: var(--ui-dialog-fg);
+  }
+
+  :where(ui-dialog > dialog [slot='close']:focus-visible) {
+    @apply outline-2 outline-offset-2;
+    outline-style: solid;
+    outline-color: var(--color-blue-500, #3b82f6);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Enter / exit animation. Native <dialog> toggles [open] and the top-layer
+ * ::backdrop; @starting-style animates the entrance and transition-behavior:
+ * allow-discrete keeps the element around for the exit. Gated behind
+ * prefers-reduced-motion so it's opt-out for motion-sensitive users.
+ *
+ * Kept UNLAYERED on purpose (like ui-menu's @supports positioning block): the
+ * resting state and the [open] override must sit in the same cascade context
+ * so [open] wins by specificity. Nesting this whole @media inside
+ * @layer components lets the compiler split the resting rule out and demote the
+ * [open] rule, which strands the dialog at opacity 0. These rules only set
+ * motion — never colour or layout — so leaving them unlayered is safe.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  ui-dialog > dialog {
+    opacity: 0;
+    translate: 0 0.5rem;
+    scale: 0.98;
+    transition:
+      opacity 0.2s ease,
+      translate 0.2s ease,
+      scale 0.2s ease,
+      display 0.2s allow-discrete,
+      overlay 0.2s allow-discrete;
+  }
+
+  /* When open, a parent slides back and shrinks by one step per open nested
+   * dialog (`--nested-dialogs`, published by the component), so the stack reads
+   * as depth. At zero nesting this resolves to translate 0 / scale 1 — the
+   * plain centered dialog. The transition above animates the shift as children
+   * open and close. */
+  ui-dialog > dialog[open] {
+    opacity: 1;
+    translate: 0 calc(var(--ui-dialog-nested-offset) * var(--nested-dialogs, 0));
+    scale: calc(
+      1 - var(--ui-dialog-nested-scale-step) * var(--nested-dialogs, 0)
+    );
+  }
+
+  @starting-style {
+    ui-dialog > dialog[open] {
+      opacity: 0;
+      translate: 0 0.5rem;
+      scale: 0.98;
+    }
+  }
+
+  ui-dialog > dialog::backdrop {
+    opacity: 0;
+    transition:
+      opacity 0.2s ease,
+      display 0.2s allow-discrete,
+      overlay 0.2s allow-discrete;
+  }
+
+  ui-dialog > dialog[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    ui-dialog > dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+/* Pre-definition guard: keep a dialog authored with `open` from flashing in
+ * the normal flow (un-modal, un-centered) before the element is defined. The
+ * native dialog is hidden until showModal() runs anyway; this just covers the
+ * `[open]` attribute case during hydration. */
+ui-dialog:not(:defined) > dialog:not([open]) {
+  @apply hidden;
+}

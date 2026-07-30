@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>nested dialog fixture</title>
+    <style>
+      body {
+        background: #fff;
+        color: #171717;
+        padding: 2rem;
+        font-family: system-ui, sans-serif;
+      }
+      [slot='trigger'],
+      [data-dialog-close] {
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.375rem;
+        background: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import './index.js';
+    </script>
+
+    <ui-dialog light-dismiss>
+      <button slot="trigger" id="parent-trigger">Open parent</button>
+      <dialog id="parent-dialog">
+        <header slot="header">
+          <h2 slot="title">Parent</h2>
+        </header>
+        <div slot="body">
+          <p slot="description">The parent dialog.</p>
+        </div>
+        <footer slot="footer">
+          <ui-dialog light-dismiss>
+            <button slot="trigger" id="child-trigger">Open child</button>
+            <dialog id="child-dialog">
+              <header slot="header">
+                <h2 slot="title">Child</h2>
+              </header>
+              <div slot="body">
+                <p slot="description">The nested child dialog.</p>
+              </div>
+              <footer slot="footer">
+                <button data-dialog-close id="child-close">Close child</button>
+              </footer>
+            </dialog>
+          </ui-dialog>
+          <button data-dialog-close id="parent-close">Close parent</button>
+        </footer>
+      </dialog>
+    </ui-dialog>
+  </body>
+</html>
